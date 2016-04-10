@@ -9,6 +9,6 @@ cp templates/views/*.hbs ../myCMS/templates/views/
 cp templates/views/layouts/*.hbs ../myCMS/templates/views/layouts/
 
 echo Copying public files
-cp favicon.ico ../myCMS/
+cp public/favicon.ico ../myCMS/public
 cp public/images/* ../myCMS/public/images/
 
