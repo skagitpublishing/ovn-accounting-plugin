@@ -12,8 +12,8 @@ var handlebars = require('express-handlebars');
 
 keystone.init({
 
-	'name': 'keystone4',
-	'brand': 'keystone4',
+	'name': 'rpiovn',
+	'brand': 'RPi OVN',
 	
 	'less': 'public',
 	'static': 'public',

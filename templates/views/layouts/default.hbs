@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>keystone4</title>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link href="/styles/site.min.css" rel="stylesheet">
+
+		{{!-- This file provides the default styling for the KeystoneJS Content Editor
+			- only renders when user is logged in and admin--}}
+		{{{isAdminEditorCSS user}}}
+
+		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		//- Safely remove this block if you are not targeting IE8 --}}
+		<!--[if lt IE 9]>
+			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body>
+		<div id="header">
+			<div class="container">
+				<div role="navigation" class="navbar navbar-default navbar-static-top">
+					<div class="container-fluid" role='navigation'>
+						<div class="navbar-header">
+              
+							<!-- <a href='/' class='navbar-brand'></a> -->
+              <a href='/' class="navbar-brand"><img src="/images/rpi-ovn-brand-logo.png" style="height: 45px;" /></a>
+              
+              <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+              </button>
+              
+						</div>
+						
+            <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
+              <li><a href='/'>Home</a></li>
+              
+              <li class='dropdown' id="menuSection">
+                <a href='/#' data-target='#' class='dropdown-toggle' data-toggle='dropdown' data-hover='dropdown'>About <span class='caret'></span></a>
+                <ul class='dropdown-menu' role='menu'>
+                  <li id="menuPage"><a href='#'>Our Story</a></li>                  
+                </ul>
+              </li>
+              
+              <li class='dropdown'>
+                <a href='/#' data-target='#' class='dropdown-toggle' data-toggle='dropdown' data-hover='dropdown'>About <span class='caret'></span></a>
+                <ul class='dropdown-menu' role='menu'>
+                  <li><a href='#'>Our Story</a></li>
+                  <li><a href='#'>Contact Us</a></li>
+                  <li class='divider'></li>
+                  <li><a href='#'>Blog</a></li>
+                  <li class='divider'></li>
+                  <li><a href='#'>Twitter</a></li>
+                  <li><a href='#'>Facebook</a></li>
+                </ul>
+              </li>      
+              
+              <!-- KeystoneJS default menu items. -->
+              <li class='dropdown'>
+                <a href='/#' data-target='#' class='dropdown-toggle' data-toggle='dropdown' data-hover='dropdown'>KeystoneLinks <span class='caret'></span></a>
+                <ul class='dropdown-menu' role='menu'>
+                  {{# each navLinks}}
+									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
+										<a href="{{ href }}">{{ label }}</a>
+									</li>
+								  {{/each}}                  
+                </ul>
+              </li> 
+              
+              <!-- Sign-Out and Sign-In Menu link. -->
+              {{#if user}}
+              <li><a href="/keystone/signout">Sign Out</a></li>
+              {{else}}
+              <li><a href="/keystone/signin">Sign In</a></li>
+              {{/if}}
+              
+            </ul>
+            
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="body">
+			<!--
+				Flash messages allow you to display once-off status messages to users, e.g. form
+				validation errors, success messages, etc
+			-->
+			{{#if messages}}
+			<div id="flash-messages" class="container">
+				{{#if messages.info}}
+				<div class="alert alert-info">
+						{{{flashMessages messages.info}}}
+				</div>
+				{{/if}}
+				{{#if messages.success}}
+				<div class="alert alert-success">
+						{{{flashMessages messages.success}}}
+				</div>
+				{{/if}}
+				{{#if messages.warning}}
+				<div class="alert alert-warning">
+						{{{flashMessages messages.warning}}}
+				</div>
+				{{/if}}
+				{{#if messages.error}}
+				<div class="alert alert-danger">
+						{{{flashMessages messages.error}}}
+				</div>
+				{{/if}}
+			</div>
+			{{/if}}
+			<!-- The content block should contain the body of your template's content-->
+			{{{body}}}
+		</div>
+		<div class="container">
+			<div id="footer">
+				<p>Powered by <a href="http://keystonejs.com" target="_blank">KeystoneJS</a>.</p>
+			</div>
+		</div>
+		{{!--
+			//- jQuery 1.11.3 is included by default, and required by both Bootstrap
+			//- and the KeystoneJS Content Editor. If you are not targeting IE8,
+			//- you can upgrade to 2.1.4 (also bundled) for better performance.
+		--}}
+		<script src="/js/jquery/jquery-1.11.3.min.js"></script>
+		{{!--
+			//- Customise which Bootstrap javascript files are served by including
+			//- them specifically here, instead of bootstrap-3.3.5.min.js
+		--}}
+		<script src="/js/bootstrap/bootstrap-3.3.5.min.js"></script>
+    <!-- https://github.com/CWSpear/bootstrap-hover-dropdown -->
+    <script src="/js/bootstrap-hover-dropdown.min.js"></script>
+		{{{isAdminEditorJS user}}}
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //console.log('The program is starting...');
+        //debugger;
+        
+        var section = {{{JSON section}}};
+
+        if( section != "dashboard" ) {
+
+          //Get the section list
+          $.get('/api/pagesection/list', '', function(data) {
+
+            //Copy data to a global variable for later use.
+            sectionData = data.pagesection;
+
+            //Sort the Section Data based on the priority value.
+            //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+            sectionData.sort(function(a,b) {
+              if( a.priority > b.priority ) {
+                return 1;
+              }
+              if( a.priority < b.priority ) {
+                return -1;
+              }
+              // a must be equal to b
+              return 0;
+            });
+            
+            $.get('/api/page/list', '', function(data) {
+              //debugger;
+              
+              //Copy data to a global variable for later use.
+              pageData = data.pages;  
+
+              //Loop through the sections. Generate one navigation item per section.
+              for( var i = 0; i < sectionData.length; i++ ) {
+                
+                //Skip the current section if the priority is set to zero.
+                if( sectionData[i].priority == 0 )
+                  continue;
+                
+                //Clone the menu item template.
+                var tempNavItem = $('#menuSection').clone();
+                var tempPageItem = $('#menuPage').clone();
+
+                //Remove the menu page now that it's been cloned.
+                tempNavItem.find('#menuPage').remove();
+
+                //Clear the ID copied from the example row.
+                tempNavItem.attr('id', '');
+                tempPageItem.attr('id', '');
+                tempNavItem.attr('class', 'dropdown autogenerated-menu');
+
+                //Set the text of the Nav item to the Section name.
+                tempNavItem.find('a').first().html(sectionData[i].name+' <span class="caret"></span>');
+
+                //Loop through the page data. Generate a link for each page in this section.
+                for( var j = 0; j < pageData.length; j++ ) {
+                  //debugger;
+
+                  //If the first section in the page matches the current section.
+                  if( pageData[j].sections[0] == sectionData[i]._id ) {
+
+                    //Set the hyperlink.
+                    tempPageItem.find('a').attr('href', '/page/'+pageData[j].slug)
+
+                    //Set the name of the menu page to the name of the Page
+                    tempPageItem.find('a').text(pageData[j].title);
+
+                    //Append the item to the menu under the current section.
+                    tempNavItem.find('ul').append(tempPageItem);
+                    
+                    //Clone the tempPageItem for the next matching page.
+                    tempPageItem = tempPageItem.clone();
+
+                    //break;
+                  }
+
+                }
+                
+                //debugger;
+
+                //Only page the new menu item if it has children items in the drop down.
+                if( tempNavItem.find('ul').find('li').length > 0 ) {              
+
+                  //Append the new nav item to the navigation menu bar.                  
+                  if( $('.autogenerated-menu').length == 0 ) {
+                    //Append the first item after the #menuSection scaffolding.
+                    $('#menuSection').after(tempNavItem);
+                  } else {
+                    //Append later menu items after the previous one. 
+                    $('.autogenerated-menu').last().after(tempNavItem);
+                  }
+
+                  //Active the drop-down on hover functionality with this new menu item.
+                  //Note: item must be appened FIRST before calling dropdownHover().
+                  tempNavItem.find('.dropdown-toggle').dropdownHover();
+                }
+
+              }
+
+              //Remove the scaffolding menu element.
+              $('#menuSection').remove()
+
+            });
+          });
+        
+        } else {
+          $('#header').remove();
+        }
+        
+        
+        //console.log('...The program has ended.');
+      });
+    </script>
+    
+    
+	</body>
+</html>

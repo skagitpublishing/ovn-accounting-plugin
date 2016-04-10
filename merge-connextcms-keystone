@@ -4,3 +4,11 @@ echo Preparing to copy RPiOVN files...
 echo Copying Keystone core files...
 cp keystone.js ../myCMS/
 
+echo Copying Keystone templates...
+cp templates/views/*.hbs ../myCMS/templates/views/
+cp templates/views/layouts/*.hbs ../myCMS/templates/views/layouts/
+
+echo Copying public files
+cp favicon.ico ../myCMS/
+cp public/images/* ../myCMS/public/images/
+
