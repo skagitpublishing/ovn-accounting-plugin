@@ -1,0 +1,6 @@
+#!/bin/bash
+echo Preparing to copy RPiOVN files...
+
+echo Copying Keystone core files...
+cp keystone.js ../myCMS/
+
