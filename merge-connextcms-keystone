@@ -11,4 +11,5 @@ cp templates/views/layouts/*.hbs ../myCMS/templates/views/layouts/
 echo Copying public files
 cp public/favicon.ico ../myCMS/public
 cp public/images/* ../myCMS/public/images/
+cp public/js/app/main_dashboard_app.js ../myCMS/public/js/app/
 
