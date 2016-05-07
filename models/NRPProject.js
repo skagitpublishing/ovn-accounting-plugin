@@ -10,11 +10,11 @@ var NRPProject = new keystone.List('NRPProject', {
 });
 
 NRPProject.add({
-	projectname: { type: String, required: true },
+	projectname: { type: String },
   projectnick:{ type: String }, 
   agent_type: { type: String },
 });
 
-Page.defaultColumns = 'username, first_name|20%, last_name|20%, email|20%';
+Page.defaultColumns = 'projectname';
 
 NRPProject.register();
