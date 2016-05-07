@@ -10,7 +10,7 @@ var NRPUser = new keystone.List('NRPUser', {
 });
 
 NRPUser.add({
-	username: { type: String, required: true },
+	username: { type: String },
   first_name: { type: String },
   last_name: { type: String },
   email: { type: String },
