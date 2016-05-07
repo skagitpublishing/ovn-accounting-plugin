@@ -13,7 +13,7 @@ NRPUser.add({
 	username: { type: String, required: true },
   first_name: { type: String },
   last_name: { type: String },
-  email: { type: Email },
+  email: { type: String },
   password: { type: String },
   agent_type: { type: String },
   address: { type: String },
