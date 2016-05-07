@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blasting Off With Bootstrap</title>
+
+  <link href="css/bootstrap.min.css" media="all" rel="stylesheet" />
+  <link href="css/main.css" media="all" rel="stylesheet" />
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+
+
+<section>
+  <h2>Test Area</h2>
+  <div class="container">
+<!-- COPY THIS SECTION. START -->
+    
+    <style>
+      .required {
+        color: red;
+        font-size: 24px;
+      }
+    </style>
+    
+    <p>If you'd like to contribute time to a project and have it count, you'll need to log your time in <a href="http://rpiovn.com:8000/">the NRP</a>, and before you can do that, you need an account. Fill out the form below to apply for an NRP account.</p>
+
+    <h1 id="successMsg" hidden="">&nbsp;</h1>
+    <p id="successMsg2" hidden="">&nbsp;</p>
+    
+    <form class="form-horizontal" id="newProjectForm">
+      <p><span class="required">*</span>= required.</p>
+      <div class="form-group">
+        <label for="inputLoginName" class="col-sm-3 control-label"><span class="required">*</span>Desired user name:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="inputLoginName" id="inputLoginName" placeholder="User Name">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputFirstName" class="col-sm-3 control-label"><span class="required">*</span>First Name:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="inputFirstName" id="inputFirstName" placeholder="">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputLastName" class="col-sm-3 control-label"><span class="required">*</span>Last Name:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="inputLastName" id="inputLastName" placeholder="">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail" class="col-sm-3 control-label"><span class="required">*</span>Email:</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="user@server.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputAddress" class="col-sm-3 control-label">Address:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="inputPhone" class="col-sm-3 control-label">Phone:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="inputPhone" id="inputPhone" placeholder="555-555-5555">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputWebsite" class="col-sm-3 control-label">Website:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="inputWebsite" id="inputWebsite" placeholder="http://www.url.com">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="button" class="btn btn-default" id="submitButton">Submit</button>
+        </div>
+      </div>
+      
+    </form>
+    <h1 id="successMsg" hidden></h1>
+    <p id="successMsg2" hidden></p>
+
+    <script src="http://rpiovn.com/js/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+      //Global Variables
+      global = new Object(); //This is where all global variables will be stored.
+      //global.serverIp = "104.131.137.38"; //Production Server
+      global.serverIp = "192.241.198.211"; //Test Server
+      global.serverPort = "80";
+      global.nrpPort = "8000";
+      global.nodemailerPort = "3000";
+
+      $("#submitButton").click(function(event) {
+        //debugger;
+        event.preventDefault();
+
+        /* BEGIN SUBMIT NRPUser MODEL DATA */
+        var userData = new Object();
+        userData.username = $('#inputLoginName').val();
+        userData.first_name = $('#inputFirstName').val();
+        userData.last_name = $('#inputLastName').val();
+        userData.email = $('#inputEmail').val();
+        userData.password = "rpiovn";
+        userData.agent_type = "";
+        userData.address = $('#inputAddress').val();
+        userData.phone = $('#inputPhone').val();
+        userData.website = $('#inputWebsite').val();
+        userData.api_url = "";
+        userData.agent_url = "";
+        userData.user_url = "";
+        
+        $.post('http://'+global.serverIp+':'+global.serverPort+'/api/nrpuser/create', userData, function(data) {
+          debugger;
+        });
+        
+        /* END SUBMIT MODEL DATA */
+        
+        /* BEGIN SEND EMAIL */
+        /*
+        var destination_email = "chris.troutner@gmail.com";
+        var subject = "RPiOVN: New NRP Account Application: ";
+        var message = "<!DOCTYPE html><html lang='en'><body>";
+
+        message = message+"<p><b>Name:</b> "+$('#inputName').val()+"</p><br>";
+        message = message+"<p><b>Email:</b> "+$('#inputEmail').val()+"</p><br>";
+        message = message+"<p><b>Desired User Name:</b> "+$('#inputLoginName').val()+"</p><br>";
+
+        message = message+"</body></html>";
+
+        var data = new Object();
+        data.email = destination_email;
+        data.subject = subject;
+        data.message = message;
+
+        $.get('http://'+global.serverIp+':'+global.nodemailerPort+'/send_email', data, function(data) {
+          //debugger;
+
+          $('#newProjectForm').hide();
+          $('#successMsg').show();
+          $('#successMsg').text('Success!');
+          $('#successMsg2').show();
+          $('#successMsg2').text('Thank you for submitting your application. We will be in touch.');
+          $('#successMsg2').css('font-weight', 'bold');
+        });
+        */
+        /* END SEND EMAIL */
+        
+      });
+
+    </script>
+    
+<!-- COPY END -->    
+  </div>
+</section>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js?body=1"></script>
+</body>
+</html>
