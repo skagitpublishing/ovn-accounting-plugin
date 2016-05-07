@@ -8,6 +8,13 @@ echo Copying Keystone templates...
 cp templates/views/*.hbs ../myCMS/templates/views/
 cp templates/views/layouts/*.hbs ../myCMS/templates/views/layouts/
 
+echo Copying Keystone models...
+cp models/*.js ../myCMS/models/
+
+echo Copying Keystone routes...
+cp routes/index.js ../myCMS/routes/
+cp routes/api/*.js ../myCMS/routes/api/
+
 echo Copying public files
 cp public/favicon.ico ../myCMS/public
 cp public/images/* ../myCMS/public/images/
