@@ -24,6 +24,6 @@ NRPUser.add({
   user_url: { type: String },
 });
 
-Page.defaultColumns = 'username, first_name|20%, last_name|20%, email|20%';
+NRPUser.defaultColumns = 'username, first_name|20%, last_name|20%, email|20%';
 
 NRPUser.register();

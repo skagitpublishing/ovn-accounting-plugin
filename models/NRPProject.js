@@ -15,6 +15,6 @@ NRPProject.add({
   agent_type: { type: String },
 });
 
-Page.defaultColumns = 'projectname';
+NRPProject.defaultColumns = 'projectname';
 
 NRPProject.register();
