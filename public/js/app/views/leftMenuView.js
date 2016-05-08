@@ -515,7 +515,7 @@ define([
       global.sectionsView.render();
     },
     
-    openNRPMenu: function() {
+    openNRPMenu: function(e) {
       this.treeMenu(e, "#nrpLink");
     },
     
