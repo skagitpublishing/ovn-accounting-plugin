@@ -26,12 +26,16 @@ define([
   '../../js/app/model/PageSectionModel',
   '../../js/app/model/PageSectionCollection',
   '../../js/app/views/sectionsView',
+  '../../js/app/model/NRPUserModel',
+  '../../js/app/model/NRPUsersCollection',
+  '../../js/app/views/NRPUsersView',
   'adminlte',
   'logs'
 ], function ($, _, Backbone, Bootstrap, LeftMenuView, DashboardView, PagesView, PostsView, ImageLibraryView, ImageAddNewView, 
               PagesAddNewView, PostsAddNewView, FileLibraryView, ImageUploadModel, ImageUploadCollection, PostModel, PostsCollection,
               PostCategoryModel, PostCategoryCollection, FileUploadModel, FileUploadCollection, CategoriesView,
               PageModel, PagesCollection, PageSectionModel, PageSectionCollection, SectionsView,
+              NRPUserModel, NRPUsersCollection, NRPUsersView,
               AdminLTE, Logs) {
 
   /* 
@@ -149,6 +153,17 @@ define([
     global.pageSectionCollection.fetch(); 
   }
   
+  //NRP USER MODEL AND COLLECTION
+  if(global.nrpUsersCollection == undefined) {
+    //debugger;
+
+    //Do I need this? CT 3-31-16
+    global.nrpUserModel = new NRPUserModel();
+
+    global.nrpUsersCollection = new NRPUsersCollection(); //Collection Instance
+    global.nrpUsersCollection.fetch(); 
+  }
+  global.nrpUsersView = new NRPUsersView();
   
   /*** BEGIN TESTING CODE ***/
   //debugger;

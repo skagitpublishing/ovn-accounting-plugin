@@ -127,8 +127,21 @@
         userData.agent_url = "";
         userData.user_url = "";
         
+        //Check required inputs
+        if( (userData.username == "") || (userData.first_name == "") || (userData.last_name == "") || (userData.email == "") ) {
+          console.log('Invalid/empty input');
+          return;
+        }
+        
+        //Put some code here to check against existing user names.
+        
+        //Submit the data to the server.
         $.post('http://'+global.serverIp+':'+global.serverPort+'/api/nrpuser/create', userData, function(data) {
           debugger;
+          
+          if( data.nrpuser._id != "" ) {
+            console.log('Success!');
+          }
         });
         
         /* END SUBMIT MODEL DATA */
