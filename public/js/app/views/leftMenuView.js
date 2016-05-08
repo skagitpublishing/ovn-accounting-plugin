@@ -37,6 +37,7 @@ define([
       'click #fileLibraryLink': 'showFileLibrary',
       'click #categories': 'showCategories',
       'click #sections': 'showSections',
+      'click #nrpLink': 'openNRPMenu',
       'click #nrpUsersLink': 'showNRPUsers',
       'click #nrpProjectsLink': 'showNRPProjects'
 		},
@@ -512,6 +513,10 @@ define([
       
       //render the image library page.
       global.sectionsView.render();
+    },
+    
+    openNRPMenu: function() {
+      this.treeMenu(e, "#nrpLink");
     },
     
     showNRPUsers: function() {
