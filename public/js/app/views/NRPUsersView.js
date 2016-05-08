@@ -105,7 +105,7 @@ define([
       debugger;
       
       //Retrieve the model.
-      this.model = global.nrpUsersCollection.get(id);
+      var userModel = global.nrpUsersCollection.get(id);
       
       //Retrieve the CSRF key
       $.get('http://192.241.198.211:8000/api/usercreation/?format=api', '', function(data) {
@@ -115,6 +115,15 @@ define([
         var csrfLocation = data.indexOf(csrfLocationPattern);
         
         var csrfToken = data.slice(csrfLocation+34, csrfLocation+66);
+        
+        var newUser =
+          {
+            "username": "", 
+            "first_name": "", 
+            "last_name": "", 
+            "email": "", 
+            "password": ""
+          }
         
         debugger;
         
