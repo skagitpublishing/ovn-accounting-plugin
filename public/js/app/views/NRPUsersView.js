@@ -119,6 +119,7 @@ define([
         
         var newUser =
           {
+            "csrfmiddlewaretoken": csrfToken,
             "username": global.userModel.get('username'), 
             "first_name": global.userModel.get('first_name'), 
             "last_name": global.userModel.get('last_name'), 
@@ -126,9 +127,7 @@ define([
             "password": "rpiovn"
           };
         
-        $.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {
-          debugger;
-         });
+        $.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {debugger;});
         
         debugger;
         
