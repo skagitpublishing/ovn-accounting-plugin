@@ -28,11 +28,19 @@ define([
     },
     
     defaults: {
-      '_id': '',
-      'file': new Object(),
-      'fileName': '',
-      'name': '',
-      'url': ''
+      '_id': '', 
+      'username': '',
+      'first_name': '',
+      'last_name':  '',
+      'email': '',
+      'password':  '',
+      'agent_type':  '',
+      'address':  '',
+      'phone':  '',
+      'website':  '',
+      'api_url': '',
+      'agent_url':  '',
+      'user_url':  '',
     },
 
     //Override the default Backbone save() function with one that our API understands.
