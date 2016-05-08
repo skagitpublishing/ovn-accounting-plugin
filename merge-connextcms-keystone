@@ -21,7 +21,7 @@ cp public/images/* ../myCMS/public/images/
 cp public/js/app/main_dashboard_app.js ../myCMS/public/js/app/
 
 echo Copying Backbone models, views, and templates
-cp public/js/app/models/*.js ../myCMS/public/js/app/models/
+cp public/js/app/model/*.js ../myCMS/public/js/app/model/
 cp public/js/app/views/*.js ../myCMS/public/js/app/views/
 cp public/js/app/templates/*.html ../myCMS/public/js/app/templates/
 
