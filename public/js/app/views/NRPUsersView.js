@@ -119,12 +119,16 @@ define([
         
         var newUser =
           {
-            "username": "", 
-            "first_name": "", 
-            "last_name": "", 
-            "email": "", 
-            "password": ""
-          }
+            "username": global.userModel.get('username'), 
+            "first_name": global.userModel.get('first_name'), 
+            "last_name": global.userModel.get('last_name'), 
+            "email": global.userModel.get('email'), 
+            "password": "rpiovn"
+          };
+        
+        $.post('http://192.241.198.211:8000/api/usercreation/', newUser, funcion(data) {
+          debugger;
+         });
         
         debugger;
         
