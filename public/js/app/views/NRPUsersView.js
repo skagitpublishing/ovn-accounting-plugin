@@ -126,7 +126,7 @@ define([
             "password": "rpiovn"
           };
         
-        $.post('http://192.241.198.211:8000/api/usercreation/', newUser, funcion(data) {
+        $.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {
           debugger;
          });
         
