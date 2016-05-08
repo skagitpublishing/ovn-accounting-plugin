@@ -130,7 +130,31 @@ define([
         //For debugging purposes:
         global.newUser = newUser;
         
-        $.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {debugger;});
+        //$.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {debugger;});
+        
+        var newForm = new FormData();
+        newForm.append('csrfmiddlewaretoken', csrfToken);
+        newForm.append('username', global.userModel.get('username'));
+        newForm.append('first_name', global.userModel.get('first_name'));
+        newForm.append('last_name', global.userModel.get('last_name'));
+        newForm.append('email', global.userModel.get('email'));
+        newForm.append('password', 'rpiovn');
+        
+        var opts = {
+          url: 'http://192.241.198.211:8000/api/usercreation/',
+          data: newForm,
+          cache: false,
+          //contentType: false,
+          contentType: "multipart/form-data",
+          processData: false,
+          type: 'POST',
+          success: function(data){
+            debugger;
+          }
+        };
+                
+        //Execute the AJAX operation.
+        jQuery.ajax(opts);
         
         debugger;
         
