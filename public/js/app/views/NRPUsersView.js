@@ -60,6 +60,9 @@ define([
           tempRow.find('th').html('<a href="#/">'+userName+'</a>');
           //tempRow.find('th').find('a').attr('onclick', 'global.nrpUsersView.editPost('+i+')');
           
+          //Add the on-click function to the Approve button.
+          tempRow.find('.btnApprove').find('button').attr('onclick', 'global.nrpUsersView.approveUser(global.nrpUsersCollection.models['+i+'].id)');
+          
           //Add the on-click function to the Delete button.
           //tempRow.find('.postCol4').find('button').attr('onclick', 'global.nrpUsersView.deleteFile(global.nrpUsersCollection.models['+i+'].id)');
           
@@ -98,7 +101,7 @@ define([
       this.render();
     },
 
-    approveUser: function() {
+    approveUser: function(id) {
       debugger;
     },
     
