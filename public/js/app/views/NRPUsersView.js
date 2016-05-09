@@ -143,11 +143,13 @@ define([
         newForm.append('password', 'rpiovn');
         
         var opts = {
-          url: 'http://192.241.198.211:8000/api/usercreation/?format=api',
+          //url: 'http://192.241.198.211:8000/api/usercreation/?format=api',
+          url: 'http://192.241.198.211:8000/api/usercreation/',
           data: newForm,
           cache: false,
           //contentType: false,
-          contentType: "multipart/form-data",
+          //contentType: "multipart/form-data",
+          contentType: "application/json",
           processData: false,
           type: 'POST',
           success: function(data){
