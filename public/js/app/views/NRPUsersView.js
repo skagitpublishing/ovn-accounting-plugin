@@ -155,10 +155,12 @@ define([
           }
         };
                 
+        debugger;
+        
         //Execute the AJAX operation.
         jQuery.ajax(opts);
         
-        debugger;
+        
         
       });
     },
