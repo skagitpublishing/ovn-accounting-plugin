@@ -154,6 +154,9 @@ define([
           type: 'POST',
           success: function(data){
             debugger;
+          },
+          error: function(jqXHR, msg, exObj) {
+            debugger;
           }
         };
                 
