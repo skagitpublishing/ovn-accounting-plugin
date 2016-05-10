@@ -117,7 +117,10 @@ define([
         
         var csrfToken = data.slice(csrfLocation+34, csrfLocation+66);
         
-        csrfToken = prompt('csrfToken: ');
+        var tempcsrfToken = prompt('csrfToken: ');
+        if( tempcsrfToken != "")
+          csrfToken = tempcsrfToken;
+        
         
         var newUser =
           {
