@@ -145,8 +145,9 @@ define([
         $.ajaxSetup({
             beforeSend: function(xhr, settings) {
                 //if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrfToken);
-                    xhr.setRequestHeader("Content-type","multipart/form-data; boundary=frontier");
+              //xhr.setRequestHeader("Content-type","multipart/form-data; boundary=frontier");      
+              xhr.setRequestHeader("X-CSRFToken", csrfToken);
+                    
                 //}
             }
         });
@@ -156,8 +157,8 @@ define([
           url: 'http://192.241.198.211:8000/api/usercreation/',
           data: newForm,
           cache: false,
-          contentType: false,
-          //contentType: "multipart/form-data",
+          //contentType: false,
+          contentType: "multipart/form-data; boundary=frontier",
           //contentType: "application/json",
           processData: false,
           type: 'POST',
