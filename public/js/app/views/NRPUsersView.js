@@ -142,9 +142,10 @@ define([
         newForm.append('email', global.userModel.get('email'));
         newForm.append('password', 'rpiovn');
         
-        /*
+        
         $.ajaxSetup({
             beforeSend: function(xhr, settings) {
+              debugger;
                 //if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
               //xhr.setRequestHeader("Content-type","multipart/form-data; boundary=frontier");      
               xhr.setRequestHeader("X-CSRFToken", csrfToken);
@@ -152,7 +153,7 @@ define([
                 //}
             }
         });
-        */
+        
         
         var opts = {
           //url: 'http://192.241.198.211:8000/api/usercreation/?format=api',
