@@ -121,7 +121,7 @@ define([
         
         var newUser =
           {
-            "csrfmiddlewaretoken": csrfToken,
+            //"csrfmiddlewaretoken": csrfToken,
             "username": global.userModel.get('username'), 
             "first_name": global.userModel.get('first_name'), 
             "last_name": global.userModel.get('last_name'), 
@@ -135,7 +135,7 @@ define([
         //$.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {debugger;});
         
         var newForm = new FormData();
-        newForm.append('csrfmiddlewaretoken', csrfToken);
+        //newForm.append('csrfmiddlewaretoken', csrfToken);
         newForm.append('username', global.userModel.get('username'));
         newForm.append('first_name', global.userModel.get('first_name'));
         newForm.append('last_name', global.userModel.get('last_name'));
@@ -179,10 +179,10 @@ define([
         debugger;
         
         //Attempt at debugging by sending data via POST AJAX call.
-        //$.post('http://192.241.198.211:8000/api/usercreation/?format=json', global.newUser, function(data) {debugger;}, 'json').fail(function(data){debugger;});
+        $.post('http://192.241.198.211:8000/api/usercreation/?format=json', global.newUser, function(data1) {debugger;}, 'json').fail(function(data2){debugger;});
         
         //Execute the AJAX operation.
-        jQuery.ajax(opts);
+        //jQuery.ajax(opts);
         
         
         
