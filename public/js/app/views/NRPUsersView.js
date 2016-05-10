@@ -125,7 +125,7 @@ define([
         var newUser =
           {
             //"csrfmiddlewaretoken": csrfToken,
-            "csrftoken", csrfToken,
+            "csrftoken": csrfToken,
             "username": global.userModel.get('username'), 
             "first_name": global.userModel.get('first_name'), 
             "last_name": global.userModel.get('last_name'), 
