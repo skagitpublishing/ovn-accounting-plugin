@@ -142,13 +142,21 @@ define([
         newForm.append('email', global.userModel.get('email'));
         newForm.append('password', 'rpiovn');
         
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                //if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrfToken);
+                //}
+            }
+        });
+        
         var opts = {
           //url: 'http://192.241.198.211:8000/api/usercreation/?format=api',
           url: 'http://192.241.198.211:8000/api/usercreation/',
           data: newForm,
           cache: false,
-          contentType: false,
-          //contentType: "multipart/form-data",
+          //contentType: false,
+          contentType: "multipart/form-data",
           //contentType: "application/json",
           processData: false,
           type: 'POST',
@@ -161,6 +169,9 @@ define([
         };
                 
         debugger;
+        
+        //Attempt at debugging by sending data via POST AJAX call.
+        //$.post('http://192.241.198.211:8000/api/usercreation/?format=json', global.newUser, function(data) {debugger;}, 'json').fail(function(data){debugger;});
         
         //Execute the AJAX operation.
         jQuery.ajax(opts);
