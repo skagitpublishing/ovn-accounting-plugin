@@ -150,6 +150,7 @@ define([
               //xhr.setRequestHeader("Content-type","multipart/form-data; boundary=frontier");      
               xhr.setRequestHeader("X-CSRFToken", csrfToken);
                     
+              debugger;
                 //}
             }
         });
