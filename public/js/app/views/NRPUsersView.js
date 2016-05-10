@@ -142,7 +142,7 @@ define([
         newForm.append('email', global.userModel.get('email'));
         newForm.append('password', 'rpiovn');
         
-        /*
+        
         $.ajaxSetup({
             beforeSend: function(xhr, settings) {
               debugger;
@@ -154,7 +154,7 @@ define([
                 //}
             }
         });
-        */
+        
         
         
         var opts = {
