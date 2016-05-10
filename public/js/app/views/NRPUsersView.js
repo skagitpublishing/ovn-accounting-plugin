@@ -159,7 +159,7 @@ define([
           cache: false,
           //contentType: false,
           //contentType: "multipart/form-data; boundary=frontier",
-          contentType: "multipart/form-data";
+          contentType: "multipart/form-data",
           //contentType: "application/json",
           processData: false,
           type: 'POST',
