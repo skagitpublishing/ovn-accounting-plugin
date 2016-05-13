@@ -246,11 +246,15 @@ define([
       $.get('http://'+global.serverIp+':'+global.serverPort+'/api/nrpuser/'+id+'/remove', '', function(data) {
         debugger;
         
-        //Set the refresh flag so that this view is refreshed after the collection is updated.
-        global.nrpUsersCollection.refreshView = true;
+        if(data.success) {
+          //Set the refresh flag so that this view is refreshed after the collection is updated.
+          global.nrpUsersCollection.refreshView = true;
         
-        global.nrpusersCollection.fetch();
-
+          //Reset the NRP Users Collection
+          global.nrpUsersCollection.fetch();
+          
+        }
+        
       })
       
     },
