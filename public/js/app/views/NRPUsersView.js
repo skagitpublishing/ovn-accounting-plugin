@@ -109,6 +109,28 @@ define([
       global.userModel = global.nrpUsersCollection.get(id);
       global.csrfToken = "";
       
+      if( $('#csrfTokenInputForm').find('#csrfTokenInput').val() == "" ) {
+        alert('Please fill in the CSRF Token. Can not continue without a valid CSRF token.');
+        return;
+      }
+        
+      //Retrieve the CSRF token.
+      global.csrfToken = $('#csrfTokenInputForm').find('#csrfTokenInput').val();
+      
+      $('#newUserForm').show();
+        
+      //debugger;
+      //Fill out the form
+      $('#newUserForm').find('#username').val(global.userModel.get('username'));
+      $('#newUserForm').find('#first_name').val(global.userModel.get('first_name'));
+      $('#newUserForm').find('#last_name').val(global.userModel.get('last_name'));
+      $('#newUserForm').find('#email').val(global.userModel.get('email'));
+      $('#newUserForm').find('#password').val(global.userModel.get('password'));
+
+      //Fill in the CSRF token
+      $('#newUserForm').find('#csrfmiddlewaretoken').val(global.csrfToken);
+      
+    /*  
       //Retrieve the CSRF key
       $.get('http://192.241.198.211:8000/api/usercreation/?format=api', '', function(data) {
         debugger;
@@ -133,7 +155,7 @@ define([
         
         //Fill in the CSRF token
         $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
-        
+      */
         /*
         var tempcsrfToken = prompt('csrfToken: ');
         if( tempcsrfToken != "")
@@ -208,7 +230,7 @@ define([
         */
         
         
-      });
+      //});
     },
     
     
