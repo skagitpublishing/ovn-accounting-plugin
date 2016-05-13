@@ -123,7 +123,14 @@ define([
         
         debugger;
         //Fill out the form
-        $('#newUserForm').find('#username').val()
+        $('#newUserForm').find('#username').val(global.userModel.get('username'));
+        $('#newUserForm').find('#first_name').val(global.userModel.get('first_name'));
+        $('#newUserForm').find('#last_name').val(global.userModel.get('last_name'));
+        $('#newUserForm').find('#email').val(global.userModel.get('email'));
+        $('#newUserForm').find('#password').val(global.userModel.get('password'));
+        
+        //Fill in the CSRF token
+        $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
         
         /*
         var tempcsrfToken = prompt('csrfToken: ');
