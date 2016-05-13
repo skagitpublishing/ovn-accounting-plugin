@@ -110,7 +110,7 @@ define([
       global.csrfToken = "";
       
       //Retrieve the CSRF key
-      $.get('http://192.241.198.211:8000/api/usercreation/?format=api', '', function(data) {
+      $.get('http://192.241.198.211:8000/api/usercreation/?format=api', '', function(id, data) {
         debugger;
         
         var csrfLocationPattern = "name='csrfmiddlewaretoken' value=";
@@ -121,9 +121,9 @@ define([
         //Show the new user form
         $('#newUserForm').show();
         
-        //Fill out the form
         debugger;
-        
+        //Fill out the form
+        $('#newUserForm').find('#username').val()
         
         /*
         var tempcsrfToken = prompt('csrfToken: ');
