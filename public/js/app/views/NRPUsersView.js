@@ -64,7 +64,7 @@ define([
           tempRow.find('.btnApprove').find('button').attr('onclick', 'global.nrpUsersView.approveUser(global.nrpUsersCollection.models['+i+'].id)');
           
           //Add the on-click function to the Delete button.
-          //tempRow.find('.postCol4').find('button').attr('onclick', 'global.nrpUsersView.deleteFile(global.nrpUsersCollection.models['+i+'].id)');
+          tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpUsersView.deleteUser(global.nrpUsersCollection.models['+i+'].id)');
           
           //Remove the 'hidden' attribute copied from the example row.
           tempRow.show();
@@ -106,8 +106,8 @@ define([
       
       //Retrieve the model.
       //Have to move this to the global variable so that it is accessible within the anaymous functions below.
-      global.userModel = global.nrpUsersCollection.get(id);
-      global.csrfToken = "";
+      var userModel = global.nrpUsersCollection.get(id);
+      var csrfToken = "";
       
       if( $('#csrfTokenInputForm').find('#csrfTokenInput').val() == "" ) {
         alert('Please fill in the CSRF Token. Can not continue without a valid CSRF token.');
@@ -115,21 +115,27 @@ define([
       }
         
       //Retrieve the CSRF token.
-      global.csrfToken = $('#csrfTokenInputForm').find('#csrfTokenInput').val();
+      csrfToken = $('#csrfTokenInputForm').find('#csrfTokenInput').val();
       
       $('#newUserForm').show();
         
       //debugger;
       //Fill out the form
-      $('#newUserForm').find('#username').val(global.userModel.get('username'));
-      $('#newUserForm').find('#first_name').val(global.userModel.get('first_name'));
-      $('#newUserForm').find('#last_name').val(global.userModel.get('last_name'));
-      $('#newUserForm').find('#email').val(global.userModel.get('email'));
-      $('#newUserForm').find('#password').val(global.userModel.get('password'));
+      $('#newUserForm').find('#username').val(userModel.get('username'));
+      $('#newUserForm').find('#first_name').val(userModel.get('first_name'));
+      $('#newUserForm').find('#last_name').val(userModel.get('last_name'));
+      $('#newUserForm').find('#email').val(userModel.get('email'));
+      $('#newUserForm').find('#password').val(userModel.get('password'));
 
       //Fill in the CSRF token
-      $('#newUserForm').find('#csrfmiddlewaretoken').val(global.csrfToken);
+      $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
       
+      
+      /*
+       *  This code was my attempt to use a JavaScript based form to send in the data. It didn't work
+       *  because I could never figure out an appropriate way to retrieve and submit the CSRF token.
+       *  The code is left here for when I want to revisit this issue in the future.
+       */
     /*  
       //Retrieve the CSRF key
       $.get('http://192.241.198.211:8000/api/usercreation/?format=api', '', function(data) {
@@ -234,7 +240,7 @@ define([
     },
     
     
-    deleteUser: function() {
+    deleteUser: function(id) {
       debugger;
     },
     
