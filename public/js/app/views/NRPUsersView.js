@@ -107,7 +107,7 @@ define([
       //Retrieve the model.
       //Have to move this to the global variable so that it is accessible within the anaymous functions below.
       global.userModel = global.nrpUsersCollection.get(id);
-      //global.csrfToken = "";
+      global.csrfToken = "";
       
       //Retrieve the CSRF key
       $.get('http://192.241.198.211:8000/api/usercreation/?format=api', '', function(data) {
