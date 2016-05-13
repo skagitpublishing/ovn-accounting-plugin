@@ -117,6 +117,7 @@ define([
         var csrfLocation = data.indexOf(csrfLocationPattern);
         
         var csrfToken = data.slice(csrfLocation+34, csrfLocation+66);
+        global.csrfToken = csrfToken;
         
         //Show the new user form
         $('#newUserForm').show();
