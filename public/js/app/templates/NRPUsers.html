@@ -35,6 +35,18 @@ hr {
   </div>
 </div>
 
+<div class="row" id="csrfTokenInput" hidden>
+  <div class="col-md-12">
+    <form class="form-horizontal">
+      <label for="csrfTokenInput" class="control-label">CSRF Token:</label>
+      <div class="controls">
+        <input type="text" id="csrfTokenInput" name="csrfTokenInput" />
+        <span class="help-block">Log into NRP, open the dev console, and run the instruction 'document.cookie'. Past in the CSRF Token here.</span>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="row" id="newUserForm" hidden>
   <div class="col-md-12">
     <hr>
