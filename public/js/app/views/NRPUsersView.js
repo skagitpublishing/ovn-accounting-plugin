@@ -120,7 +120,7 @@ define([
         global.csrfToken = csrfToken;
         
         //Show the new user form
-        $('#csrfTokenInputForm').show();
+        //$('#csrfTokenInputForm').show();
         $('#newUserForm').show();
         
         debugger;
