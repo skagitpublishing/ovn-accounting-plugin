@@ -242,11 +242,24 @@ define([
     
     deleteUser: function(id) {
       debugger;
+      
+      $.get('http://'+global.serverIp+':'+global.serverPort+'/api/nrpuser/'+id+'/remove', '', function(data) {
+        debugger;
+        
+        //Set the refresh flag so that this view is refreshed after the collection is updated.
+        global.nrpUsersCollection.refreshView = true;
+        
+        global.nrpusersCollection.fetch();
+
+      })
+      
     },
     
+    /*
     submitNewUserForm: function() {
       debugger;
     }
+    */
     
 
 	});
