@@ -195,6 +195,10 @@ define([
     
     deleteUser: function() {
       debugger;
+    },
+    
+    submitNewUserForm: function() {
+      debugger;
     }
     
 

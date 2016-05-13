@@ -35,38 +35,66 @@ hr {
   </div>
 </div>
 
-<div class="row">
+<div class="row" id="newUserForm">
   <div class="col-md-12">
     <hr>
     <h2>
-      **This will be changed**  
-      Upload a New File...
+      New User Creation Form
     </h2>
+    <form action="http://192.241.198.211:8000/api/usercreation/" method="POST" enctype="multipart/form-data" class="form-horizontal">                                          
+      <fieldset>
 
-    <form class="form-horizontal" id="form2" action="http://107.170.199.250/api/fileupload/create" method="POST" enctype='multipart/form-data'>
-        <div class="form-group">
-            <input class="text-center center-block" type="file" id="file_upload" onchange="global.fileLibraryView.fileSelected()">
-            
+        <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='gve4seyHbMkZyxb75DV5al1ReRleELC1' /></div>
 
-        </div>
-        <br>
-        <!--
-        <div class="form-group" id="fileNameUploadDiv" hidden>
-            <label for="fileNameUpload" class="col-md-2 col-sm-2 control-label">
-                <span id="toolTip5" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="top"> </span>
-                <span id="nameLabel">File Name:</span>
-            </label>
-            <div class="col-md-7 col-sm-7">
-                <input type="text" class="form-control" id="fileNameUpload">
+        <div class="control-group">
+            <label for="username" class="control-label">username:</label>
+            <div class="controls">
+                <input type="text" name="username" id="username" />
+                <span class="help-block">Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters</span>
+
             </div>
-            <div class="col-sm-3"></div>
         </div>
-        <br>
-        -->
-        <div class="form-group">
-            <center><input type="button" value="Upload" onclick="global.fileLibraryView.uploadFile()" data-toggle="modal" data-target=".bs-example-modal-sm"></center>
+
+        <div class="control-group">
+            <label for="first_name" class="control-label">first name:</label>
+            <div class="controls">
+                <input type="text" name="first_name" id="first_name" />
+            </div>
         </div>
+
+        <div class="control-group">
+            <label for="last_name" class="control-label">last name:</label>
+            <div class="controls">
+                <input type="text" name="last_name" id="last_name" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="email" class="control-label">e-mail address:</label>
+            <div class="controls">
+                <input type="text" name="email" id="email" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="password" class="control-label">password:</label>
+            <div class="controls">
+                <input type="text" name="password" id="password" />
+
+
+            </div>
+        </div>
+
+
+
+        <div class="form-actions">
+            <button class="btn btn-primary" title="Make a POST request on the User Creation List resource">POST</button>
+
+        </div>
+      </fieldset>
     </form>
+    <button class="btn btn-primary" onclick="global.nrpUsersView.submitNewUserForm()">Submit</button>
+    
     <center><b><p id="successMsgUpload" style="color: red;"></p></b></center>
   </div>
 </div>
