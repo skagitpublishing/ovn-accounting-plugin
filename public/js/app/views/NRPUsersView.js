@@ -175,7 +175,7 @@ define([
             "username": userModel.get('username'), 
             "first_name": userModel.get('first_name'), 
             "last_name": userModel.get('last_name'), 
-            "email": global.userModel.get('email'), 
+            "email": userModel.get('email'), 
             "password": "rpiovn"
           };
         
@@ -186,9 +186,9 @@ define([
         
         var newForm = new FormData();
         newForm.append('csrfmiddlewaretoken', csrfToken);
-        newForm.append('username', global.userModel.get('username'));
-        newForm.append('first_name', global.userModel.get('first_name'));
-        newForm.append('last_name', global.userModel.get('last_name'));
+        newForm.append('username', userModel.get('username'));
+        newForm.append('first_name', userModel.get('first_name'));
+        newForm.append('last_name', userModel.get('last_name'));
         newForm.append('email', userModel.get('email'));
         newForm.append('password', 'rpiovn');
         
