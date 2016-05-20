@@ -172,9 +172,9 @@ define([
           {
             //"csrfmiddlewaretoken": csrfToken,
             "csrf_token": csrfToken,
-            "username": global.userModel.get('username'), 
-            "first_name": global.userModel.get('first_name'), 
-            "last_name": global.userModel.get('last_name'), 
+            "username": userModel.get('username'), 
+            "first_name": userModel.get('first_name'), 
+            "last_name": userModel.get('last_name'), 
             "email": global.userModel.get('email'), 
             "password": "rpiovn"
           };
@@ -189,7 +189,7 @@ define([
         newForm.append('username', global.userModel.get('username'));
         newForm.append('first_name', global.userModel.get('first_name'));
         newForm.append('last_name', global.userModel.get('last_name'));
-        newForm.append('email', global.userModel.get('email'));
+        newForm.append('email', userModel.get('email'));
         newForm.append('password', 'rpiovn');
         
         
