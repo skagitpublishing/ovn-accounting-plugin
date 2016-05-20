@@ -162,12 +162,12 @@ define([
         //Fill in the CSRF token
         $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
       */
-        /*
-        var tempcsrfToken = prompt('csrfToken: ');
-        if( tempcsrfToken != "")
-          csrfToken = tempcsrfToken;
         
+        //var tempcsrfToken = prompt('csrfToken: ');
+        //if( tempcsrfToken != "")
+        //  csrfToken = tempcsrfToken;
         
+        debugger;
         var newUser =
           {
             //"csrfmiddlewaretoken": csrfToken,
@@ -229,11 +229,11 @@ define([
         debugger;
         
         //Attempt at debugging by sending data via POST AJAX call.
-        $.post('http://192.241.198.211:8000/api/usercreation/?format=json', global.newUser, function(data1) {debugger;}, 'json').fail(function(data2){debugger;});
+        //$.post('http://192.241.198.211:8000/api/usercreation/?format=json', global.newUser, function(data1) {debugger;}, 'json').fail(function(data2){debugger;});
         
         //Execute the AJAX operation.
         //jQuery.ajax(opts);
-        */
+        
         
         
       //});
