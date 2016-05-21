@@ -33,38 +33,86 @@ hr {
   </div>
 </div>
 
-<div class="row" hidden>
+<div class="row" id="csrfTokenInputForm">
+  <div class="col-md-12">
+    <form class="form-horizontal">
+      <label for="csrfTokenInput" class="control-label">CSRF Token:</label>
+      <div class="controls">
+        <input type="text" id="csrfTokenInput" name="csrfTokenInput" />
+        <span class="help-block">Log into NRP, open the dev console, and run the instruction 'document.cookie'. Past in the CSRF Token here.</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row" id="newProjectForm" hidden>
   <div class="col-md-12">
     <hr>
     <h2>
-        Upload a New File...
+      New Project Creation Form
     </h2>
+    <form action="http://192.241.198.211:8000/api/agentcreation/" method="POST" enctype="multipart/form-data" class="form-horizontal">                                          
+      <fieldset>
 
-    <form class="form-horizontal" id="form2" action="http://107.170.199.250/api/fileupload/create" method="POST" enctype='multipart/form-data'>
-        <div class="form-group">
-            <input class="text-center center-block" type="file" id="file_upload" onchange="global.fileLibraryView.fileSelected()">
-            
+        <div style='display:none'><input type='hidden' id='csrfmiddlewaretoken' name='csrfmiddlewaretoken' value='gve4seyHbMkZyxb75DV5al1ReRleELC1' /></div>
 
-        </div>
-        <br>
-        <!--
-        <div class="form-group" id="fileNameUploadDiv" hidden>
-            <label for="fileNameUpload" class="col-md-2 col-sm-2 control-label">
-                <span id="toolTip5" class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="top"> </span>
-                <span id="nameLabel">File Name:</span>
-            </label>
-            <div class="col-md-7 col-sm-7">
-                <input type="text" class="form-control" id="fileNameUpload">
+        <div class="control-group">
+            <label for="url" class="control-label">username:</label>
+            <div class="controls">
+                <input type="text" name="url" id="url" />
             </div>
-            <div class="col-sm-3"></div>
         </div>
-        <br>
-        -->
-        <div class="form-group">
-            <center><input type="button" value="Upload" onclick="global.fileLibraryView.uploadFile()" data-toggle="modal" data-target=".bs-example-modal-sm"></center>
+
+        <div class="control-group">
+            <label for="name" class="control-label">name:</label>
+            <div class="controls">
+                <input type="text" name="name" id="name" />
+            </div>
         </div>
+
+        <div class="control-group">
+            <label for="nick" class="control-label">nick:</label>
+            <div class="controls">
+                <input type="text" name="nick" id="nick" />
+            </div>
+        </div>
+
+        <div class="control-group ">
+            <label for="agent_type" class="control-label">agent type:</label>
+            <div class="controls">
+                <select name="agent_type" id="agent_type">
+                <option value="http://192.241.198.211:8000/api/agent-types/16/">Custodian - http://192.241.198.211:8000/api/agent-types/16/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/15/">Exchange Firm - http://192.241.198.211:8000/api/agent-types/15/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/11/">Individual - http://192.241.198.211:8000/api/agent-types/11/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/12/">Network - http://192.241.198.211:8000/api/agent-types/12/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/14/">Organization - http://192.241.198.211:8000/api/agent-types/14/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/13/">Project - http://192.241.198.211:8000/api/agent-types/13/</option>
+                </select>
+            </div>
+        </div>
+          
+        <div class="control-group">
+            <label for="address" class="control-label">address:</label>
+            <div class="controls">
+                <input type="text" name="address" id="address" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="email" class="control-label">email:</label>
+            <div class="controls">
+                <input type="text" name="email" id="email" />
+
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-primary" title="Make a POST request on the User Creation List resource">POST</button>
+
+        </div>
+      </fieldset>
     </form>
-    <center><b><p id="successMsgUpload" style="color: red;"></p></b></center>
+
   </div>
 </div>
 

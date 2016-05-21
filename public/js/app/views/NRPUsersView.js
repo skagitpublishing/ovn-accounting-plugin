@@ -320,12 +320,6 @@ define([
       //END HTML FORM FILL
     }
     
-    /*
-    submitNewUserForm: function() {
-      debugger;
-    }
-    */
-    
 
 	});
     

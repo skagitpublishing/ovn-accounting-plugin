@@ -85,7 +85,37 @@ define([
     },
       
     approveProject: function(id) {
-        debugger;
+      debugger;
+        
+    
+      //Retrieve the model.
+      //Have to move this to the global variable so that it is accessible within the anaymous functions below.
+      var projectModel = global.nrpProjectCollection.get(id);
+      var csrfToken = "";
+      
+      if( $('#csrfTokenInputForm').find('#csrfTokenInput').val() == "" ) {
+        alert('Please fill in the CSRF Token. Can not continue without a valid CSRF token.');
+        return;
+      }
+        
+      //Retrieve the CSRF token.
+      csrfToken = $('#csrfTokenInputForm').find('#csrfTokenInput').val();
+      
+      // BEGIN HTML FORM FILL
+      $('#newProjectForm').show();
+        
+      //debugger;
+      //Fill out the form
+      $('#newProjectForm').find('#nick').val(projectModel.get('projectname'));
+      $('#newProjectForm').find('#name').val(projectModel.get('projectname'));
+      $('#newProjectForm').find('#email').val("");
+      $('#newProjectForm').find('#agent_type').val("http://192.241.198.211:8000/api/agent-types/13/");
+
+      //Fill in the CSRF token
+      $('#newAgentForm').find('#csrfmiddlewaretoken').val(csrfToken);
+      //END HTML FORM FILL
+    
+    
     },
     
     //Dev Note: What should happen when the user clicks on the link? Is there properties that they may want to edit? What are they?
