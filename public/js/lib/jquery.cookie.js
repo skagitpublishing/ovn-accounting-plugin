@@ -1,3 +1,4 @@
+debugger;
 /*!
  * jQuery Cookie Plugin v1.4.1
  * https://github.com/carhartl/jquery-cookie
@@ -17,7 +18,7 @@
 		factory(jQuery);
 	}
 }(function ($) {
-
+debugger;
 	var pluses = /\+/g;
 
 	function encode(s) {
