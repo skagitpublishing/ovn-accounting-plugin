@@ -315,9 +315,10 @@ define([
       //$('#newAgentForm').find('#last_name').val(userModel.get('last_name'));
       $('#newAgentForm').find('#email').val(userModel.get('email'));
       //$('#newAgentForm').find('#password').val(userModel.get('password'));
+      $('#newAgentForm').find('#agent_type').val("http://192.241.198.211:8000/api/agent-types/11/");
 
       //Fill in the CSRF token
-      $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
+      $('#newAgentForm').find('#csrfmiddlewaretoken').val(csrfToken);
       //END HTML FORM FILL
     }
     
