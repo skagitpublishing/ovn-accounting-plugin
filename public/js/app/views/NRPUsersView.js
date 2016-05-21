@@ -197,6 +197,8 @@ define([
         
         
         //BEGIN VIRTUAL FORM
+        document.cookie = "csrftoken="+csrfToken;
+        
         var newForm = new FormData();
         newForm.append('csrfmiddlewaretoken', csrfToken);
         newForm.append('username', userModel.get('username'));
