@@ -3,7 +3,7 @@ define([
 	'underscore_1.3.3',
 	'backbone_0.9.2',
   'bootstrap.min',
-  'jquery.cookie',
+  'js.cookie',
 	'../../js/app/views/leftMenuView',
   '../../js/app/views/dashboardView',
   '../../js/app/views/pagesView',
@@ -33,7 +33,7 @@ define([
   '../../js/app/views/NRPProjectsView',
   'adminlte',
   'logs'
-], function ($, _, Backbone, Bootstrap, jCookie,
+], function ($, _, Backbone, Bootstrap, jsCookie,
               LeftMenuView, DashboardView, PagesView, PostsView, ImageLibraryView, ImageAddNewView, 
               PagesAddNewView, PostsAddNewView, FileLibraryView, ImageUploadModel, ImageUploadCollection, PostModel, PostsCollection,
               PostCategoryModel, PostCategoryCollection, FileUploadModel, FileUploadCollection, CategoriesView,
