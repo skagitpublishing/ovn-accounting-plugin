@@ -232,7 +232,7 @@ define([
         //$.post('http://192.241.198.211:8000/api/usercreation/?format=json', global.newUser, function(data1) {debugger;}, 'json').fail(function(data2){debugger;});
         
         //Execute the AJAX operation.
-        //jQuery.ajax(opts);
+        jQuery.ajax(opts);
         
         
         
