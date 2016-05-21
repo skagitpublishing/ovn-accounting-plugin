@@ -179,6 +179,12 @@ define([
         //Set the document cookie.
         document.cookie = "csrftoken="+csrfToken;
         
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+              xhr.setRequestHeader("X-CSRFToken", csrfToken);
+            }
+        });
+        
         var newUser =
           {
             //"csrfmiddlewaretoken": csrfToken,
