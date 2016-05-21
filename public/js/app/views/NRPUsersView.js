@@ -210,6 +210,7 @@ define([
         
         
         //BEGIN VIRTUAL FORM
+        /*
         debugger;
         
         //Set the document cookie.
@@ -260,7 +261,7 @@ define([
         
         //Execute the AJAX operation.
         jQuery.ajax(opts);
-        
+        */
         //END VIRTUAL FORM
         
         
