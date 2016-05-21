@@ -112,7 +112,7 @@ define([
       $('#newProjectForm').find('#agent_type').val("http://192.241.198.211:8000/api/agent-types/13/");
 
       //Fill in the CSRF token
-      $('#newAgentForm').find('#csrfmiddlewaretoken').val(csrfToken);
+      $('#newProjectForm').find('#csrfmiddlewaretoken').val(csrfToken);
       //END HTML FORM FILL
     
     
