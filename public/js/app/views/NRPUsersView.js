@@ -306,15 +306,15 @@ define([
       csrfToken = $('#csrfTokenInputForm').find('#csrfTokenInput').val();
       
       // BEGIN HTML FORM FILL
-      $('#newUserForm').show();
+      $('#newAgentForm').show();
         
       //debugger;
       //Fill out the form
-      $('#newUserForm').find('#username').val(userModel.get('username'));
-      $('#newUserForm').find('#first_name').val(userModel.get('first_name'));
-      $('#newUserForm').find('#last_name').val(userModel.get('last_name'));
-      $('#newUserForm').find('#email').val(userModel.get('email'));
-      $('#newUserForm').find('#password').val(userModel.get('password'));
+      $('#newAgentForm').find('#nick').val(userModel.get('username'));
+      $('#newAgentForm').find('#name').val(userModel.get('first_name') + ' ' + userModel.get('last_name'));
+      //$('#newAgentForm').find('#last_name').val(userModel.get('last_name'));
+      $('#newAgentForm').find('#email').val(userModel.get('email'));
+      //$('#newAgentForm').find('#password').val(userModel.get('password'));
 
       //Fill in the CSRF token
       $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
