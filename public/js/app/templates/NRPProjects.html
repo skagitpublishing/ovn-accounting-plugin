@@ -15,25 +15,25 @@ hr {
     <table class="table table-striped"> 
       <thead> 
         <tr> 
-          <th>File Name</th> 
+          <th>Project Name</th> 
           <th>-</th> 
-          <th>-</th> 
-          <th>-</th> 
+          <th>Approve Project</th> 
+          <th>Delete</th> 
         </tr> 
       </thead> 
-      <tbody id="filesTable"> 
-        <tr id="fileRow" hidden> 
-          <th scope=row>1</th> 
-          <td class="fileCol2"></td> 
-          <td class="postCol3"></td> 
-          <td class="postCol4"><button type="button" class="btn btn-danger">Delete</button></td> 
+      <tbody id="nrpProjectsTable"> 
+        <tr id="nrpProjectsRow" hidden> 
+          <th scope=row>Project Name</th>  
+          <td class="projectName"></td> 
+          <td class="btnApprove"><button type="button" class="btn btn-success">Approve</button></td> 
+          <td class="btnDelete"><button type="button" class="btn btn-danger">Delete</button></td> 
         </tr> 
       </tbody> 
     </table>
   </div>
 </div>
 
-<div class="row">
+<div class="row" hidden>
   <div class="col-md-12">
     <hr>
     <h2>

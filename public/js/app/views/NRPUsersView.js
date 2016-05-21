@@ -312,9 +312,7 @@ define([
       //Fill out the form
       $('#newAgentForm').find('#nick').val(userModel.get('username'));
       $('#newAgentForm').find('#name').val(userModel.get('first_name') + ' ' + userModel.get('last_name'));
-      //$('#newAgentForm').find('#last_name').val(userModel.get('last_name'));
       $('#newAgentForm').find('#email').val(userModel.get('email'));
-      //$('#newAgentForm').find('#password').val(userModel.get('password'));
       $('#newAgentForm').find('#agent_type').val("http://192.241.198.211:8000/api/agent-types/11/");
 
       //Fill in the CSRF token
