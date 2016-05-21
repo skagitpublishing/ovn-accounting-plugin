@@ -34,14 +34,14 @@ define([
 		},
     
     populateTable: function() {
-      debugger;
+      //debugger;
       
       //Loop through each model in the collection.
       for( var i = 0; i < global.nrpProjectCollection.length; i++ ) {
       
         try {
-          debugger;
-
+          //debugger;
+            
           var model = global.nrpProjectCollection.models[i];
           
           //Handle corner case of new install with empty DB
