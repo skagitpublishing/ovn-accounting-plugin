@@ -175,6 +175,10 @@ define([
         //BEGIN AJAX POST SUBMISSION
         
         debugger;
+        
+        //Set the document cookie.
+        document.cookie = "csrftoken="+csrfToken;
+        
         var newUser =
           {
             //"csrfmiddlewaretoken": csrfToken,
