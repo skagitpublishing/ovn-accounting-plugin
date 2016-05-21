@@ -117,6 +117,7 @@ define([
       //Retrieve the CSRF token.
       csrfToken = $('#csrfTokenInputForm').find('#csrfTokenInput').val();
       
+      // BEGIN HTML FORM FILL
       $('#newUserForm').show();
         
       //debugger;
@@ -129,7 +130,7 @@ define([
 
       //Fill in the CSRF token
       $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
-      
+      //END HTML FORM FILL
       
       /*
        *  This code was my attempt to use a JavaScript based form to send in the data. It didn't work
@@ -138,6 +139,7 @@ define([
        */
     /*  
       //Retrieve the CSRF key
+      //Note: This technique does not work. Using a get call retrieves a new CSRF token, as though I wasn't logged in.
       $.get('http://192.241.198.211:8000/api/usercreation/?format=api', '', function(data) {
         debugger;
         
@@ -163,10 +165,15 @@ define([
         $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
       */
         
+        //Prompt user for CSRF token.
         //var tempcsrfToken = prompt('csrfToken: ');
         //if( tempcsrfToken != "")
         //  csrfToken = tempcsrfToken;
         
+        
+        
+        //BEGIN AJAX POST SUBMISSION
+        /*
         debugger;
         var newUser =
           {
@@ -183,7 +190,13 @@ define([
         global.newUser = newUser;
         
         //$.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {debugger;});
+        $.post('http://192.241.198.211:8000/api/usercreation/?format=json', newUser, function(data1) {debugger;}, 'json').fail(function(data2){debugger;});
+        */
+        //END AJAX POST SUBMISSION
         
+        
+        
+        //BEGIN VIRTUAL FORM
         var newForm = new FormData();
         newForm.append('csrfmiddlewaretoken', csrfToken);
         newForm.append('username', userModel.get('username'));
@@ -205,15 +218,14 @@ define([
             }
         });
         
-        
-        
         var opts = {
           //url: 'http://192.241.198.211:8000/api/usercreation/?format=api',
           url: 'http://192.241.198.211:8000/api/usercreation/',
           data: newForm,
           cache: false,
           //contentType: false,
-          contentType: "multipart/form-data; boundary=frontier",
+          //contentType: "multipart/form-data; boundary=frontier",
+          contentType: "multipart/form-data; boundary=----WebKitFormBoundaryOLlXzNzdrH4iXGPA",
           //contentType: "multipart/form-data",
           //contentType: "application/json",
           processData: false,
@@ -228,11 +240,9 @@ define([
                 
         debugger;
         
-        //Attempt at debugging by sending data via POST AJAX call.
-        //$.post('http://192.241.198.211:8000/api/usercreation/?format=json', global.newUser, function(data1) {debugger;}, 'json').fail(function(data2){debugger;});
-        
         //Execute the AJAX operation.
         jQuery.ajax(opts);
+        //END VIRTUAL FORM
         
         
         
