@@ -64,7 +64,7 @@ define([
           tempRow.find('.btnApprove').find('button').attr('onclick', 'global.nrpProjectsView.approveProject(global.nrpProjectCollection.models['+i+'].id)');
           
           //Add the on-click function to the Delete button.
-          tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpUsersView.deleteUser(global.nrpUsersCollection.models['+i+'].id)');
+          tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpProjectsView.deleteUser(global.nrpProjectsCollection.models['+i+'].id)');
           
           //Remove the 'hidden' attribute copied from the example row.
           tempRow.show();
@@ -224,13 +224,13 @@ define([
         //debugger;
         
         if( data.success == true ) {
-          log.push('FileUpload object deleted successfully. ID: '+id);
-          global.fileUploadCollection.refreshView = true; //Set flag so view is refreshed after collection is updated.
-          global.fileUploadCollection.fetch();
+          log.push('NRP Project object deleted successfully. ID: '+id);
+          global.nrpProjectCollection.refreshView = true; //Set flag so view is refreshed after collection is updated.
+          global.nrpProjectCollection.fetch();
           //global.fileLibraryView.render();
         } else {
-          console.error('FileUpload object no deleted! ID: '+id);
-          log.push('FileUpload object no deleted! ID: '+id);
+          console.error('NRP Project object no deleted! ID: '+id);
+          log.push('NRP Project object no deleted! ID: '+id);
           sendLog();
         }
       })
