@@ -3,8 +3,9 @@ define([
 	'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',
+  'jquery.cookie',
   'text!../../../js/app/templates/NRPUsers.html'
-], function ($, _, Backbone, NRPUsersTemplate) {
+], function ($, _, Backbone, jCookie, NRPUsersTemplate) {
 	'use strict';
 
 	var NRPUsersView = Backbone.View.extend({

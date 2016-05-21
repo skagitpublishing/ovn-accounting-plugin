@@ -25,4 +25,5 @@ cp public/js/app/model/*.js ../myCMS/public/js/app/model/
 cp public/js/app/views/*.js ../myCMS/public/js/app/views/
 cp public/js/app/templates/*.html ../myCMS/public/js/app/templates/
 
-
+echo Copying library files...
+cp public/js/lib/*.js ../myCMS/public/js/lib/
