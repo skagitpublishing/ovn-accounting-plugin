@@ -29,13 +29,14 @@ define([
   '../../js/app/model/NRPUserModel',
   '../../js/app/model/NRPUsersCollection',
   '../../js/app/views/NRPUsersView',
+  '../../js/app/views/NRPProjectsView',
   'adminlte',
   'logs'
 ], function ($, _, Backbone, Bootstrap, LeftMenuView, DashboardView, PagesView, PostsView, ImageLibraryView, ImageAddNewView, 
               PagesAddNewView, PostsAddNewView, FileLibraryView, ImageUploadModel, ImageUploadCollection, PostModel, PostsCollection,
               PostCategoryModel, PostCategoryCollection, FileUploadModel, FileUploadCollection, CategoriesView,
               PageModel, PagesCollection, PageSectionModel, PageSectionCollection, SectionsView,
-              NRPUserModel, NRPUsersCollection, NRPUsersView,
+              NRPUserModel, NRPUsersCollection, NRPUsersView, NRPProjectsView,
               AdminLTE, Logs) {
 
   /* 
