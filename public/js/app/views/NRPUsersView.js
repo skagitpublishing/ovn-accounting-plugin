@@ -197,6 +197,8 @@ define([
         
         
         //BEGIN VIRTUAL FORM
+        /*
+        //Set the document cookie.
         document.cookie = "csrftoken="+csrfToken;
         
         var newForm = new FormData();
@@ -244,6 +246,7 @@ define([
         
         //Execute the AJAX operation.
         jQuery.ajax(opts);
+        */
         //END VIRTUAL FORM
         
         
