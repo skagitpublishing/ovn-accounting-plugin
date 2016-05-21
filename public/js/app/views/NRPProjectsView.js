@@ -64,7 +64,7 @@ define([
           tempRow.find('.btnApprove').find('button').attr('onclick', 'global.nrpProjectsView.approveProject(global.nrpProjectCollection.models['+i+'].id)');
           
           //Add the on-click function to the Delete button.
-          tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpProjectsView.deleteUser(global.nrpProjectsCollection.models['+i+'].id)');
+          tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpProjectsView.deleteProject(global.nrpProjectsCollection.models['+i+'].id)');
           
           //Remove the 'hidden' attribute copied from the example row.
           tempRow.show();
@@ -218,7 +218,7 @@ define([
     },
     
     
-    deleteFile: function(id) {
+    deleteProject: function(id) {
       debugger;
       $.get('http://'+global.serverIp+':'+global.serverPort+'/api/nrpproject/'+id+'/remove', '', function(data) {
         //debugger;
