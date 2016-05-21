@@ -44,7 +44,7 @@ define([
         
         if(this.refreshView) {
           this.refreshView = false;
-          global.fileLibraryView.render();
+          global.nrpProjectsView.render();
         }
 
         //Assumption: this funciton is only called when opening the image gallery. Therefore we need to call it again and
