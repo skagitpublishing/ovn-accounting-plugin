@@ -173,7 +173,7 @@ define([
         
         
         //BEGIN AJAX POST SUBMISSION
-        
+        /*
         debugger;
         
         //Set the document cookie.
@@ -201,7 +201,7 @@ define([
         
         $.post('http://192.241.198.211:8000/api/usercreation/', newUser, function(data) {debugger;}).fail(function(data2) {debugger;});
         //$.post('http://192.241.198.211:8000/api/usercreation/?format=json', newUser, function(data1) {debugger;}, 'json').fail(function(data2){debugger;});
-        
+        */
         //END AJAX POST SUBMISSION
         
         
