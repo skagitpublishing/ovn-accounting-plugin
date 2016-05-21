@@ -29,9 +29,10 @@ define([
     
     defaults: {
       '_id': '', 
-      'projectName': '',
-      'projectNick': '',
-      'agentType':  '',
+      'projectname': '',
+      'projectnick': '',
+      'agent_type':  '',
+      'key': '',
       //'projectLeadEmail': '',
       //'projectSummary':  '',
       //'projectHardware':  '',

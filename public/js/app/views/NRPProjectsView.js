@@ -56,7 +56,7 @@ define([
           tempRow.attr('id', '');
 
           //Populate the new row with data from the model.
-          var projectName = model.get('projectName');
+          var projectName = model.get('projectname');
           tempRow.find('th').html('<a href="#/">'+projectName+'</a>');
           //tempRow.find('th').find('a').attr('onclick', 'global.nrpUsersView.editPost('+i+')');
           
