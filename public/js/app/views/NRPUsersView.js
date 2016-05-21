@@ -7,9 +7,7 @@ define([
   'text!../../../js/app/templates/NRPUsers.html'
 ], function ($, _, Backbone, Cookie, NRPUsersTemplate) {
 	'use strict';
-
-  global.cookie = Cookie;
-    
+  
 	var NRPUsersView = Backbone.View.extend({
 
 		tagName:  'div',
@@ -304,6 +302,8 @@ define([
 
 	});
 
+  global.cookie = Cookie;
+    
   //debugger;
 	return NRPUsersView;
 });
