@@ -165,6 +165,9 @@ define([
   }
   global.nrpUsersView = new NRPUsersView();
   
+  //NRP PROJECTS MODEL, COLLECTION, AND VIEW
+  global.nrpProjectsView = new NRPProjectsView();
+    
   /*** BEGIN TESTING CODE ***/
   //debugger;
   

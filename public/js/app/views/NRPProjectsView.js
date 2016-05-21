@@ -3,20 +3,20 @@ define([
 	'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',
-  'text!../../../js/app/templates/fileLibrary.html'
-], function ($, _, Backbone, FileLibraryTemplate) {
+  'text!../../../js/app/templates/NRPProjects.html'
+], function ($, _, Backbone, NRPProjectsTemplate) {
 	'use strict';
 
-	var FileLibraryView = Backbone.View.extend({
+	var NRPProjectsView = Backbone.View.extend({
 
 		tagName:  'div',
     
-    el: '#fileLibraryView', 
+    el: '#nrpProjectsView', 
 
-		template: _.template(FileLibraryTemplate),
+		template: _.template(NRPProjectsTemplate),
 
 		events: {
-      'hidden.bs.modal #fileLibraryModal': 'refreshView'
+ //     'hidden.bs.modal #fileLibraryModal': 'refreshView'
 		},
 
 		initialize: function () {
@@ -34,8 +34,8 @@ define([
 		},
     
     populateTable: function() {
-      //debugger;
-      
+      debugger;
+      /*
       //Loop through each model in the collection.
       for( var i = 0; i < global.fileUploadCollection.length; i++ ) {
       
@@ -78,7 +78,7 @@ define([
         }
         
       }
-      
+      */
     },
     
     //Dev Note: What should happen when the user clicks on the link? Is there properties that they may want to edit? What are they?
@@ -88,8 +88,8 @@ define([
     },
     
     uploadFile: function() {
-      //debugger;
-      
+      debugger;
+      /*
       var selectedFile = this.$el.find('#file_upload').get(0).files[0];
       
       //Create the FormData data object and append the file to it.
@@ -157,6 +157,8 @@ define([
 
       //Execute the AJAX operation.
       jQuery.ajax(opts);
+        
+    */
     },
     
     fileSelected: function() {
@@ -177,7 +179,7 @@ define([
     
     
     deleteFile: function(id) {
-      //debugger;
+      debugger;
       $.get('http://'+global.serverIp+':'+global.serverPort+'/api/fileupload/'+id+'/remove', '', function(data) {
         //debugger;
         
@@ -198,5 +200,5 @@ define([
 	});
 
   //debugger;
-	return FileLibraryView;
+	return NRPProjectsView;
 });
