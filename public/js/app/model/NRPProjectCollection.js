@@ -2,13 +2,13 @@ define([
   'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',
-  './FileUploadModel',
-], function ($, _, Backbone, FileUploadModel) {
+  './NRPProjectModel',
+], function ($, _, Backbone, NRPProjectModel) {
 
   
   //Create an empty Collection to hold all the posts.
-  var FileUploadCollection = Backbone.Collection.extend({ //Collection Class
-    model: FileUploadModel,
+  var NRPProjectCollection = Backbone.Collection.extend({ //Collection Class
+    model: NRPProjectModel,
     //url: 'http://'+global.serverIp+':'+global.serverPort+'/api/postcategory/list',
     url: '',
 
@@ -18,8 +18,8 @@ define([
       //debugger;
       
       if(response.collections.length == 0) {
-        log.push('Empty data returned by server when trying to retrieve FileUpload collection. Most likely due to a new DB.');
-        return [global.fileUploadModel];
+        log.push('Empty data returned by server when trying to retrieve NRP Project collection. Most likely due to a new DB.');
+        return [global.nrpProjectModel];
       } else {
         return response.collections;
       }
@@ -33,7 +33,7 @@ define([
       //  debugger;
       //});
 
-      this.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/fileupload/list',
+      this.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/nrpproject/list',
       
       this.on('add', function() {
         debugger;
@@ -49,13 +49,13 @@ define([
 
         //Assumption: this funciton is only called when opening the image gallery. Therefore we need to call it again and
         //finish populating the image library.
-        log.push('Finished retrieving FileUploadCollection data from server.');
+        log.push('Finished retrieving NRPProjectCollection data from server.');
 
         //global.pagesView.populateTable();
       });
     }
   });
   
-  return FileUploadCollection;
+  return NRPProjectCollection;
 
 });

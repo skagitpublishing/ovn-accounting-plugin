@@ -6,7 +6,7 @@ define([
 
   
   //Create local Model to represent the Post Category model I'll retrieve from the server.
-  var FileUploadModel = Backbone.Model.extend({
+  var NRPProjectModel = Backbone.Model.extend({
 
     idAttribute: "_id",  //Map the Model 'id' to the '_id' assigned by the server.
 
@@ -24,15 +24,21 @@ define([
       //});
       //debugger;
 
-      this.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/fileupload/'+this.id+'/update';
+      this.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/nrpproject/'+this.id+'/update';
     },
     
     defaults: {
-      '_id': '',
-      'file': new Object(),
-      'fileName': '',
-      'name': '',
-      'url': ''
+      '_id': '', 
+      'projectName': '',
+      'projectNick': '',
+      'agentType':  '',
+      //'projectLeadEmail': '',
+      //'projectSummary':  '',
+      //'projectHardware':  '',
+      //'website':  '',
+      //'api_url': '',
+      //'agent_url':  '',
+      //'user_url':  '',
     },
 
     //Override the default Backbone save() function with one that our API understands.
@@ -42,19 +48,19 @@ define([
       $.getJSON(this.url, this.attributes, function(data) {
         //Regardless of success or failure, the API returns the JSON data of the model that was just updated.
         //debugger;
-        log.push('FileUploadModel.save() executed.');
+        log.push('NRPProjectModel.save() executed.');
 
       }).error( function(err) {
         //This is the error handler.
         //debugger;
-        log.push('Error while trying FileUploadModel.save(). Most likely due to communication issue with the server.');
+        log.push('Error while trying NRPProjectModel.save(). Most likely due to communication issue with the server.');
         sendLog();
-        console.error('Communication error with server while execute FileUploadModel.save()');
+        console.error('Communication error with server while execute NRPProjectModel.save()');
       });
 
     }
   });
   
-  return FileUploadModel;
+  return NRPProjectModel;
 
 });

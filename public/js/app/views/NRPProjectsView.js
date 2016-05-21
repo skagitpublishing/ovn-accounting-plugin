@@ -35,50 +35,56 @@ define([
     
     populateTable: function() {
       debugger;
-      /*
+      
       //Loop through each model in the collection.
-      for( var i = 0; i < global.fileUploadCollection.length; i++ ) {
+      for( var i = 0; i < global.nrpUsersCollection.length; i++ ) {
       
         try {
-          //debugger;
+          debugger;
 
-          var model = global.fileUploadCollection.models[i];
+          var model = global.nrpUsersCollection.models[i];
           
           //Handle corner case of new install with empty DB
-          if( (global.fileUploadCollection.models.length == 1) && (model.id == "") ) {
+          if( (global.nrpUsersCollection.models.length == 1) && (model.id == "") ) {
             return;
           }
           
           //Clone the example row provided in the template.
-          var tempRow = global.fileLibraryView.$el.find('#fileRow').clone();
+          var tempRow = global.nrpUsersView.$el.find('#nrpUserRow').clone();
 
           //Clear the ID copied from the example row.
           tempRow.attr('id', '');
 
           //Populate the new row with data from the model.
-          var fileName = model.get('fileName');
-          tempRow.find('th').html('<a href="#/">'+fileName+'</a>');
-          tempRow.find('th').find('a').attr('onclick', 'global.fileLibraryView.editPost('+i+')');
+          var userName = model.get('username');
+          tempRow.find('th').html('<a href="#/">'+userName+'</a>');
+          //tempRow.find('th').find('a').attr('onclick', 'global.nrpUsersView.editPost('+i+')');
           
+          //Add the on-click function to the Approve button.
+          tempRow.find('.btnApprove1').find('button').attr('onclick', 'global.nrpUsersView.approveUser(global.nrpUsersCollection.models['+i+'].id)');
+          
+          //Add the on-click function to the Approve button.
+          tempRow.find('.btnApprove2').find('button').attr('onclick', 'global.nrpUsersView.approveAgent(global.nrpUsersCollection.models['+i+'].id)');
+            
           //Add the on-click function to the Delete button.
-          tempRow.find('.postCol4').find('button').attr('onclick', 'global.fileLibraryView.deleteFile(global.fileUploadCollection.models['+i+'].id)');
+          tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpUsersView.deleteUser(global.nrpUsersCollection.models['+i+'].id)');
           
           //Remove the 'hidden' attribute copied from the example row.
           tempRow.show();
 
           //Append the new row to the DOM.
-          global.fileLibraryView.$el.find('#filesTable').append(tempRow);
+          global.nrpUsersView.$el.find('#nrpUsersTable').append(tempRow);
         } catch(err) {
-          console.error('Error encountered in fileLibraryView.populateTable(). Error message:');
+          console.error('Error encountered in nrpUsersView.populateTable(). Error message:');
           console.error(err.message);
           
-          log.push('Error encountered in fileLibraryView.populateTable(). Error message:')
+          log.push('Error encountered in nrpUsersView.populateTable(). Error message:')
           log.push(err.message)
           sendLog();
         }
         
       }
-      */
+      
     },
     
     //Dev Note: What should happen when the user clicks on the link? Is there properties that they may want to edit? What are they?

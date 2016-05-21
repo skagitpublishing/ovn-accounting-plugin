@@ -31,6 +31,8 @@ define([
   '../../js/app/model/NRPUsersCollection',
   '../../js/app/views/NRPUsersView',
   '../../js/app/views/NRPProjectsView',
+  '../../js/app/model/NRPProjectModel',
+  '../../js/app/model/NRPProjectCollection',
   'adminlte',
   'logs'
 //], function ($, _, Backbone, Bootstrap, Cookie,
@@ -39,7 +41,7 @@ define([
               PagesAddNewView, PostsAddNewView, FileLibraryView, ImageUploadModel, ImageUploadCollection, PostModel, PostsCollection,
               PostCategoryModel, PostCategoryCollection, FileUploadModel, FileUploadCollection, CategoriesView,
               PageModel, PagesCollection, PageSectionModel, PageSectionCollection, SectionsView,
-              NRPUserModel, NRPUsersCollection, NRPUsersView, NRPProjectsView,
+              NRPUserModel, NRPUsersCollection, NRPUsersView, NRPProjectsView, NRPProjectModel, NRPProjectCollection,
               AdminLTE, Logs) {
 
   /* 
@@ -107,7 +109,6 @@ define([
   //Generate the Post Collection if it hasn't been created yet.
   if(global.postsCollection == undefined) {
 
-    //Do I need this? CT 3-31-16  
     global.postModel = new PostModel();
 
     global.postsCollection = new PostsCollection(); //Collection Instance
@@ -120,7 +121,6 @@ define([
   if(global.postCategoryCollection == undefined) {
     //debugger;
 
-    //Do I need this? CT 3-31-16
     global.postCategoryModel = new PostCategoryModel();
 
     global.postCategoryCollection = new PostCategoryCollection(); //Collection Instance
@@ -138,7 +138,6 @@ define([
   //Generate the Post Collection if it hasn't been created yet.
   if(global.pagesCollection == undefined) {
 
-    //Do I need this? CT 3-31-16  
     global.pageModel = new PageModel();
 
     global.pagesCollection = new PagesCollection(); //Collection Instance
@@ -150,7 +149,6 @@ define([
   if(global.pageSectionCollection == undefined) {
     //debugger;
 
-    //Do I need this? CT 3-31-16
     global.pageSectionModel = new PageSectionModel();
 
     global.pageSectionCollection = new PageSectionCollection(); //Collection Instance
@@ -161,7 +159,6 @@ define([
   if(global.nrpUsersCollection == undefined) {
     //debugger;
 
-    //Do I need this? CT 3-31-16
     global.nrpUserModel = new NRPUserModel();
 
     global.nrpUsersCollection = new NRPUsersCollection(); //Collection Instance
@@ -170,6 +167,12 @@ define([
   global.nrpUsersView = new NRPUsersView();
   
   //NRP PROJECTS MODEL, COLLECTION, AND VIEW
+  if(global.nrpProjectsCollection == undefined) {
+      global.nrpProjectModel = new NRPProjectModel();
+      
+      global.nrpProjectCollection = new NRPProjectCollection();
+      global.nrpUsersCollection.fetch();
+  }
   global.nrpProjectsView = new NRPProjectsView();
     
   /*** BEGIN TESTING CODE ***/
