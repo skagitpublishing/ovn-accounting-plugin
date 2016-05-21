@@ -171,7 +171,7 @@ define([
       global.nrpProjectModel = new NRPProjectModel();
       
       global.nrpProjectCollection = new NRPProjectCollection();
-      global.nrpUsersCollection.fetch();
+      global.nrpProjectCollection.fetch();
   }
   global.nrpProjectsView = new NRPProjectsView();
     
