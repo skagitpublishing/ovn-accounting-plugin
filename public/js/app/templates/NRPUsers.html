@@ -112,6 +112,79 @@ hr {
   </div>
 </div>
 
+
+<div class="row" id="newAgentForm" hidden>
+  <div class="col-md-12">
+    <hr>
+    <h2>
+      New Economic Agent Creation Form
+    </h2>
+    <form action="http://192.241.198.211:8000/api/agentcreation/" method="POST" enctype="multipart/form-data" class="form-horizontal">                                          
+      <fieldset>
+
+        <div style='display:none'><input type='hidden' id='csrfmiddlewaretoken' name='csrfmiddlewaretoken' value='gve4seyHbMkZyxb75DV5al1ReRleELC1' /></div>
+
+        <div class="control-group">
+            <label for="url" class="control-label">username:</label>
+            <div class="controls">
+                <input type="text" name="url" id="url" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="name" class="control-label">name:</label>
+            <div class="controls">
+                <input type="text" name="name" id="name" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="nick" class="control-label">nick:</label>
+            <div class="controls">
+                <input type="text" name="nick" id="nick" />
+            </div>
+        </div>
+
+        <div class="control-group ">
+            <label for="agent_type" class="control-label">agent type:</label>
+            <div class="controls">
+                <select name="agent_type" id="agent_type">
+                <option value="http://192.241.198.211:8000/api/agent-types/16/">Custodian - http://192.241.198.211:8000/api/agent-types/16/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/15/">Exchange Firm - http://192.241.198.211:8000/api/agent-types/15/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/11/">Individual - http://192.241.198.211:8000/api/agent-types/11/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/12/">Network - http://192.241.198.211:8000/api/agent-types/12/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/14/">Organization - http://192.241.198.211:8000/api/agent-types/14/</option>
+                <option value="http://192.241.198.211:8000/api/agent-types/13/">Project - http://192.241.198.211:8000/api/agent-types/13/</option>
+                </select>
+            </div>
+        </div>
+          
+        <div class="control-group">
+            <label for="address" class="control-label">address:</label>
+            <div class="controls">
+                <input type="text" name="address" id="address" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="email" class="control-label">email:</label>
+            <div class="controls">
+                <input type="text" name="email" id="email" />
+
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn btn-primary" title="Make a POST request on the User Creation List resource">POST</button>
+
+        </div>
+      </fieldset>
+    </form>
+
+  </div>
+</div>
+
+
 <!-- Waiting/Success Modal -->
 <div class="modal bs-example-modal-sm" id="nrpUsersModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm">

@@ -286,11 +286,39 @@ define([
         }
         
       })
-      
+
     },
       
     approveAgent: function(id) {
-        debugger;
+      debugger;
+    
+      //Retrieve the model.
+      //Have to move this to the global variable so that it is accessible within the anaymous functions below.
+      var userModel = global.nrpUsersCollection.get(id);
+      var csrfToken = "";
+      
+      if( $('#csrfTokenInputForm').find('#csrfTokenInput').val() == "" ) {
+        alert('Please fill in the CSRF Token. Can not continue without a valid CSRF token.');
+        return;
+      }
+        
+      //Retrieve the CSRF token.
+      csrfToken = $('#csrfTokenInputForm').find('#csrfTokenInput').val();
+      
+      // BEGIN HTML FORM FILL
+      $('#newUserForm').show();
+        
+      //debugger;
+      //Fill out the form
+      $('#newUserForm').find('#username').val(userModel.get('username'));
+      $('#newUserForm').find('#first_name').val(userModel.get('first_name'));
+      $('#newUserForm').find('#last_name').val(userModel.get('last_name'));
+      $('#newUserForm').find('#email').val(userModel.get('email'));
+      $('#newUserForm').find('#password').val(userModel.get('password'));
+
+      //Fill in the CSRF token
+      $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
+      //END HTML FORM FILL
     }
     
     /*
