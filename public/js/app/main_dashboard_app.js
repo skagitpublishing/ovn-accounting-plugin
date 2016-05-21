@@ -172,7 +172,7 @@ define([
   global.nrpProjectsView = new NRPProjectsView();
     
   /*** BEGIN TESTING CODE ***/
-  //debugger;
+  debugger;
   
   /*** END TESTING CODE ***/
   
