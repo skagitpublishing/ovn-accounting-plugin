@@ -25,7 +25,7 @@ define([
 		},
 
     render: function () {
-      //debugger;
+      debugger;
       
       this.$el.html(this.template);
 
@@ -301,8 +301,6 @@ define([
     
 
 	});
-
-  global.cookie = Cookie;
     
   //debugger;
 	return NRPUsersView;
