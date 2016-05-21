@@ -5,7 +5,7 @@ define([
 	'backbone_0.9.2',
   'js.cookie',
   'text!../../../js/app/templates/NRPUsers.html'
-], function ($, _, Backbone, jsCookie, NRPUsersTemplate) {
+], function ($, _, Backbone, Cookie, NRPUsersTemplate) {
 	'use strict';
 
 	var NRPUsersView = Backbone.View.extend({
@@ -211,9 +211,10 @@ define([
         
         
         //BEGIN VIRTUAL FORM
-        /*
+        debugger;
+        
         //Set the document cookie.
-        document.cookie = "csrftoken="+csrfToken;
+        //document.cookie = "csrftoken="+csrfToken;
         
         var newForm = new FormData();
         newForm.append('csrfmiddlewaretoken', csrfToken);
@@ -260,7 +261,7 @@ define([
         
         //Execute the AJAX operation.
         jQuery.ajax(opts);
-        */
+        
         //END VIRTUAL FORM
         
         

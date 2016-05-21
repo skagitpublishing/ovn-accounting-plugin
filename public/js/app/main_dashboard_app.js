@@ -3,7 +3,6 @@ define([
 	'underscore_1.3.3',
 	'backbone_0.9.2',
   'bootstrap.min',
-  'js.cookie',
 	'../../js/app/views/leftMenuView',
   '../../js/app/views/dashboardView',
   '../../js/app/views/pagesView',
@@ -33,7 +32,7 @@ define([
   '../../js/app/views/NRPProjectsView',
   'adminlte',
   'logs'
-], function ($, _, Backbone, Bootstrap, jsCookie,
+], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, PagesView, PostsView, ImageLibraryView, ImageAddNewView, 
               PagesAddNewView, PostsAddNewView, FileLibraryView, ImageUploadModel, ImageUploadCollection, PostModel, PostsCollection,
               PostCategoryModel, PostCategoryCollection, FileUploadModel, FileUploadCollection, CategoriesView,
@@ -172,7 +171,7 @@ define([
   global.nrpProjectsView = new NRPProjectsView();
     
   /*** BEGIN TESTING CODE ***/
-  debugger;
+  //debugger;
   
   /*** END TESTING CODE ***/
   
