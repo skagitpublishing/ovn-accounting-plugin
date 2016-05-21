@@ -172,8 +172,11 @@ define([
   global.nrpProjectsView = new NRPProjectsView();
     
   /*** BEGIN TESTING CODE ***/
-  debugger;
+  //debugger;
   
+  //Move the Cookie plugin to the global scope.
+  global.cookie = Cookie;
+    
   /*** END TESTING CODE ***/
   
   
