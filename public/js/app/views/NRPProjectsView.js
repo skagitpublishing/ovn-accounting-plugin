@@ -57,7 +57,7 @@ define([
 
           //Populate the new row with data from the model.
           var projectName = model.get('projectName');
-          tempRow.find('th').html('<a href="#/">'+userName+'</a>');
+          tempRow.find('th').html('<a href="#/">'+projectName+'</a>');
           //tempRow.find('th').find('a').attr('onclick', 'global.nrpUsersView.editPost('+i+')');
           
           //Add the on-click function to the Approve button.
