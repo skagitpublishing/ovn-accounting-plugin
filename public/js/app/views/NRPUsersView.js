@@ -61,8 +61,11 @@ define([
           //tempRow.find('th').find('a').attr('onclick', 'global.nrpUsersView.editPost('+i+')');
           
           //Add the on-click function to the Approve button.
-          tempRow.find('.btnApprove').find('button').attr('onclick', 'global.nrpUsersView.approveUser(global.nrpUsersCollection.models['+i+'].id)');
+          tempRow.find('.btnApprove1').find('button').attr('onclick', 'global.nrpUsersView.approveUser(global.nrpUsersCollection.models['+i+'].id)');
           
+          //Add the on-click function to the Approve button.
+          tempRow.find('.btnApprove2').find('button').attr('onclick', 'global.nrpUsersView.approveAgent(global.nrpUsersCollection.models['+i+'].id)');
+            
           //Add the on-click function to the Delete button.
           tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpUsersView.deleteUser(global.nrpUsersCollection.models['+i+'].id)');
           
@@ -283,6 +286,10 @@ define([
       })
       
     },
+      
+    approveAgent: function(id) {
+        debugger;
+    }
     
     /*
     submitNewUserForm: function() {
