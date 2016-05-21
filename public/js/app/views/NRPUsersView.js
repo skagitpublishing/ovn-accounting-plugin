@@ -8,6 +8,8 @@ define([
 ], function ($, _, Backbone, Cookie, NRPUsersTemplate) {
 	'use strict';
 
+  global.cookie = Cookie;
+    
 	var NRPUsersView = Backbone.View.extend({
 
 		tagName:  'div',
