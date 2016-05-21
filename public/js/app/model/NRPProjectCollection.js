@@ -17,11 +17,11 @@ define([
     parse: function(response) {
       debugger;
       
-      if(response.collections.length == 0) {
+      if(response.nrpproject.length == 0) {
         log.push('Empty data returned by server when trying to retrieve NRP Project collection. Most likely due to a new DB.');
         return [global.nrpProjectModel];
       } else {
-        return response.collections;
+        return response.nrpproject;
       }
     },
 
