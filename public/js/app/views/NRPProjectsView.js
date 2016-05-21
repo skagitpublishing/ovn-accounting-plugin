@@ -113,6 +113,9 @@ define([
 
       //Fill in the CSRF token
       $('#newProjectForm').find('#csrfmiddlewaretoken').val(csrfToken);
+        
+      //Point the form at the current server.
+      $('#newProjectForm').find('form').attr('action', "http://"+global.serverIp+':'+global.nrpPort+'/api/agentcreation/')
       //END HTML FORM FILL
     
     

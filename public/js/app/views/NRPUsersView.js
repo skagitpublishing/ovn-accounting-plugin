@@ -133,6 +133,9 @@ define([
 
       //Fill in the CSRF token
       $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
+        
+      //Point the form at the current server.
+      $('#newAgentForm').find('form').attr('action', "http://"+global.serverIp+':'+global.nrpPort+'/api/usercreation/')
       //END HTML FORM FILL
       
       /*
@@ -317,6 +320,10 @@ define([
 
       //Fill in the CSRF token
       $('#newAgentForm').find('#csrfmiddlewaretoken').val(csrfToken);
+        
+      //Point the form at the current server.
+      $('#newAgentForm').find('form').attr('action', "http://"+global.serverIp+':'+global.nrpPort+'/api/agentcreation/')
+      
       //END HTML FORM FILL
     }
     
