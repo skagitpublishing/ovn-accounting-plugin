@@ -37,35 +37,32 @@ define([
       debugger;
       
       //Loop through each model in the collection.
-      for( var i = 0; i < global.nrpUsersCollection.length; i++ ) {
+      for( var i = 0; i < global.nrpProjectCollection.length; i++ ) {
       
         try {
           debugger;
 
-          var model = global.nrpUsersCollection.models[i];
+          var model = global.nrpProjectCollection.models[i];
           
           //Handle corner case of new install with empty DB
-          if( (global.nrpUsersCollection.models.length == 1) && (model.id == "") ) {
+          if( (global.nrpProjectCollection.models.length == 1) && (model.id == "") ) {
             return;
           }
           
           //Clone the example row provided in the template.
-          var tempRow = global.nrpUsersView.$el.find('#nrpUserRow').clone();
+          var tempRow = this.$el.find('#nrpProjectRow').clone();
 
           //Clear the ID copied from the example row.
           tempRow.attr('id', '');
 
           //Populate the new row with data from the model.
-          var userName = model.get('username');
+          var projectName = model.get('projectName');
           tempRow.find('th').html('<a href="#/">'+userName+'</a>');
           //tempRow.find('th').find('a').attr('onclick', 'global.nrpUsersView.editPost('+i+')');
           
           //Add the on-click function to the Approve button.
-          tempRow.find('.btnApprove1').find('button').attr('onclick', 'global.nrpUsersView.approveUser(global.nrpUsersCollection.models['+i+'].id)');
+          tempRow.find('.btnApprove').find('button').attr('onclick', 'global.nrpProjectsView.approveProject(global.nrpProjectCollection.models['+i+'].id)');
           
-          //Add the on-click function to the Approve button.
-          tempRow.find('.btnApprove2').find('button').attr('onclick', 'global.nrpUsersView.approveAgent(global.nrpUsersCollection.models['+i+'].id)');
-            
           //Add the on-click function to the Delete button.
           tempRow.find('.btnDelete').find('button').attr('onclick', 'global.nrpUsersView.deleteUser(global.nrpUsersCollection.models['+i+'].id)');
           
@@ -73,18 +70,22 @@ define([
           tempRow.show();
 
           //Append the new row to the DOM.
-          global.nrpUsersView.$el.find('#nrpUsersTable').append(tempRow);
+          global.nrpProjectsView.$el.find('#nrpProjectsTable').append(tempRow);
         } catch(err) {
-          console.error('Error encountered in nrpUsersView.populateTable(). Error message:');
+          console.error('Error encountered in nrpProjectsView.populateTable(). Error message:');
           console.error(err.message);
           
-          log.push('Error encountered in nrpUsersView.populateTable(). Error message:')
+          log.push('Error encountered in nrpProjectsView.populateTable(). Error message:')
           log.push(err.message)
           sendLog();
         }
         
       }
       
+    },
+      
+    approveProject: function(id) {
+        debugger;
     },
     
     //Dev Note: What should happen when the user clicks on the link? Is there properties that they may want to edit? What are they?
@@ -186,7 +187,7 @@ define([
     
     deleteFile: function(id) {
       debugger;
-      $.get('http://'+global.serverIp+':'+global.serverPort+'/api/fileupload/'+id+'/remove', '', function(data) {
+      $.get('http://'+global.serverIp+':'+global.serverPort+'/api/nrpproject/'+id+'/remove', '', function(data) {
         //debugger;
         
         if( data.success == true ) {
