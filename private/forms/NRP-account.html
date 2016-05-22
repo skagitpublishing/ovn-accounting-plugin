@@ -86,7 +86,7 @@
         <div class="col-sm-9">
           <input type="text" class="form-control" name="inputWebsite" id="inputWebsite" placeholder="http://www.url.com">
         </div>
-      </div>
+      </div> 
       
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
@@ -102,8 +102,8 @@
     <script type="text/javascript">
       //Global Variables
       global = new Object(); //This is where all global variables will be stored.
-      //global.serverIp = "104.131.137.38"; //Production Server
-      global.serverIp = "192.241.198.211"; //Test Server
+      global.serverIp = "104.131.137.38"; //Production Server
+      //global.serverIp = "192.241.198.211"; //Test Server
       global.serverPort = "80";
       global.nrpPort = "8000";
       global.nodemailerPort = "3000";
@@ -146,8 +146,10 @@
         
         /* END SUBMIT MODEL DATA */
         
+          
+          
         /* BEGIN SEND EMAIL */
-        /*
+        
         var destination_email = "chris.troutner@gmail.com";
         var subject = "RPiOVN: New NRP Account Application: ";
         var message = "<!DOCTYPE html><html lang='en'><body>";
@@ -173,7 +175,7 @@
           $('#successMsg2').text('Thank you for submitting your application. We will be in touch.');
           $('#successMsg2').css('font-weight', 'bold');
         });
-        */
+        
         /* END SEND EMAIL */
         
       });

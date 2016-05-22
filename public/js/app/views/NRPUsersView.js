@@ -105,7 +105,7 @@ define([
     },
 
     approveUser: function(id) {
-      debugger;
+      //debugger;
       
       //Retrieve the model.
       //Have to move this to the global variable so that it is accessible within the anaymous functions below.
@@ -135,7 +135,7 @@ define([
       $('#newUserForm').find('#csrfmiddlewaretoken').val(csrfToken);
         
       //Point the form at the current server.
-      $('#newAgentForm').find('form').attr('action', "http://"+global.serverIp+':'+global.nrpPort+'/api/usercreation/')
+      $('#newUserForm').find('form').attr('action', "http://"+global.serverIp+':'+global.nrpPort+'/api/usercreation/')
       //END HTML FORM FILL
       
       /*
