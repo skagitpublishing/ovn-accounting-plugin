@@ -85,7 +85,7 @@ define([
     },
       
     approveProject: function(id) {
-      debugger;
+      //debugger;
         
     
       //Retrieve the model.

@@ -88,10 +88,15 @@
 
 <section>
   <h2>Test Area</h2>
-  
   <div class="container">
-    
-    
+ <!-- COPY THIS SECTION. START -->   
+
+<p>&nbsp;</p>
+<p>Before you can start a project, you need to <a href="http://rpiovn.com/page/create-nrp-account">create an NRP account</a>. Be sure to do that first!</p>
+<p>All projects must have a project manager. If you start a project, <u>you</u> are the project manager. If you don't want to be the project manager, then you need to find someone to take over the role. Project managers are the primary point of contact for people interested in contributing to a project, and they must have an up-to-date email address for people to use to contact them.&nbsp;</p>
+<p>&nbsp;</p>
+<p>Fill out the application form below to submit your project idea:</p>
+<p>&nbsp;</p>
 <form class="form-horizontal" id="newProjectForm">
   <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Your Name:</label>
@@ -107,7 +112,15 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <label for="projectName" class="col-sm-2 control-label">Project Name:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="projectName" id="projectName" placeholder="Email">
+    </div>
+  </div>
+  
   <br>
+  <p>A good template to use as an example for filling out the sections below is the <a href="http://rpiovn.com/page/simple-tracking-device">GPS tracking device</a>. Adapt your project information to fit the format of information on that project, and fill it in below.</p>
   <div class="form-group">
     <label for="inputSummary" class="col-sm-2 control-label">Project Summary:</label>
     <div class="col-sm-10">            
@@ -137,10 +150,48 @@
 <script src="http://rpiovn.com/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
 
+  //Global Variables
+  global = new Object(); //This is where all global variables will be stored.
+  global.serverIp = "104.131.137.38"; //Production Server
+  //global.serverIp = "192.241.198.211"; //Test Server
+  global.serverPort = "80";
+  global.nrpPort = "8000";
+  global.nodemailerPort = "3000";
+    
   $("#submitButton").click(function(event) {
     //debugger;
     event.preventDefault();
 
+      
+    /* BEGIN SUBMIT NRPUser MODEL DATA */
+    var projectData = new Object();
+    projectData.projectname = $('#projectName').val();
+    projectData.projectnick = $('#projectName').val();
+    projectData.agent_type = "http://192.241.198.211:8000/api/agent-types/13/";
+
+    //Check required inputs
+    if( (projectData.projectname == "") || ($('#inputName').val() == "") || ($('#inputEmail').val() == "") ) {
+      alert('The form appears to be missing information. Please fill in all input boxes.');
+      console.log('Invalid/empty input');
+      return;
+    }
+
+    //Put some code here to check against existing user names.
+
+    //Submit the data to the server.
+    $.post('http://'+global.serverIp+':'+global.serverPort+'/api/nrpproject/create', projectData, function(data) {
+      //debugger;
+
+      if( data.nrpproject._id != "" ) {
+        console.log('Success!');
+      }
+    });
+
+    /* END SUBMIT MODEL DATA */
+      
+      
+    /* BEGIN SEND EMAIL */
+      
     var destination_email = "chris.troutner@gmail.com";
     var subject = "RPiOVN: New Project Application: ";
     var message = "<!DOCTYPE html><html lang='en'><body>";
@@ -168,11 +219,14 @@
       $('#successMsg2').css('font-weight', 'bold');
     });
 
+    /* END SEND EMAIL */
+      
   });
 
 </script>
 
     
+<!-- COPY END --> 
   </div>
   
 </section>
