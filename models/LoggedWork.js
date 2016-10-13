@@ -19,11 +19,7 @@ LoggedWork.add({
         hours: {type: Number}
 });
 
-LoggedWork.schema.virtual('content.full').get(function () {
-        return this.content.extended || this.content.brief;
-});
 
 LoggedWork.defaultColumns = 'project, typeOfWork, user';
 LoggedWork.register();
 
-//fileList: { type: Types.TextArray }
