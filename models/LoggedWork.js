@@ -12,7 +12,8 @@ LoggedWork.add({
 
         user: { type: Types.Relationship, ref: 'User', index: true },
         typeOfWork: {type: String },
-        project: {type: String }, //This will eventually be a relationship to a project model
+        //project: {type: String }, //This will eventually be a relationship to a project model
+        project: { type: Types.Relationship, ref: 'Project', index: true},
         startTime: {type: Types.Date},
         endTime: {type: Types.Date},
         details: {type: String},
