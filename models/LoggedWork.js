@@ -6,7 +6,7 @@ var Types = keystone.Field.Types;
  * ==========
  */
 
-var LoggedWord = new keystone.List('LoggedWork');
+var LoggedWork = new keystone.List('LoggedWork');
 
 LoggedWork.add({
 
