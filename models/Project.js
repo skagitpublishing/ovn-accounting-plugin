@@ -20,7 +20,8 @@ Project.add({
                 extended: { type: Types.Html, wysiwyg: true, height: 400 },
         },
         projectContact: { type: Types.Relationship, ref: 'User'},
-        contributors: { type: Types.TextArray } //An array of IDs of users that have contributed to the project.
+        contributors: { type: Types.TextArray }, //An array of IDs of users that have contributed to the project.
+        projectWork: { type: Types.TextArray } //An array of IDs of LoggedWork models associated with this project.
 
 });
 
