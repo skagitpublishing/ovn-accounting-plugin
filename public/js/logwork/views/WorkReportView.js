@@ -93,6 +93,7 @@ define([
       });
       
       this.populateTable();
+      $('#resultsTable').tableExport();
       
 			return this;
 		},
