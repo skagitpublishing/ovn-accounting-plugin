@@ -89,15 +89,15 @@ define([
       
       //Loop through each item in the log work collection.
       for(var i=0; i < global.logWorkCollection.length; i++) {
-        var thisModel = global.logWorkCollection.get(0);
+        var thisModel = global.logWorkCollection.models[i];
         
         var lineItem = new Object();
-        lineItem.date = thisModel.get('date');
-        lineItem.user = "";
-        lineItem.project = "";
-        lineItem.typeOfWork = "";
-        lineItem.hours = "";
-        lineItem.description = "";
+        lineItem.date = thisModel.get('startTime');
+        lineItem.user = thisModel.get('user');
+        lineItem.project = thisModel.get('project');
+        lineItem.typeOfWork = thisModel.get('typeOfWork');
+        lineItem.hours = thisModel.get('hours');
+        lineItem.description = thisModel.get('details');
         
         tableData.push(lineItem);
       }
