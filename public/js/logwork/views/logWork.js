@@ -59,7 +59,9 @@ define([
         return;
       }
       
-      
+      $.get('/api/logwork/list', '', function(data) {
+        debugger;
+      });
     }
     
 	});
