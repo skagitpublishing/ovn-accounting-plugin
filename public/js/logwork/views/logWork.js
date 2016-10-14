@@ -4,8 +4,9 @@ define([
 	'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',  
+  'bootstrap-datepicker.min',
   'text!../../../js/logwork/templates/logWork.html',
-], function ($, _, Backbone, LogWorkTemplate) {
+], function ($, _, Backbone, Datepicker, LogWorkTemplate) {
 	'use strict';
 
 	var LogWorkView = Backbone.View.extend({
