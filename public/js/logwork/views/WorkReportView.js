@@ -5,10 +5,11 @@ define([
 	'underscore_1.3.3',
 	'backbone_0.9.2',  
   '/js/lib/tableExport.js',
+  '/js/lib/jquery.base64.js',
   'text!../../../js/logwork/templates/WorkReport.html',
   '/js/lib/bootstrap-table.js',
   '/js/lib/bootstrap-table-export.js',
-], function ($, _, Backbone, TableExport, WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
+], function ($, _, Backbone, TableExport, jQueryBase64, WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
 	'use strict';
 
 	var WorkReportView = Backbone.View.extend({
