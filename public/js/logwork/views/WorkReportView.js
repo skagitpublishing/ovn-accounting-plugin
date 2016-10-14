@@ -48,8 +48,8 @@ define([
         exportDataType: 'selected',
         exportType: ['csv', 'excel', 'json', 'txt'],
         exportOptions: {
-          'fileName': 'RPiOVN-Work-Log',
-          'type': 'csv'
+          fileName: 'RPiOVN-Work-Log',
+          type: 'csv'
         },
         columns: [{
             field: 'date',
