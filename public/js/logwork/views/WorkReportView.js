@@ -92,7 +92,7 @@ define([
         var thisModel = global.logWorkCollection.models[i];
         
         var lineItem = new Object();
-        lineItem.date = thisModel.get('startTime');
+        lineItem.date = new Date(thisModel.get('startTime'));
         lineItem.user = thisModel.get('user');
         lineItem.project = thisModel.get('project');
         lineItem.typeOfWork = thisModel.get('typeOfWork');
