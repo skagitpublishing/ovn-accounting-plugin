@@ -7,6 +7,8 @@ define([
 	'../../js/logwork/views/leftMenuView.js',
   '../../js/logwork/views/dashboardView.js',
   '../../js/logwork/views/logWork.js',
+  '../../js/logwork/model/logWorkModel.js',
+  '../../js/logwork/model/logWorkCollection.js',
   '../../js/app/views/modalView.js',
   'adminlte',
   'logs',
@@ -14,7 +16,7 @@ define([
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
-              LogWorkView,
+              LogWorkView, LogWorkModel, LogWorkCollection,
               ModalView,
               AdminLTE, Logs, serverData) {
 
@@ -85,6 +87,13 @@ define([
   //  global.postsCollection = new PostsCollection(); //Collection Instance
   //  global.postsCollection.fetch(); 
   //}
+  
+  if(global.logWorkCollection == undefined) {
+    global.logWorkModel = new LogWorkModel();
+    
+    global.logWorkCollection = new LogWorkCollection();
+    global.logWorkCollection.fetch();
+  }
   
   
   //POST CATEGORY MODEL AND COLLECTION
