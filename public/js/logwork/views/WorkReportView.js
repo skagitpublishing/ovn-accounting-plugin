@@ -4,10 +4,11 @@ define([
 	'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',  
+  '/js/lib/tableExport.js',
   'text!../../../js/logwork/templates/WorkReport.html',
   '/js/lib/bootstrap-table.js',
   '/js/lib/bootstrap-table-export.js',
-], function ($, _, Backbone, WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
+], function ($, _, Backbone, TableExport, WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
 	'use strict';
 
 	var WorkReportView = Backbone.View.extend({
