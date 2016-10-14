@@ -38,7 +38,7 @@ define([
 		},
 
     render: function () {
-      debugger;
+      //debugger;
       
       this.$el.html(this.template);
       
@@ -99,7 +99,7 @@ define([
     
     //This function populates the table with all Work Log data.
     populateTable: function() {
-      debugger;
+      //debugger;
       
       var tableData = [];
       
