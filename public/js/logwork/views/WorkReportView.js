@@ -25,42 +25,7 @@ define([
 
 		initialize: function () {
 
-      //Hide the initial 'Loading...' message.
-      this.$el.find('#resultsMessage').hide();
-      
-      this.$el.find('#resultsTable').bootstrapTable({
-          sortName: 'date',
-          sortOrder: 'desc',
-          showExport: true,
-          columns: [{
-              field: 'date',
-              title: 'Date',
-              sortable: true
-          }, {
-              field: 'user',
-              title: 'User',
-              sortable: true
-          }, {
-              field: 'project',
-              title: 'Project',
-              sortable: true
-          }, {
-              field: 'typeOfWork',
-              title: 'Type of Work',
-              sortable: true
-          }, {
-              field: 'hours',
-              title: 'Hours',
-              sortable: true
-          }, {
-              field: 'description',
-              title: 'Description',
-              sortable: true
-          }],
-
-        });
-      
-      this.populateTable();
+     
 		},
 
     render: function () {
@@ -69,6 +34,43 @@ define([
       this.$el.html(this.template);
       
       $('#WorkReportView').show();
+      
+      //Hide the initial 'Loading...' message.
+      this.$el.find('#resultsMessage').hide();
+      
+      this.$el.find('#resultsTable').bootstrapTable({
+        sortName: 'date',
+        sortOrder: 'desc',
+        showExport: true,
+        columns: [{
+            field: 'date',
+            title: 'Date',
+            sortable: true
+        }, {
+            field: 'user',
+            title: 'User',
+            sortable: true
+        }, {
+            field: 'project',
+            title: 'Project',
+            sortable: true
+        }, {
+            field: 'typeOfWork',
+            title: 'Type of Work',
+            sortable: true
+        }, {
+            field: 'hours',
+            title: 'Hours',
+            sortable: true
+        }, {
+            field: 'description',
+            title: 'Description',
+            sortable: true
+        }],
+
+      });
+      
+      this.populateTable();
       
 			return this;
 		},
