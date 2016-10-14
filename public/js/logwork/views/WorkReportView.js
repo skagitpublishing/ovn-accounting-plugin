@@ -124,6 +124,12 @@ define([
     
     exportTable: function() {
       debugger;
+      //https://github.com/hhurz/tableExport.jquery.plugin
+      $('#resultsTable').tableExport({
+        type: 'csv', 
+        fileName: 'test',
+        htmlContent: false
+      });
     }
     
     
