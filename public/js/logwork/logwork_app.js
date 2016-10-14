@@ -51,45 +51,14 @@ define([
   global.dashboardView.render();
   
   global.logWorkView = new LogWorkView();
-  debugger;
   global.workReportView = new WorkReportView();
-  
-  //global.pagesView = new PagesView();
-  //global.postsView = new PostsView();
-  
-  //global.imageLibraryView = new ImageLibraryView();
-  
-  //global.imageAddNewView = new ImageAddNewView();
-  
-  //global.pagesAddNewView = new PagesAddNewView();
-  //global.postsAddNewView = new PostsAddNewView();
-  
-  //global.fileLibraryView = new FileLibraryView();
-  
-  //global.categoriesView = new CategoriesView();
-  //global.sectionsView = new SectionsView();
+
   
   //Create the modal and render the view.
   global.modalView = new ModalView();
   global.modalView.render();
   
-  
-  //Generate the ImageUpload Collection if it hasn't been created yet.
-  //if(global.imageUploadCollection == undefined) {
-    //debugger;
-  //  global.imageUploadCollection = new ImageUploadCollection(); //Collection Instance
-  //  global.imageUploadCollection.fetch();
-  //}
-  
-  //POST MODEL AND COLLECTION
-  //Generate the Post Collection if it hasn't been created yet.
-  //if(global.postsCollection == undefined) {
-
- //   global.postModel = new PostModel();
-
-  //  global.postsCollection = new PostsCollection(); //Collection Instance
-  //  global.postsCollection.fetch(); 
-  //}
+ 
   
   if(global.logWorkCollection == undefined) {
     global.logWorkModel = new LogWorkModel();
@@ -99,72 +68,6 @@ define([
   }
   
   
-  //POST CATEGORY MODEL AND COLLECTION
-  //Generate the PostCategory Collection if it hasn't been created yet.
-  //if(global.postCategoryCollection == undefined) {
-    //debugger;
-
-  //  global.postCategoryModel = new PostCategoryModel();
-
-  //  global.postCategoryCollection = new PostCategoryCollection(); //Collection Instance
-  //  global.postCategoryCollection.fetch(); 
-  //}
-  
-  //FILE UPLOAD MODEL AND COLLECTION
-  //if(global.fileUploadCollection == undefined) {
-    //debugger;
-  //  global.fileUploadCollection = new FileUploadCollection(); //Collection Instance
-  //  global.fileUploadCollection.fetch();
-  //}
-  
-  //PAGE MODEL AND COLLECITON
-  //Generate the Post Collection if it hasn't been created yet.
-  //if(global.pagesCollection == undefined) {
-
-  //  global.pageModel = new PageModel();
-
-  //  global.pagesCollection = new PagesCollection(); //Collection Instance
-  //  global.pagesCollection.fetch(); 
-  //}
-  
-  //PAGE SECTION MODEL AND COLLECTION
-  //Generate the PageSection Collection if it hasn't been created yet.
-  //if(global.pageSectionCollection == undefined) {
-    //debugger;
-
-  //  global.pageSectionModel = new PageSectionModel();
-
-  //  global.pageSectionCollection = new PageSectionCollection(); //Collection Instance
-  //  global.pageSectionCollection.fetch(); 
-  //}
-  
-  //NRP USER MODEL AND COLLECTION
-  //if(global.nrpUsersCollection == undefined) {
-    //debugger;
-
-  //  global.nrpUserModel = new NRPUserModel();
-
-  //  global.nrpUsersCollection = new NRPUsersCollection(); //Collection Instance
-  //  global.nrpUsersCollection.fetch(); 
-  //}
-  //global.nrpUsersView = new NRPUsersView();
-  
-  //NRP PROJECTS MODEL, COLLECTION, AND VIEW
-  //if(global.nrpProjectsCollection == undefined) {
-  //    global.nrpProjectModel = new NRPProjectModel();
-      
-  //    global.nrpProjectCollection = new NRPProjectCollection();
-  //    global.nrpProjectCollection.fetch();
-  //}
-  //global.nrpProjectsView = new NRPProjectsView();
-    
-  /*** BEGIN TESTING CODE ***/
-  //debugger;
-  
-  //Move the Cookie plugin to the global scope.
-  //global.cookie = Cookie;
-    
-  /*** END TESTING CODE ***/
   
   
   log.push('Finished executing logwork_app.js');
