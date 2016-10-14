@@ -25,7 +25,7 @@ define([
 			//'blur .edit':		'close'
       'click #dashboardLink': 'showDashboard',
       'click #logWorkLink': 'showLogWork',
-      'click #workReportView': 'showWorkReport'
+      'click #workReportLink': 'showWorkReport'
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since there's
