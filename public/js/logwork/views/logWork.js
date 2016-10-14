@@ -69,9 +69,9 @@ define([
       logWorkObj.loggedwork = new Object();
       //logWorkObj._id = "";
       logWorkObj.loggedwork.startTime = new Date(inputDate.val());
-      logWorkObj.loggedwork.startTime = logWorkObj.startTime.toISOString();
+      logWorkObj.loggedwork.startTime = logWorkObj.loggedwork.startTime.toISOString();
       logWorkObj.loggedwork.endTime = new Date(inputDate.val());
-      logWorkObj.loggedwork.endTime = logWorkObj.endTime.toISOString();
+      logWorkObj.loggedwork.endTime = logWorkObj.loggedwork.endTime.toISOString();
       logWorkObj.loggedwork.typeOfWork = inputWorkType.val();  //Needs to store save index as well.
       logWorkObj.loggedwork.project = "580122a8c0c9875bbafc6330";  //Needs to store ID of project
       logWorkObj.loggedwork.hours = Number(inputHours.val());
