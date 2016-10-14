@@ -12,14 +12,14 @@ define([
   //'/js/lib/xlsx.core.min.js',
   
   //https://github.com/clarketm/TableExport
-  '/js/lib/tableexport.min.js',
+  //'/js/lib/tableexport.min.js',
   
   'text!../../../js/logwork/templates/WorkReport.html',
   '/js/lib/bootstrap-table.js',
   '/js/lib/bootstrap-table-export.js',
 ], function ($, _, Backbone, 
               //TableExport, jQueryBase64, FileSave, XLSXCore,
-              FileSaver, TableExport,
+              FileSaver, //TableExport,
               WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
 	'use strict';
 
