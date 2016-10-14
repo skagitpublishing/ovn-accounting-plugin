@@ -14,7 +14,7 @@ define([
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
-              LogWork,
+              LogWorkView,
               ModalView,
               AdminLTE, Logs, serverData) {
 
