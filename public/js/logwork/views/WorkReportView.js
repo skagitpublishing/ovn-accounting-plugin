@@ -103,7 +103,7 @@ define([
         tableData.push(lineItem);
       }
       
-      this.$el.find('#resultsTable').bootstrapTable('load', tableData);
+      $('#resultsTable').bootstrapTable('load', tableData);
       log.push('Updated table with work log records.');
     }
     
