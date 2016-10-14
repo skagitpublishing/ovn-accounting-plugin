@@ -66,11 +66,13 @@ define([
       
       //Contruct the LoggedWork object.
       var logWorkObj = new Object();
-      logWorkObj.startTime = inputDate.val();
-      logWorkObj.endTime = inputDate.val();
+      logWorkObj.startTime = new Date(inputDate.val());
+      logWorkObj.startTime = logWorkObj.startTime.toISOString();
+      logWorkObj.endTime = new Date(inputDate.val());
+      logWorkObj.endTime = logWorkObj.endTime.toISOString();
       logWorkObj.typeOfWork = inputWorkType.val();  //Needs to store save index as well.
       logWorkObj.project = "580122a8c0c9875bbafc6330";  //Needs to store ID of project
-      logWorkObj.hours = inputHours.val();
+      logWorkObj.hours = Number(inputHours.val());
       logWorkObj.details = inputDesc.val();
       logWorkObj.user = userdata._id;
       
