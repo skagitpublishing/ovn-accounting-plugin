@@ -92,7 +92,7 @@ define([
       $('#app-location').text('Log Work');
       
       global.logWorkView.render();
-    }
+    },
     
     //This function shows the down-down menu for Pages in the left menu.
     //showPages: function (e) {
