@@ -4,12 +4,19 @@ define([
 	'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',  
+  
+  //https://github.com/hhurz/tableExport.jquery.plugin
   '/js/lib/tableExport.js',
   '/js/lib/jquery.base64.js',
+  '/js/lib/FileSaver.min.js',
+  '/js/lib/xlsx.core.min.js',
+  
   'text!../../../js/logwork/templates/WorkReport.html',
   '/js/lib/bootstrap-table.js',
   '/js/lib/bootstrap-table-export.js',
-], function ($, _, Backbone, TableExport, jQueryBase64, WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
+], function ($, _, Backbone, 
+              TableExport, jQueryBase64, FileSave, XLSXCore,
+              WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
 	'use strict';
 
 	var WorkReportView = Backbone.View.extend({
