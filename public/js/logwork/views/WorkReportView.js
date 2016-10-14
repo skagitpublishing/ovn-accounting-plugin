@@ -5,7 +5,9 @@ define([
 	'underscore_1.3.3',
 	'backbone_0.9.2',  
   'text!../../../js/logwork/templates/WorkReport.html',
-], function ($, _, Backbone, WorkReportTemplate) {
+  '/js/lib/bootstrap-table.js',
+  '/js/lib/bootstrap-table-export.js',
+], function ($, _, Backbone, WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
 	'use strict';
 
 	var WorkReportView = Backbone.View.extend({
