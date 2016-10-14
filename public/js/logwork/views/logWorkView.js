@@ -95,7 +95,7 @@ define([
       */
       
       
-      $.get('/api/logwork/create', this.model.attributes, function(data) {
+      $.post('/api/logwork/create', this.model.attributes, function(data) {
         debugger;
         console.log('Data created successfully!');
       }).fail(function(err) {
