@@ -82,6 +82,7 @@ define([
     },
     
     showWorkReport: function() {
+      debugger;
       $('#dashboardView').hide();
       $('#logWorkView').hide();
       $('#workReportView').show();

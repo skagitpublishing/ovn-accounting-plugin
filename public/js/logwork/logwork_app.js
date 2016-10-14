@@ -51,6 +51,7 @@ define([
   global.dashboardView.render();
   
   global.logWorkView = new LogWorkView();
+  debugger;
   global.workReportView = new WorkReportView();
   
   //global.pagesView = new PagesView();
