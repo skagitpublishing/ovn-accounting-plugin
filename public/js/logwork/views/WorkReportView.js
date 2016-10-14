@@ -6,16 +6,20 @@ define([
 	'backbone_0.9.2',  
   
   //https://github.com/hhurz/tableExport.jquery.plugin
-  '/js/lib/tableExport.js',
-  '/js/lib/jquery.base64.js',
+  //'/js/lib/tableExport.js',
+  //'/js/lib/jquery.base64.js',
   '/js/lib/FileSaver.min.js',
-  '/js/lib/xlsx.core.min.js',
+  //'/js/lib/xlsx.core.min.js',
+  
+  //https://github.com/clarketm/TableExport
+  '/js/lib/tableexport.min.js',
   
   'text!../../../js/logwork/templates/WorkReport.html',
   '/js/lib/bootstrap-table.js',
   '/js/lib/bootstrap-table-export.js',
 ], function ($, _, Backbone, 
-              TableExport, jQueryBase64, FileSave, XLSXCore,
+              //TableExport, jQueryBase64, FileSave, XLSXCore,
+              FileSaver, TableExport,
               WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
 	'use strict';
 
@@ -124,12 +128,15 @@ define([
     
     exportTable: function() {
       debugger;
+      
       //https://github.com/hhurz/tableExport.jquery.plugin
-      $('#resultsTable').tableExport({
-        type: 'csv', 
-        fileName: 'test',
-        htmlContent: false
-      });
+      //$('#resultsTable').tableExport({
+      //  type: 'csv', 
+      //  fileName: 'test',
+      //  htmlContent: false
+      //});
+      
+      
     }
     
     
