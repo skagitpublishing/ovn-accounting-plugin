@@ -12,7 +12,7 @@ define([
   //'/js/lib/xlsx.core.min.js',
   
   //https://github.com/clarketm/TableExport
-  '/js/lib/FileSaver.min.js',
+  '/js/lib/file-saver.js',
   '/js/lib/tableexport.min.js',
   
   'text!../../../js/logwork/templates/WorkReport.html',
