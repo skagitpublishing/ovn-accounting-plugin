@@ -64,7 +64,22 @@ define([
         debugger;
       });
       
+      //Create an empty model to store the page data.
+      this.model = global.logWorkCollection.models[0].clone();
+      this.model.id = "";
+      this.model.set('_id', '');
+      this.model.attributes.startTime = new Date(inputDate.val());
+      this.model.attributes.startTime = this.model.attributes.startTime.toISOString();
+      this.model.attributes.endTime = new Date(inputDate.val());
+      this.model.attributes.endTime = this.model.attributes.endTime.toISOString();
+      this.model.attributes.typeOfWork = inputWorkType.val();
+      this.model.attributes.project = "580122a8c0c9875bbafc6330";
+      this.model.attributes.hours = Number(inputHours.val());
+      this.model.attributes.details = inputDesc.val();
+      this.model.attributes.user = userdata._id;
+      
       //Contruct the LoggedWork object.
+      /*
       var logWorkObj = new Object();
       logWorkObj.loggedwork = new Object();
       logWorkObj.loggedwork._id = "";
@@ -77,13 +92,16 @@ define([
       logWorkObj.loggedwork.hours = Number(inputHours.val());
       logWorkObj.loggedwork.details = inputDesc.val();
       logWorkObj.loggedwork.user = userdata._id;
+      */
       
-      $.get('/api/logwork/create', logWorkObj, function(data) {
+      
+      $.get('/api/logwork/create', this.model.attributes, function(data) {
         debugger;
         console.log('Data created successfully!');
       }).fail(function(err) {
         debugger;
       });
+      
       
     }
     
