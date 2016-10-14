@@ -9,8 +9,8 @@ define([
   '../../js/logwork/views/logWorkView.js',
   '../../js/logwork/model/logWorkModel.js',
   '../../js/logwork/model/logWorkCollection.js',
-  '../../js/app/views/modalView.js',
   '../../js/logwork/views/WorkReportView.js',
+  '../../js/app/views/modalView.js',
   'adminlte',
   'logs',
   '../../js/serversettings.js'
