@@ -14,6 +14,7 @@ cp models/*.js ../myCMS/models/
 echo Copying Keystone routes...
 cp routes/index.js ../myCMS/routes/
 cp routes/api/*.js ../myCMS/routes/api/
+cp routes/views/*.js ../myCMS/routes/views/
 
 echo Copying public files...
 cp public/favicon.ico ../myCMS/public
