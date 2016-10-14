@@ -25,22 +25,7 @@ define([
 			//'blur .edit':		'close'
       'click #dashboardLink': 'showDashboard',
       'click #logWorkLink': 'showLogWork',
-      //'click #pagesLink': 'showPages',
-      //'click #pageList': 'showPages2',
-      //'click #postsLink': 'showPosts',
-      //'click #postList': 'showPosts2',
-      //'click #postAddNew': 'showPostsAddNew',
-      //'click #pageAddNew': 'showPagesAddNew',
-      //'click #mediaLink': 'showImageLibrary',
-      //'click #imageLibraryLink': 'showImageLibrary2',
-      //'click #imageAddNew': 'showImageAddNew',
-      //'click .sidebar li a': 'treeMenu',
-      //'click #fileLibraryLink': 'showFileLibrary',
-      //'click #categories': 'showCategories',
-      //'click #sections': 'showSections',
-      //'click #nrpLink': 'openNRPMenu',
-      //'click #nrpUsersLink': 'showNRPUsers',
-      //'click #nrpProjectsLink': 'showNRPProjects'
+      'click #workReportView': 'showWorkReport'
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since there's
@@ -69,6 +54,7 @@ define([
       //Hide old Views and show new one.
       $('#dashboardView').show();
       $('#logWorkView').hide();
+      $('#workReportView').hide();
       
       
       //Remove the 'active' class from the menu item, unless it's a treeview menu item.
@@ -88,10 +74,21 @@ define([
     showLogWork: function() {
       $('#dashboardView').hide();
       $('#logWorkView').show();
+      $('#workReportView').hide();
       
       $('#app-location').text('Log Work');
       
       global.logWorkView.render();
+    },
+    
+    showWorkReport: function() {
+      $('#dashboardView').hide();
+      $('#logWorkView').hide();
+      $('#workReportView').show();
+      
+      $('#app-location').text('Work Reports');
+      
+      global.workReportView.render();
     },
     
     //This function shows the down-down menu for Pages in the left menu.

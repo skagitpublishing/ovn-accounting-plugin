@@ -10,13 +10,14 @@ define([
   '../../js/logwork/model/logWorkModel.js',
   '../../js/logwork/model/logWorkCollection.js',
   '../../js/app/views/modalView.js',
+  '../../js/app/views/WorkReportView.js'
   'adminlte',
   'logs',
   '../../js/serversettings.js'
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
-              LogWorkView, LogWorkModel, LogWorkCollection,
+              LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView,
               ModalView,
               AdminLTE, Logs, serverData) {
 
@@ -50,6 +51,7 @@ define([
   global.dashboardView.render();
   
   global.logWorkView = new LogWorkView();
+  global.workReportView = new WorkReportView();
   
   //global.pagesView = new PagesView();
   //global.postsView = new PostsView();
