@@ -38,7 +38,8 @@ define([
       //Hide the initial 'Loading...' message.
       this.$el.find('#resultsMessage').hide();
       
-      this.$el.find('#resultsTable').bootstrapTable({
+      //this.$el.find('#resultsTable').bootstrapTable({
+      $('#resultsTable').bootstrapTable({
         sortName: 'date',
         sortOrder: 'desc',
         showExport: true,
