@@ -10,7 +10,7 @@ define([
   '../../js/logwork/model/logWorkModel.js',
   '../../js/logwork/model/logWorkCollection.js',
   '../../js/app/views/modalView.js',
-  '../../js/app/views/WorkReportView.js'
+  '../../js/app/views/WorkReportView.js',
   'adminlte',
   'logs',
   '../../js/serversettings.js'
