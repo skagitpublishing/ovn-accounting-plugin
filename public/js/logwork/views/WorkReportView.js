@@ -20,7 +20,7 @@ define([
 
 		// The DOM events specific to an item.
 		events: {
-
+      'click #exportButton': 'exportTable'
 		},
 
 		initialize: function () {
@@ -105,6 +105,10 @@ define([
       
       $('#resultsTable').bootstrapTable('load', tableData);
       log.push('Updated table with work log records.');
+    },
+    
+    exportTable: function() {
+      debugger;
     }
     
     
