@@ -19,7 +19,7 @@ define([
 
 		// The DOM events specific to an item.
 		events: {
-
+      'click #submitButton': 'logWork'
 		},
 
 		initialize: function () {
@@ -40,6 +40,11 @@ define([
       //debugger;
       //global.modalView.render();
       global.modalView.openModal();
+    },
+    
+    //This function is called when the 'Submit' button is clicked.
+    logWork: function() {
+      debugger;
     }
     
 	});
