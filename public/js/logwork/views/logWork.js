@@ -66,6 +66,7 @@ define([
       
       //Contruct the LoggedWork object.
       var logWorkObj = new Object();
+      logWorkObj.loggedwork = new Object();
       //logWorkObj._id = "";
       logWorkObj.loggedwork.startTime = new Date(inputDate.val());
       logWorkObj.loggedwork.startTime = logWorkObj.startTime.toISOString();
