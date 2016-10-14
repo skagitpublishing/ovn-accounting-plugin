@@ -99,8 +99,16 @@ exports = module.exports = function(app) {
   app.all('/api/nrpproject/create', keystone.middleware.api, routes.api.nrpproject.create);
   app.get('/api/nrpproject/:id/remove', keystone.middleware.api, routes.api.nrpproject.remove);
   
+  //Private Pages
+  app.get('/api/privatepage/list', keystone.middleware.api, routes.api.privatepage.list);
+	app.all('/api/privatepage/create', keystone.middleware.api, routes.api.privatepage.create);
+	app.get('/api/privatepage/:id', keystone.middleware.api, routes.api.privatepage.get);
+	app.all('/api/privatepage/:id/update', keystone.middleware.api, routes.api.privatepage.update);
+	app.get('/api/privatepage/:id/remove', keystone.middleware.api, routes.api.privatepage.remove);
+  
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
   app.get('/dashboard', middleware.requireUser, routes.views.dashboard);
+  app.get('/logwork', middleware.requireUser, routes.views.logwork);
 	
 };
