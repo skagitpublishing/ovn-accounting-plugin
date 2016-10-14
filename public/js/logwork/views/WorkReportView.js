@@ -45,6 +45,9 @@ define([
         sortName: 'date',
         sortOrder: 'desc',
         showExport: true,
+        exportOptions: {
+          'fileName': 'RPiOVN-Work-Log'
+        },
         columns: [{
             field: 'date',
             title: 'Date',
