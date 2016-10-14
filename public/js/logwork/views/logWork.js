@@ -66,16 +66,16 @@ define([
       
       //Contruct the LoggedWork object.
       var logWorkObj = new Object();
-      logWorkObj._id = "";
-      logWorkObj.startTime = new Date(inputDate.val());
-      logWorkObj.startTime = logWorkObj.startTime.toISOString();
-      logWorkObj.endTime = new Date(inputDate.val());
-      logWorkObj.endTime = logWorkObj.endTime.toISOString();
-      logWorkObj.typeOfWork = inputWorkType.val();  //Needs to store save index as well.
-      logWorkObj.project = "580122a8c0c9875bbafc6330";  //Needs to store ID of project
-      logWorkObj.hours = Number(inputHours.val());
-      logWorkObj.details = inputDesc.val();
-      logWorkObj.user = userdata._id;
+      //logWorkObj._id = "";
+      logWorkObj.loggedwork.startTime = new Date(inputDate.val());
+      logWorkObj.loggedwork.startTime = logWorkObj.startTime.toISOString();
+      logWorkObj.loggedwork.endTime = new Date(inputDate.val());
+      logWorkObj.loggedwork.endTime = logWorkObj.endTime.toISOString();
+      logWorkObj.loggedwork.typeOfWork = inputWorkType.val();  //Needs to store save index as well.
+      logWorkObj.loggedwork.project = "580122a8c0c9875bbafc6330";  //Needs to store ID of project
+      logWorkObj.loggedwork.hours = Number(inputHours.val());
+      logWorkObj.loggedwork.details = inputDesc.val();
+      logWorkObj.loggedwork.user = userdata._id;
       
       $.get('/api/logwork/create', logWorkObj, function(data) {
         debugger;
