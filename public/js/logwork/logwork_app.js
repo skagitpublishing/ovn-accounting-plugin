@@ -6,7 +6,7 @@ define([
   //'js.cookie',
 	'../../js/logwork/views/leftMenuView.js',
   '../../js/logwork/views/dashboardView.js',
-  '../../js/logwork/views/logWork.js',
+  '../../js/logwork/views/logWorkView.js',
   '../../js/logwork/model/logWorkModel.js',
   '../../js/logwork/model/logWorkCollection.js',
   '../../js/app/views/modalView.js',
