@@ -2,7 +2,7 @@ define([
   'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',
-  './logWorkModel',
+  './logWorkModel.js',
 ], function ($, _, Backbone, LogWorkModel) {
 
   
