@@ -57,13 +57,13 @@ define([
       $('#resultsTable').bootstrapTable({
         sortName: 'date',
         sortOrder: 'desc',
-        showExport: true,
-        exportDataType: 'selected',
-        exportType: ['csv', 'excel', 'json', 'txt'],
-        exportOptions: {
-          fileName: 'RPiOVN-Work-Log',
-          type: 'csv'
-        },
+        //showExport: true,
+        //exportDataType: 'selected',
+        //exportType: ['csv', 'excel', 'json', 'txt'],
+        //exportOptions: {
+        //  fileName: 'RPiOVN-Work-Log',
+        //  type: 'csv'
+        //},
         columns: [{
             field: 'date',
             title: 'Date',
