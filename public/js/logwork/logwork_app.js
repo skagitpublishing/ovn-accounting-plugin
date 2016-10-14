@@ -6,7 +6,7 @@ define([
   //'js.cookie',
 	'../../js/logwork/views/leftMenuView.js',
   '../../js/logwork/views/dashboardView.js',
-  
+  '../../js/logwork/views/logWork.js',
   '../../js/app/views/modalView.js',
   'adminlte',
   'logs',
@@ -14,7 +14,7 @@ define([
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
-              
+              LogWork,
               ModalView,
               AdminLTE, Logs, serverData) {
 
@@ -46,6 +46,8 @@ define([
   global.dashboardView = new DashboardView();
   //debugger;
   global.dashboardView.render();
+  
+  global.logWorkView = new LogWorkView();
   
   //global.pagesView = new PagesView();
   //global.postsView = new PostsView();

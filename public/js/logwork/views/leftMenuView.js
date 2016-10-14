@@ -24,6 +24,7 @@ define([
 			//'keydown .edit':	'revertOnEscape',
 			//'blur .edit':		'close'
       'click #dashboardLink': 'showDashboard',
+      'click #logWorkLink': 'showLogWork',
       //'click #pagesLink': 'showPages',
       //'click #pageList': 'showPages2',
       //'click #postsLink': 'showPosts',
@@ -67,17 +68,7 @@ define([
       
       //Hide old Views and show new one.
       $('#dashboardView').show();
-      //$('#pagesView').hide();
-      //$('#imageLibraryView').hide();
-      //$('#imageAddNewView').hide();
-      //$('#pagesAddNewView').hide();
-      //$('#fileLibraryView').hide();
-      //$('#categoriesView').hide();
-      //$('#postsView').hide();
-      //$('#postsAddNewView').hide();
-      //$('#sectionsView').hide();
-      //$('#nrpUsersView').hide();
-      //$('#nrpProjectsView').hide();
+      $('#logWorkView').hide();
       
       
       //Remove the 'active' class from the menu item, unless it's a treeview menu item.
@@ -93,6 +84,15 @@ define([
     
       $('#app-location').text('Dashboard');
     },
+    
+    showLogWork: function() {
+      $('#dashboardView').hide();
+      $('#logWorkView').show();
+      
+      $('#app-location').text('Log Work');
+      
+      global.logWorkView.render();
+    }
     
     //This function shows the down-down menu for Pages in the left menu.
     //showPages: function (e) {
