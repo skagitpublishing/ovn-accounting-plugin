@@ -22,7 +22,7 @@ define([
         //debugger;        
       //  this.save();
       //});
-      debugger;
+      //debugger;
 
       //this.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/logwork/'+this.id+'/update';
       this.url = '/api/logwork/'+this.id+'/update';
