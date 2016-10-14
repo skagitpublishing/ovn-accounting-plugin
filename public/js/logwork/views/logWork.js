@@ -8,7 +8,7 @@ define([
 ], function ($, _, Backbone, LogWorkTemplate) {
 	'use strict';
 
-	var DashboardView = Backbone.View.extend({
+	var LogWorkView = Backbone.View.extend({
 
 		tagName:  'div',
     
