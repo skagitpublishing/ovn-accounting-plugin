@@ -29,7 +29,7 @@ define([
 		},
 
     render: function () {
-      //debugger;
+      debugger;
       
       this.$el.html(this.template);
       
