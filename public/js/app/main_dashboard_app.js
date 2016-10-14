@@ -103,6 +103,10 @@ define([
   global.categoriesView = new CategoriesView();
   global.sectionsView = new SectionsView();
   
+  //Create the modal and render the view.
+  global.modalView = new ModalView();
+  global.modalView.render();
+  
   
   //Generate the ImageUpload Collection if it hasn't been created yet.
   if(global.imageUploadCollection == undefined) {

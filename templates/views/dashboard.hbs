@@ -387,14 +387,19 @@
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
-{{#if user}}
-  <script type="text/javascript">
-    var userdata = {{{JSON user}}}
-  </script>
-  <!-- <p>KeystoneJS data loaded.</p> -->
-{{else}}
-  <!-- <h3 class="text-muted">KeystoneJS data not loaded.</h3> -->
-{{/if}}
+    {{#if user}}
+      <script type="text/javascript">
+        var userdata = {{{JSON user}}}
+      </script>
+      <!-- <p>KeystoneJS data loaded.</p> -->
+    {{else}}
+      <!-- <h3 class="text-muted">KeystoneJS data not loaded.</h3> -->
+    {{/if}}
+    
+    <!-- The bootstrap-modal -->
+    <!-- Modal -->
+    <div class="container" id="modalView" hidden>            
+    </div>
     
   </body>
 </html>
