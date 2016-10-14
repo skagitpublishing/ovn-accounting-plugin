@@ -106,6 +106,13 @@ exports = module.exports = function(app) {
 	app.all('/api/privatepage/:id/update', keystone.middleware.api, routes.api.privatepage.update);
 	app.get('/api/privatepage/:id/remove', keystone.middleware.api, routes.api.privatepage.remove);
   
+  //Log Work Route
+  app.get('/api/logwork/list', keystone.middleware.api, routes.api.logwork.list);
+  app.get('/api/logwork/:id', keystone.middleware.api, routes.api.logwork.get);
+  app.all('/api/logwork/:id/update', keystone.middleware.api, routes.api.logwork.update);
+  app.all('/api/logwork/create', keystone.middleware.api, routes.api.logwork.create);
+  app.get('/api/logwork/:id/remove', keystone.middleware.api, routes.api.logwork.remove);
+  
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
   app.get('/dashboard', middleware.requireUser, routes.views.dashboard);

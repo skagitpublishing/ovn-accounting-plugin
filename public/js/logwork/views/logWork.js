@@ -45,6 +45,21 @@ define([
     //This function is called when the 'Submit' button is clicked.
     logWork: function() {
       debugger;
+      
+      //Get handles on the form elements
+      var inputDate = $('#logDate');
+      var inputWorkType = $('#logWorkType');
+      var inputProject = $('#logProject');
+      var inputHours = $('#logHour');
+      var inputDesc = $('#logDesc');
+      
+      //Error checking
+      if( (inputDate.val() == "") || (inputHours.val() == "") || (inputDesc.val() == "") ) {
+        alert('Form is incomplete! Please completely fill out the form and then submit again.');
+        return;
+      }
+      
+      
     }
     
 	});
