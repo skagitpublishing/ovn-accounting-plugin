@@ -4,13 +4,13 @@ define([
 	'backbone_0.9.2',
   'bootstrap.min',
   //'js.cookie',
-	'../../js/logwork/views/leftMenuView',
-  '../../js/logwork/views/dashboardView',
+	'../../js/logwork/views/leftMenuView.js',
+  '../../js/logwork/views/dashboardView.js',
   
   '../../js/app/views/modalView.js',
   'adminlte',
   'logs',
-  '../../js/serversettings'
+  '../../js/serversettings.js'
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
