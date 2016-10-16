@@ -62,7 +62,7 @@ exports.create = function(req, res) {
 /**
  * Get User by ID
  */
-/*
+
 exports.update = function(req, res) {
 	User.model.findById(req.params.id).exec(function(err, item) {
 		
@@ -83,7 +83,7 @@ exports.update = function(req, res) {
 		
 	});
 }
-*/
+
 
 /**
  * Delete User by ID

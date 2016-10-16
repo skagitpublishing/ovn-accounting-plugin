@@ -109,9 +109,35 @@ define([
         debugger;
         console.log('Data created successfully!');
         
-        //Update the project model with the GUID to this logWork model as well as the GUID of this contributor.
+        var logWorkId = data.loggedwork._id; //The ID of this newly created logWork model.
+        var userId = data.loggedwork.user; //The ID of the user associated with this logWork model.
+        var projectId = data.loggedwork.project;
+        
+        //Update the project model with the GUID to this logWork model.
+        var projectModel = global.projectCollection.get(projectId);
+        var projectWork = projectModel.get('projectWork');
+        projectWork.push(logWorkId);
+        projectModel.set('projectWork', project);
+        
+        //Update the project model with the GUID to this contributor.
+        var projectContributors = projectModel.get('contributors');
+        if(projectContributors.indexOf(userId) == -1) {
+          projectContributors.push(userId);
+          projectModel.set('contributors', projectContributors);
+        }
+        
+        //Update the model.
+        projectModel.save();
         
         //Update the User model with a GUID to this logWork model.
+        var userModel = global.userCollection.get(userId);
+        var projectContributed = userModel.get('projectsContributed');
+        if(projectsContributed.indexOf(projectId) == -1) {
+          projectsContributed.push(projectId);
+          userModel.set('projectsContributed', projectsContributed);
+        }
+        userModel.save();
+        
         
         //Refresh the logWork Collection.
         global.logWorkCollection.fetch();
