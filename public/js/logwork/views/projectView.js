@@ -69,7 +69,6 @@ define([
       //Create the pie chart
       this.drawPieChart(projModel);
       
-      debugger;
     },
     
     //This function returns an index to the global.projectCollection model that matches the string value passed as input.
@@ -93,7 +92,7 @@ define([
     
     //This function draws a pie chart on the view. It expects to be given a project model as input.
     drawPieChart: function(projModel) {
-      debugger;
+      //debugger;
       
       var projectStats = this.getProjectStats(projModel.get('projectWork'));
       
@@ -171,7 +170,7 @@ define([
     //This function expects an array of LogWork model GUIDs.
     //It returns a 'stats' object containing the total hours worked, the users, and the number of hours per user.
     getProjectStats: function(workArray) {
-      debugger;
+      //debugger;
       
       var stats = new Object();
       stats.totalHours = 0;
