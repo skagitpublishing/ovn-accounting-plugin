@@ -38,7 +38,8 @@ define([
       },
       'projectContact': '',
       'contributors': [],
-      'projectWork': []
+      'projectWork': [],
+      'typesOfWork': []
     },
     
     //Override the default Backbone save() function with one that our API understands.

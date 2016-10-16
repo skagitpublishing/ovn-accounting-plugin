@@ -21,7 +21,8 @@ Project.add({
         },
         projectContact: { type: Types.Relationship, ref: 'User'},
         contributors: { type: Types.TextArray }, //An array of IDs of users that have contributed to the project.
-        projectWork: { type: Types.TextArray } //An array of IDs of LoggedWork models associated with this project.
+        projectWork: { type: Types.TextArray }, //An array of IDs of LoggedWork models associated with this project.
+        typesOfWork: { type: Types.TextArray }
 
 });
 
