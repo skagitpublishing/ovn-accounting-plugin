@@ -103,6 +103,20 @@ define([
         userNames[i] = this.getUserName(projectStats.users[i]);
       }
       
+      //Create the table
+      var table = this.$el.find('#projectTable');
+      for(var i=0; i < projectStats.users.length; i++) {
+        var htmlStr = "<tr><td>";
+        htmlStr += userNames[i];
+        htmlStr += '</td><td>'+projectStats.userHours[i];
+        htmlStr += "</td></tr>";
+        table.append(htmlStr);
+      }
+      //Append the bottom of the table with a total of hours
+      table.append('<tr><td><b>Total</b></td><td><b>'+projectStats.totalHours+'</b></td></tr>');
+      
+      
+      
       //http://www.chartjs.org/docs/#doughnut-pie-chart
       var ctx = this.$el.find('#pieChart');
       var myChart = new Chart(ctx, {
