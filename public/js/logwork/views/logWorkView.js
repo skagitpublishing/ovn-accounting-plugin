@@ -117,7 +117,7 @@ define([
         var projectModel = global.projectCollection.get(projectId);
         var projectWork = projectModel.get('projectWork');
         projectWork.push(logWorkId);
-        projectModel.set('projectWork', project);
+        projectModel.set('projectWork', projectWork);
         
         //Update the project model with the GUID to this contributor.
         var projectContributors = projectModel.get('contributors');
