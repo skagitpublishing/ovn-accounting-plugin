@@ -107,14 +107,40 @@ define([
                 {
                     data: projectStats.userHours,
                     backgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
+                        "#00FFFF", //Aqua
+                        "#000000", //Black
+                        "#0000FF", //Blue
+                        "#FF00FF", //Fuchsia
+                        "#808080", //Grey
+                        "#008000", //Green
+                        "#00FF00", //Lime
+                        "#800000", //Maroon
+                        "#000080", //Navy
+                        "#808000", //Olive
+                        "#800080", //Purple
+                        "#FF0000", //Red
+                        "#C0C0C0", //Silver
+                        "#008080", //Teal
+                        "#FFFFFF", //White
+                        "#FFFF00", //Yellow
                     ],
                     hoverBackgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
+                        "#00FFFF", //Aqua
+                        "#000000", //Black
+                        "#0000FF", //Blue
+                        "#FF00FF", //Fuchsia
+                        "#808080", //Grey
+                        "#008000", //Green
+                        "#00FF00", //Lime
+                        "#800000", //Maroon
+                        "#000080", //Navy
+                        "#808000", //Olive
+                        "#800080", //Purple
+                        "#FF0000", //Red
+                        "#C0C0C0", //Silver
+                        "#008080", //Teal
+                        "#FFFFFF", //White
+                        "#FFFF00", //Yellow
                     ]
                 }]
           },
