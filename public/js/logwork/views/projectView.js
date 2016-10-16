@@ -55,7 +55,7 @@ define([
     
     //This function is called whenever the #projectList drop-down box is changed. It graphs the currently selected project.
     graphProject: function() {
-      debugger;
+      //debugger;
       
       var projTitle = this.$el.find('#projectList').val();
       
@@ -92,7 +92,7 @@ define([
     },
     
     //This function draws a pie chart on the view. It expects to be given a project model as input.
-    drawPieChart(projModel) {
+    drawPieChart: function(projModel) {
       debugger;
       
       var ctx = this.$el.find('#pieChart');
