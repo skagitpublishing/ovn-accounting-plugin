@@ -40,7 +40,7 @@ define([
         
         //Only add the project to the list if it has work logged against it.
         if(projectWork.length > 0) {
-          this.$el.find('#projetList').append('<option>'+tempProj.get('title')+'</option>');
+          this.$el.find('#projectList').append('<option>'+tempProj.get('title')+'</option>');
         }        
       }
       
