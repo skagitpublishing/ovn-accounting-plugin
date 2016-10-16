@@ -189,10 +189,10 @@ define([
     getDateStr: function(dateIn) {
       //debugger;
       
-      var date = '00'+(dateIn.getUTCDate()+1);
+      var date = '00'+(dateIn.getUTCDate());
       date = date.slice(-2);
       
-      var month = '00'+dateIn.getUTCMonth();
+      var month = '00'+(dateIn.getUTCMonth()+1);
       month = month.slice(-2);
       
       var year = dateIn.getFullYear().toString();
