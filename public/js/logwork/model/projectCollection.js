@@ -17,7 +17,7 @@ define([
     parse: function(response) {
       //debugger;
       
-      if(response.loggedwork.length == 0) {
+      if(response.projects.length == 0) {
         log.push('Empty data returned by server when trying to retrieve Project collection. Most likely due to a new DB.');
         return [global.projectModel];
       } else {
