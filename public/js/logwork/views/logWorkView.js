@@ -19,7 +19,8 @@ define([
 
 		// The DOM events specific to an item.
 		events: {
-      'click #submitButton': 'logWork'
+      'click #submitButton': 'logWork',
+      'change #logProject': 'populateWorkType'
 		},
 
 		initialize: function () {
