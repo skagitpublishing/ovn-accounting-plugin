@@ -63,7 +63,7 @@ define([
       if(projTitle == "")
         return;
       
-      var projModel = global.projectCollection.get(this.projectSelectionToIndex(projTitle));
+      var projModel = global.projectCollection.models[this.projectSelectionToIndex(projTitle)];
       
       debugger;
     },
