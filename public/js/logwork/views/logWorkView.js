@@ -45,6 +45,9 @@ define([
         for(var i=0; i < global.projectCollection.length;i++) {
           projectDropDown.append('<option>'+global.projectCollection.models[i].get('title')+'</option>');
         }
+        
+        //Populate the type of work based on the selected project.
+        this.populateWorkType();
       }
       
       
@@ -103,6 +106,53 @@ define([
       });
       
       
+    },
+    
+    //This function populated the 'Type of Work' dropdown based on the selected project.
+    populateWorkType: function() {
+      debugger;
+      
+      var projectDropDown = this.$el.find('#logProject');
+      var workTypeDropDown = this.$el.find('#logWorkType');
+      
+      //Get the model index for the currently selected project.
+      var projectIndex = this.projectSelectionToIndex(projectDropDown.val());
+      
+      //Error checking
+      if(projectIndex == -1) {
+        console.log('Error finding the selected project! populateWorkType()');
+        return;
+      }
+      
+      //Get the types of work associate with this project.
+      var typesOfWork = global.projectCollection.models[projectIndex].get('typesOfWork');
+      
+      //Remove any existing options.
+      workTypeDropDown.find('option').remove();
+      
+      //Populate the drop-down list with the types of work.
+      for(var i=0; i<typeOfWork.length; i++) {
+        workTypeDropDown.append('<option>'+typesOfWork[i]+'</option>');
+      }
+    },
+    
+    //This function returns an index to the global.projectCollection model that matches the string value passed as input.
+    projectSelectionToIndex: function(dropDownSelection) {
+      debugger;
+      
+      if((dropDownSelection == undefined) || (dropDownSelection == "") || (typeof(dropDownSelection) != "string")) {
+        console.log('Invalid value passed for dropDownSelection in projectSelectionToIndex().');
+        return -1;
+      }
+        
+      
+      for(var i=0; i < global.projectCollection.length; i++) {
+        if(dropDownSelection == global.projectCollection.model[i].get('title'))
+          return i;
+      }
+      
+      //Default return value. -1 = not found/invalid
+      return -1;
     }
     
 	});
