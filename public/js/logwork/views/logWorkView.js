@@ -131,7 +131,7 @@ define([
       workTypeDropDown.find('option').remove();
       
       //Populate the drop-down list with the types of work.
-      for(var i=0; i<typeOfWork.length; i++) {
+      for(var i=0; i < typesOfWork.length; i++) {
         workTypeDropDown.append('<option>'+typesOfWork[i]+'</option>');
       }
     },
