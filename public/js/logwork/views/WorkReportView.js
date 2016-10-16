@@ -106,7 +106,7 @@ define([
     
     //This function populates the table with all Work Log data.
     populateTable: function() {
-      debugger;
+      //debugger;
       
       var tableData = [];
       
@@ -146,7 +146,7 @@ define([
     //This function returns the name of a project based on the input string which should contain a project GUID.
     //This function returns "Not Found" if a projectId could not be found.
     getProjectName(projectId) {
-      debugger;
+      //debugger;
       
       var outStr = "Not Found";
       
