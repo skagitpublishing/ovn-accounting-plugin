@@ -109,6 +109,10 @@ define([
         debugger;
         console.log('Data created successfully!');
         
+        //Update the project model with the GUID to this logWork model as well as the GUID of this contributor.
+        
+        //Update the User model with a GUID to this logWork model.
+        
         //Refresh the logWork Collection.
         global.logWorkCollection.fetch();
       }).fail(function(err) {
