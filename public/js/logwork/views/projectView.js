@@ -67,7 +67,7 @@ define([
       var projModel = global.projectCollection.models[this.projectSelectionToIndex(projTitle)];
       
       //Create the pie chart
-      drawPieChart(projModel);
+      this.drawPieChart(projModel);
       
       debugger;
     },
