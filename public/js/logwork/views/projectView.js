@@ -5,7 +5,7 @@ define([
 	'underscore_1.3.3',
 	'backbone_0.9.2',  
   'text!../../../js/logwork/templates/projects.html',
-  'Chart.min'
+  'Chart.2.3.0'
 ], function ($, _, Backbone, ProjectTemplate, Chart) {
 	'use strict';
 
