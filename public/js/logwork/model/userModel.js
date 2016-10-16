@@ -46,6 +46,9 @@ define([
         //Regardless of success or failure, the API returns the JSON data of the model that was just updated.
         //debugger;
         log.push('UserModel.save() executed.');
+        
+        if(global.userCollection != undefined)
+          global.userCollection.fetch();
 
       }).error( function(err) {
         //This is the error handler.

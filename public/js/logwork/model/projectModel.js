@@ -49,7 +49,10 @@ define([
       $.getJSON(this.url, this.attributes, function(data) {
         //Regardless of success or failure, the API returns the JSON data of the model that was just updated.
         //debugger;
-        log.push('ProjectModel.save() executed.');
+        log.push('ProjectModel.save() executed. Refreshing collection.');
+        
+        if(global.projectCollection != undefined)
+          global.projectCollection.fetch();
 
       }).error( function(err) {
         //This is the error handler.
