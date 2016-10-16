@@ -131,7 +131,7 @@ define([
         
         //Update the User model with a GUID to this logWork model.
         var userModel = global.userCollection.get(userId);
-        var projectContributed = userModel.get('projectsContributed');
+        var projectsContributed = userModel.get('projectsContributed');
         if(projectsContributed.indexOf(projectId) == -1) {
           projectsContributed.push(projectId);
           userModel.set('projectsContributed', projectsContributed);
