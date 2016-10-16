@@ -119,7 +119,7 @@ define([
         
         var lineItem = new Object();
         lineItem.date = new Date(thisModel.get('startTime'));
-        lineItem.user = thisModel.get('user');
+        lineItem.user = userName;
         lineItem.project = projectName;
         lineItem.typeOfWork = thisModel.get('typeOfWork');
         lineItem.hours = thisModel.get('hours');
