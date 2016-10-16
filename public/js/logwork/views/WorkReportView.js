@@ -106,7 +106,7 @@ define([
     
     //This function populates the table with all Work Log data.
     populateTable: function() {
-      //debugger;
+      debugger;
       
       var tableData = [];
       
@@ -114,10 +114,12 @@ define([
       for(var i=0; i < global.logWorkCollection.length; i++) {
         var thisModel = global.logWorkCollection.models[i];
         
+        var projectName = this.getProjectName(thisModel.get('project'));
+        
         var lineItem = new Object();
         lineItem.date = new Date(thisModel.get('startTime'));
         lineItem.user = thisModel.get('user');
-        lineItem.project = thisModel.get('project');
+        lineItem.project = projectName;
         lineItem.typeOfWork = thisModel.get('typeOfWork');
         lineItem.hours = thisModel.get('hours');
         lineItem.description = thisModel.get('details');
@@ -139,7 +141,27 @@ define([
       //  htmlContent: false
       //});
       
+    },
+    
+    //This function returns the name of a project based on the input string which should contain a project GUID.
+    //This function returns "Not Found" if a projectId could not be found.
+    getProjectName(projectId) {
+      debugger;
       
+      var outStr = "Not Found";
+      
+      try {
+        var model = global.projectCollection.get(projectId);  
+        
+        outStr = model.get('title');
+      } catch(err) {
+        debugger;
+        console.log('Catestrophic error in WorkReportView.js/getProjectName()');
+      }
+      
+      
+      
+      return outStr;
     }
     
     

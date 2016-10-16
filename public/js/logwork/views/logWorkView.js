@@ -108,6 +108,9 @@ define([
       $.post('/api/logwork/create', this.model.attributes, function(data) {
         debugger;
         console.log('Data created successfully!');
+        
+        //Refresh the logWork Collection.
+        global.logWorkCollection.fetch();
       }).fail(function(err) {
         debugger;
       });
