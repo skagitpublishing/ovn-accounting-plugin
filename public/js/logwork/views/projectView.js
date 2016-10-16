@@ -182,7 +182,7 @@ define([
           stats.userHours[userIndex] += logWorkModel.get('hours');
         }
         
-        debugger;
+        //debugger;
       }
       
       return stats;
