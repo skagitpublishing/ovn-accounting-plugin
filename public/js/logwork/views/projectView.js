@@ -19,7 +19,7 @@ define([
 
 		// The DOM events specific to an item.
 		events: {
-
+      'change #projectList': 'graphProject'
 		},
 
 		initialize: function () {
@@ -51,6 +51,40 @@ define([
       //debugger;
       //global.modalView.render();
       global.modalView.openModal();
+    },
+    
+    //This function is called whenever the #projectList drop-down box is changed. It graphs the currently selected project.
+    graphProject: function() {
+      debugger;
+      
+      var projTitle = this.$el.find('#projectList').val();
+      
+      //Error Handling
+      if(projTitle == "")
+        return;
+      
+      var projModel = global.projectCollection.get(this.projectSelectionToIndex(projTitle));
+      
+      debugger;
+    },
+    
+    //This function returns an index to the global.projectCollection model that matches the string value passed as input.
+    projectSelectionToIndex: function(dropDownSelection) {
+      //debugger;
+      
+      if((dropDownSelection == undefined) || (dropDownSelection == "") || (typeof(dropDownSelection) != "string")) {
+        console.log('Invalid value passed for dropDownSelection in projectSelectionToIndex().');
+        return -1;
+      }
+        
+      
+      for(var i=0; i < global.projectCollection.length; i++) {
+        if(dropDownSelection == global.projectCollection.models[i].get('title'))
+          return i;
+      }
+      
+      //Default return value. -1 = not found/invalid
+      return -1;
     }
     
 	});
