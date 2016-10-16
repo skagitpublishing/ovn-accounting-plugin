@@ -143,7 +143,14 @@ define([
         global.logWorkCollection.fetch();
         
         //Clear the window
-        debugger;
+        $('#logDate').val("");
+        $('#logWorkType').val("");
+        $('#logProject').val("");
+        $('#logHour').val("");
+        $('#logDesc').val("");
+        
+        //Launch the success modal to inform user the work was logged successfully.
+        global.modalView.successModal();
         
       }).fail(function(err) {
         debugger;
