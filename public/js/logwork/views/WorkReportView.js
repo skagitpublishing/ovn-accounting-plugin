@@ -115,6 +115,7 @@ define([
         var thisModel = global.logWorkCollection.models[i];
         
         var projectName = this.getProjectName(thisModel.get('project'));
+        var userName = this.getUserName(thisModel.get('user'));
         
         var lineItem = new Object();
         lineItem.date = new Date(thisModel.get('startTime'));
@@ -159,7 +160,26 @@ define([
         console.log('Catestrophic error in WorkReportView.js/getProjectName()');
       }
       
+      return outStr;
+    },
+    
+    //This function returns the name of a user based on the input string which should contain a user GUID.
+    //This function returns "Not Found" if a projectId could not be found.
+    getUserName(userId) {
+      //debugger;
       
+      var outStr = "Not Found";
+      
+      try {
+        var model = global.userCollection.get(userId);  
+        
+        var name = model.get('name');
+        outStr = name.first+' '+name.last;
+        
+      } catch(err) {
+        debugger;
+        console.log('Catestrophic error in WorkReportView.js/getUserName()');
+      }
       
       return outStr;
     }

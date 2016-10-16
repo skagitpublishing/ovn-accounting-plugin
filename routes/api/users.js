@@ -11,6 +11,9 @@ exports.list = function(req, res) {
 		
 		if (err) return res.apiError('database error', err);
 		
+    debugger;
+    //Eventually add code here to blank out the password hash.
+    
 		res.apiResponse({
 			user: items
 		});
