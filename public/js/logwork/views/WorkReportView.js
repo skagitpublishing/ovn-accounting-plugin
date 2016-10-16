@@ -195,7 +195,7 @@ define([
       var month = '00'+dateIn.getUTCMonth();
       month = month.slice(-2);
       
-      var year = dateIn.getFUllYear().toString();
+      var year = dateIn.getFullYear().toString();
       year = year.slice(-2);
       
       return month+date+year;
