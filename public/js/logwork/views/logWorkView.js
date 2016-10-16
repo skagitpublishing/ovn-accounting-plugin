@@ -33,6 +33,21 @@ define([
       
       $('#logWorkView').show();
       
+      //Populate the Projects drop-down menu with project from the DB.
+      if(global.projectCollection.length > 0) {
+        //Get a handle on the drop down menu for projects.
+        var projectDropDown = this.$el.find('#logProject');
+        
+        //Remove the dummy options.
+        projectDropDown.find('option').remove();
+        
+        //Populate the drop-down menu.
+        for(var i=0; i < global.projectCollection.length;i++) {
+          projectDropDown.append('<option>'+global.projectCollection.models[i].get('title')+'</option>');
+        }
+      }
+      
+      
 			return this;
 		},
     
