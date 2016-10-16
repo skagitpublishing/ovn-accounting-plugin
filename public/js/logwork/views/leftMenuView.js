@@ -56,6 +56,7 @@ define([
       $('#dashboardView').show();
       $('#logWorkView').hide();
       $('#workReportView').hide();
+      $('#projectView').hide();
       
       
       //Remove the 'active' class from the menu item, unless it's a treeview menu item.
@@ -76,6 +77,7 @@ define([
       $('#dashboardView').hide();
       $('#logWorkView').show();
       $('#workReportView').hide();
+      $('#projectView').hide();
       
       $('#app-location').text('Log Work');
       
@@ -87,6 +89,7 @@ define([
       $('#dashboardView').hide();
       $('#logWorkView').hide();
       $('#workReportView').show();
+      $('#projectView').hide();
       
       $('#app-location').text('Work Reports');
       
