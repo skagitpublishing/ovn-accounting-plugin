@@ -63,7 +63,7 @@ define([
     
     //This function is called when the 'Submit' button is clicked.
     logWork: function() {
-      debugger;
+      //debugger;
       
       //Get handles on the form elements
       var inputDate = $('#logDate');
@@ -79,9 +79,15 @@ define([
       }
       
       //Used for debugging.
-      $.get('/api/logwork/list', '', function(data) {
-        debugger;
-      });
+      //$.get('/api/logwork/list', '', function(data) {
+      //  debugger;
+      //});
+      
+      debugger;
+      
+      //Get the project ID
+      var projectIndex = this.projectSelectionToIndex(this.$el.find('#logProject').val());
+      var projectId = global.projectCollection.models[projectIndex].get('_id');
       
       //Create an empty model to store the page data.
       this.model = global.logWorkCollection.models[0].clone();
@@ -92,7 +98,7 @@ define([
       this.model.attributes.endTime = new Date(inputDate.val());
       this.model.attributes.endTime = this.model.attributes.endTime.toISOString();
       this.model.attributes.typeOfWork = inputWorkType.val();
-      this.model.attributes.project = "580122a8c0c9875bbafc6330";
+      this.model.attributes.project = projectId;
       this.model.attributes.hours = Number(inputHours.val());
       this.model.attributes.details = inputDesc.val();
       this.model.attributes.user = userdata._id;
@@ -111,7 +117,7 @@ define([
     
     //This function populated the 'Type of Work' dropdown based on the selected project.
     populateWorkType: function() {
-      debugger;
+      //debugger;
       
       var projectDropDown = this.$el.find('#logProject');
       var workTypeDropDown = this.$el.find('#logWorkType');
@@ -139,7 +145,7 @@ define([
     
     //This function returns an index to the global.projectCollection model that matches the string value passed as input.
     projectSelectionToIndex: function(dropDownSelection) {
-      debugger;
+      //debugger;
       
       if((dropDownSelection == undefined) || (dropDownSelection == "") || (typeof(dropDownSelection) != "string")) {
         console.log('Invalid value passed for dropDownSelection in projectSelectionToIndex().');
