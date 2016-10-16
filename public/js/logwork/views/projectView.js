@@ -97,50 +97,57 @@ define([
       
       var projectStats = this.getProjectStats(projModel.get('projectWork'));
       
+      //Convert UserIDs to User Names
+      var userNames = [];
+      for(var i=0; i<projectStats.users; i++) {
+        userNames[i] = this.getUserName(projectStats.users[i]);
+      }
+      
       //http://www.chartjs.org/docs/#doughnut-pie-chart
       var ctx = this.$el.find('#pieChart');
       var myChart = new Chart(ctx, {
           type: 'pie',
           data: {
-            labels: projectStats.users,
+            labels: userNames,
             datasets: [
                 {
                     data: projectStats.userHours,
                     backgroundColor: [
-                        "#00FFFF", //Aqua
-                        "#000000", //Black
-                        "#0000FF", //Blue
-                        "#FF00FF", //Fuchsia
-                        "#808080", //Grey
-                        "#008000", //Green
-                        "#00FF00", //Lime
-                        "#800000", //Maroon
-                        "#000080", //Navy
-                        "#808000", //Olive
-                        "#800080", //Purple
-                        "#FF0000", //Red
-                        "#C0C0C0", //Silver
-                        "#008080", //Teal
-                        "#FFFFFF", //White
-                        "#FFFF00", //Yellow
+                      //http://www.elizabethcastro.com/html/colors/sixteencolors.html
+                      "#0000FF", //Blue
+                      "#800080", //Purple
+                      "#008000", //Green
+                      "#FF0000", //Red
+                      "#C0C0C0", //Silver
+                      "#00FFFF", //Aqua
+                      "#000000", //Black
+                      "#FF00FF", //Fuchsia
+                      "#808080", //Grey
+                      "#00FF00", //Lime
+                      "#800000", //Maroon
+                      "#000080", //Navy
+                      "#808000", //Olive
+                      "#008080", //Teal
+                      "#FFFFFF", //White
+                      "#FFFF00", //Yellow
                     ],
                     hoverBackgroundColor: [
-                        "#00FFFF", //Aqua
-                        "#000000", //Black
-                        "#0000FF", //Blue
-                        "#FF00FF", //Fuchsia
-                        "#808080", //Grey
-                        "#008000", //Green
-                        "#00FF00", //Lime
-                        "#800000", //Maroon
-                        "#000080", //Navy
-                        "#808000", //Olive
-                        "#800080", //Purple
-                        "#FF0000", //Red
-                        "#C0C0C0", //Silver
-                        "#008080", //Teal
-                        "#FFFFFF", //White
-                        "#FFFF00", //Yellow
+                      "#0000FF", //Blue
+                      "#800080", //Purple
+                      "#008000", //Green
+                      "#FF0000", //Red
+                      "#C0C0C0", //Silver
+                      "#00FFFF", //Aqua
+                      "#000000", //Black
+                      "#FF00FF", //Fuchsia
+                      "#808080", //Grey
+                      "#00FF00", //Lime
+                      "#800000", //Maroon
+                      "#000080", //Navy
+                      "#808000", //Olive
+                      "#008080", //Teal
+                      "#FFFFFF", //White
+                      "#FFFF00", //Yellow
                     ]
                 }]
           },
@@ -179,6 +186,27 @@ define([
       }
       
       return stats;
+    },
+    
+    //This function returns the name of a user based on the input string which should contain a user GUID.
+    //This function returns "Not Found" if a projectId could not be found.
+    getUserName: function(userId) {
+      //debugger;
+      
+      var outStr = "Not Found";
+      
+      try {
+        var model = global.userCollection.get(userId);  
+        
+        var name = model.get('name');
+        outStr = name.first+' '+name.last;
+        
+      } catch(err) {
+        debugger;
+        console.log('Catestrophic error in WorkReportView.js/getUserName()');
+      }
+      
+      return outStr;
     }
     
 	});

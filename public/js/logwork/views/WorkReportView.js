@@ -146,7 +146,7 @@ define([
     
     //This function returns the name of a project based on the input string which should contain a project GUID.
     //This function returns "Not Found" if a projectId could not be found.
-    getProjectName(projectId) {
+    getProjectName: function(projectId) {
       //debugger;
       
       var outStr = "Not Found";
@@ -165,7 +165,7 @@ define([
     
     //This function returns the name of a user based on the input string which should contain a user GUID.
     //This function returns "Not Found" if a projectId could not be found.
-    getUserName(userId) {
+    getUserName: function(userId) {
       //debugger;
       
       var outStr = "Not Found";
