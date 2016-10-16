@@ -139,6 +139,20 @@ define([
       for(var i=0; i < workArray.length; i++) {
         var logWorkModel = global.logWorkCollection.get(workArray[i]);
         
+        //Add the hours in this model to the total hours;
+        stats.totalHours += logWorkModel.get('hours');
+        
+        //Add the user ID to the stats.users array if it's not already there.
+        var userIndex = stats.users.indexOf(logWorkModel.get('user'));
+        if(userIndex == -1) {
+          stats.users.push(logWorkModel.get('user'));
+          stats.userHours.push(logWorkModel.get('hours'));
+        
+        //If they are there, add the hours to that user.
+        } else {
+          stats.userHours[userIndex] += logWorkModel.get('hours');
+        }
+        
         debugger;
       }
       
