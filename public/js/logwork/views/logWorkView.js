@@ -78,21 +78,6 @@ define([
       this.model.attributes.details = inputDesc.val();
       this.model.attributes.user = userdata._id;
       
-      //Contruct the LoggedWork object.
-      /*
-      var logWorkObj = new Object();
-      logWorkObj.loggedwork = new Object();
-      logWorkObj.loggedwork._id = "";
-      logWorkObj.loggedwork.startTime = new Date(inputDate.val());
-      logWorkObj.loggedwork.startTime = logWorkObj.loggedwork.startTime.toISOString();
-      logWorkObj.loggedwork.endTime = new Date(inputDate.val());
-      logWorkObj.loggedwork.endTime = logWorkObj.loggedwork.endTime.toISOString();
-      logWorkObj.loggedwork.typeOfWork = inputWorkType.val();  //Needs to store save index as well.
-      logWorkObj.loggedwork.project = "580122a8c0c9875bbafc6330";  //Needs to store ID of project
-      logWorkObj.loggedwork.hours = Number(inputHours.val());
-      logWorkObj.loggedwork.details = inputDesc.val();
-      logWorkObj.loggedwork.user = userdata._id;
-      */
       
       
       $.post('/api/logwork/create', this.model.attributes, function(data) {

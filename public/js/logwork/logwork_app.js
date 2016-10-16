@@ -10,6 +10,8 @@ define([
   '../../js/logwork/model/logWorkModel.js',
   '../../js/logwork/model/logWorkCollection.js',
   '../../js/logwork/views/WorkReportView.js',
+  '../../js/logwork/model/projectModel.js',
+  '../../js/logwork/model/projectCollection.js',
   '../../js/app/views/modalView.js',
   'adminlte',
   'logs',
@@ -17,7 +19,7 @@ define([
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
-              LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView,
+              LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView, ProjectModel, ProjectCollection,
               ModalView,
               AdminLTE, Logs, serverData) {
 
@@ -67,6 +69,12 @@ define([
     global.logWorkCollection.fetch();
   }
   
+  if(global.projectCollection == undefined) {
+    global.projectModel = new ProjectModel();
+    
+    global.projectCollection = new ProjectCollection();
+    global.projectCollection.fetch();
+  }
   
   
   
