@@ -14,6 +14,7 @@ define([
   '../../js/logwork/model/projectCollection.js',
   '../../js/logwork/model/userModel.js',
   '../../js/logwork/model/userCollection.js',
+  '../../js/logwork/views/projectView.js',
   '../../js/app/views/modalView.js',
   'adminlte',
   'logs',
@@ -22,6 +23,7 @@ define([
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
               LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView, ProjectModel, ProjectCollection, UserModel, UserCollection,
+              ProjectView,
               ModalView,
               AdminLTE, Logs, serverData) {
 
@@ -56,7 +58,7 @@ define([
   
   global.logWorkView = new LogWorkView();
   global.workReportView = new WorkReportView();
-
+  global.projectView = new ProjectView();
   
   //Create the modal and render the view.
   global.modalView = new ModalView();

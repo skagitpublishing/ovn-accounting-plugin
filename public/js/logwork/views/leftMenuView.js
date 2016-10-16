@@ -92,6 +92,17 @@ define([
       global.workReportView.render();
     },
     
+    showProjectView: function() {
+      $('#dashboardView').hide();
+      $('#logWorkView').hide();
+      $('#workReportView').hide();
+      $('#projectView').show();
+      
+      $('#app-location').text('Project Summary');
+      
+      global.projectView.render();
+    }
+    
     //This function shows the down-down menu for Pages in the left menu.
     //showPages: function (e) {
       //debugger;
