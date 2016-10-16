@@ -141,6 +141,10 @@ define([
         
         //Refresh the logWork Collection.
         global.logWorkCollection.fetch();
+        
+        //Clear the window
+        debugger;
+        
       }).fail(function(err) {
         debugger;
       });
