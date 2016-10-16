@@ -187,7 +187,7 @@ define([
     
     //This function converts an inpute Date object into a string corresponding the MM-DD-YY
     getDateStr: function(dateIn) {
-      debugger;
+      //debugger;
       
       var date = '00'+dateIn.getUTCDate();
       date = date.slice(-2);
@@ -198,7 +198,7 @@ define([
       var year = dateIn.getFullYear().toString();
       year = year.slice(-2);
       
-      return month+date+year;
+      return month+'-'+date+'-'+year;
     }
     
     
