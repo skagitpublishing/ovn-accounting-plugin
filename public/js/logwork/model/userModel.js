@@ -55,7 +55,7 @@ define([
         //debugger;
         log.push('Error while trying UserModel.save(). Most likely due to communication issue with the server.');
         sendLog();
-        console.error('Communication error with server while execute UserModel.save()');
+        console.error('Communication error with server while executing UserModel.save()');
       });
 
     }
