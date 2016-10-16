@@ -83,7 +83,7 @@ define([
       //  debugger;
       //});
       
-      debugger;
+      //debugger;
       
       //Get the project ID
       var projectIndex = this.projectSelectionToIndex(this.$el.find('#logProject').val());
@@ -106,7 +106,7 @@ define([
       
       
       $.post('/api/logwork/create', this.model.attributes, function(data) {
-        debugger;
+        //debugger;
         console.log('Data created successfully!');
         
         var logWorkId = data.loggedwork._id; //The ID of this newly created logWork model.
