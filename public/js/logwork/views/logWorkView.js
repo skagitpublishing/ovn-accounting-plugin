@@ -147,7 +147,7 @@ define([
         
       
       for(var i=0; i < global.projectCollection.length; i++) {
-        if(dropDownSelection == global.projectCollection.model[i].get('title'))
+        if(dropDownSelection == global.projectCollection.models[i].get('title'))
           return i;
       }
       
