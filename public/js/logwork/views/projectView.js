@@ -102,14 +102,10 @@ define([
       var myChart = new Chart(ctx, {
           type: 'pie',
           data: {
-            labels: [
-                "Red",
-                "Blue",
-                "Yellow"
-            ],
+            labels: projectStats.users,
             datasets: [
                 {
-                    data: [300, 50, 100],
+                    data: projectStats.userHours,
                     backgroundColor: [
                         "#FF6384",
                         "#36A2EB",
