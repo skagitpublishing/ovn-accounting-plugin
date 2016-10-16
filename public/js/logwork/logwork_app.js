@@ -12,6 +12,8 @@ define([
   '../../js/logwork/views/WorkReportView.js',
   '../../js/logwork/model/projectModel.js',
   '../../js/logwork/model/projectCollection.js',
+  '../../js/logwork/model/userModel.js',
+  '../../js/logwork/model/userCollection.js',
   '../../js/app/views/modalView.js',
   'adminlte',
   'logs',
@@ -19,7 +21,7 @@ define([
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function ($, _, Backbone, Bootstrap,
               LeftMenuView, DashboardView, 
-              LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView, ProjectModel, ProjectCollection,
+              LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView, ProjectModel, ProjectCollection, UserModel, UserCollection,
               ModalView,
               AdminLTE, Logs, serverData) {
 
@@ -76,6 +78,12 @@ define([
     global.projectCollection.fetch();
   }
   
+  if(global.userCollection == undefined) {
+    global.userModel = new UserModel();
+    
+    global.userCollection = new UserCollection();
+    global.userCollection.fetch();
+  }
   
   
   log.push('Finished executing logwork_app.js');
