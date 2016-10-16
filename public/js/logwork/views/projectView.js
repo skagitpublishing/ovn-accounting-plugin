@@ -95,6 +95,9 @@ define([
     drawPieChart: function(projModel) {
       debugger;
       
+      var projectStats = this.getProjectStats(projModel.get('projectWork'));
+      
+      //http://www.chartjs.org/docs/#doughnut-pie-chart
       var ctx = this.$el.find('#pieChart');
       var myChart = new Chart(ctx, {
           type: 'pie',
@@ -119,18 +122,27 @@ define([
                     ]
                 }]
           },
-          /*
-          options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero:true
-                      }
-                  }]
-              }
-          }
-          */
       });
+    },
+    
+    //This function expects an array of LogWork model GUIDs.
+    //It returns a 'stats' object containing the total hours worked, the users, and the number of hours per user.
+    getProjectStats: function(workArray) {
+      debugger;
+      
+      var stats = new Object();
+      stats.totalHours = 0;
+      stats.users = [];
+      stats.userHours = [];
+      
+      //Loop through the workArray and analyze each logWork model in it.
+      for(var i=0; i < workArray.length; i++) {
+        var logWorkModel = global.logWorkCollection.get(workArray[i]);
+        
+        debugger;
+      }
+      
+      return stats;
     }
     
 	});
