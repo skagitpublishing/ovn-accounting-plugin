@@ -116,9 +116,10 @@ define([
         
         var projectName = this.getProjectName(thisModel.get('project'));
         var userName = this.getUserName(thisModel.get('user'));
+        var dateStr = this.getDateStr(new Date(thisModel.get('startTime')));
         
         var lineItem = new Object();
-        lineItem.date = new Date(thisModel.get('startTime'));
+        lineItem.date = dateStr;
         lineItem.user = userName;
         lineItem.project = projectName;
         lineItem.typeOfWork = thisModel.get('typeOfWork');
@@ -182,6 +183,22 @@ define([
       }
       
       return outStr;
+    },
+    
+    //This function converts an inpute Date object into a string corresponding the MM-DD-YY
+    getDateStr: function(dateIn) {
+      debugger;
+      
+      var date = '00'+dateIn.getUTCDate();
+      date = date.slice(-2);
+      
+      var month = '00'+dateIn.getUTCMonth();
+      month = month.slice(-2);
+      
+      var year = dateIn.getFUllYear().toString();
+      year = year.slice(-2);
+      
+      return month+date+year;
     }
     
     
