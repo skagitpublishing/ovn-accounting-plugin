@@ -14,11 +14,15 @@ cp models/*.js ../myCMS/models/
 echo Copying Keystone routes...
 cp routes/index.js ../myCMS/routes/
 cp routes/api/*.js ../myCMS/routes/api/
+cp routes/views/*.js ../myCMS/routes/views/
 
 echo Copying public files...
 cp public/favicon.ico ../myCMS/public
 cp public/images/* ../myCMS/public/images/
 cp public/js/app/main_dashboard_app.js ../myCMS/public/js/app/
+cp public/js/*.js ../myCMS/public/js/
+cp -r public/js/logwork ../myCMS/public/js/
+cp public/styles/*.css ../myCMS/public/styles/
 
 echo Copying Backbone models, views, and templates
 cp public/js/app/model/*.js ../myCMS/public/js/app/model/

@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">  
 
-    <title>Skagit Publishing CMS - Back End</title>
+    <title>Log Your Work - RPi-OVN</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../styles/bootstrap/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../styles/bootstrap/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../styles/bootstrap/bootstrap.3.3.6.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../styles/font-awesome-4.4.0.min.css">
     <!-- Ionicons -->
@@ -21,6 +22,9 @@
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="../styles/skins/skin-blue.min.css">
+    
+    <!-- Bootstrap Table Library -->
+    <link rel="stylesheet" href="../styles/bootstrap-table.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,10 +40,8 @@
         //a separate file so after a build there are only 2 HTTP
         //requests instead of three.
         requirejs(['../js/cms_common'], function (common) {
-            //js/common sets the baseUrl to be js/ so
-            //can just ask for 'app/main1' here instead
-            //of 'js/app/main1'
-            requirejs(['../../../js/app/main_dashboard_app']);
+            
+            requirejs(['/js/logwork/logwork_app.js']);
         });
     </script>
   </head>
@@ -70,11 +72,11 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/logwork" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>SP CMS</b></span>
+          <span class="logo-mini"><img src="/images/RPiLogo.png" class="img-responsive center-block"/></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg" style="font-size: 12px;">Skagit Publishing CMS</span>
+          <span class="logo-lg" style="font-size: 12px;">RPi-OVN</span>
         </a>
 
         <!-- Header Navbar -->
@@ -212,7 +214,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="/keystone/signout" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -240,7 +242,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Skagit Publishing CMS: <span id="app-location">Dashboard</span>
+            RPi-OVN: <span id="app-location">Dashboard</span>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -266,50 +268,13 @@
             </div>
           </div>
           
-          <div class="container" id="dashboardView" hidden>            
-          </div>
+          <div class="container" id="dashboardView" hidden></div>
           
-          <div class="container" id="pagesView" hidden>            
-          </div>
+          <div class="container" id="logWorkView" hidden></div>
           
-          <div class="container" id="postsView" hidden>            
-          </div>
+          <div class="container" id="workReportView" hidden></div>
           
-          <div class="container" id="pagesAddNewView" hidden>            
-          </div>
-          
-          <div class="container" id="postsAddNewView" hidden>            
-          </div>
-          
-          <div class="container" id="imageLibraryView" hidden>            
-          </div>
-          
-          <div class="container" id="imageAddNewView" hidden>            
-          </div>
-          
-          <div class="container" id="membersView" hidden>            
-          </div>
-          
-          <div class="container" id="eventCalendarView" hidden>            
-          </div>
-          
-          <div class="container" id="advertisingView" hidden>            
-          </div>
-          
-          <div class="container" id="fileLibraryView" hidden>            
-          </div>
-          
-          <div class="container" id="categoriesView" hidden>            
-          </div>
-          
-          <div class="container" id="sectionsView" hidden>            
-          </div>
-          
-          <div class="container" id="nrpUsersView" hidden>            
-          </div>
-          
-          <div class="container" id="nrpProjectsView" hidden>            
-          </div>
+          <div class="container" id="projectView" hidden></div>
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
@@ -336,36 +301,9 @@
           <!-- Home tab content -->
           <div class="tab-pane active" id="control-sidebar-home-tab">
             <h3 class="control-sidebar-heading">Help</h3>
-            <!--
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript::;">
-                  <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                  <div class="menu-info">
-                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                    <p>Will be 23 on April 24th</p>
-                  </div>
-                </a>
-              </li>
-            </ul>
-
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-              <li>
-                <a href="javascript::;">
-                  <h4 class="control-sidebar-subheading">
-                    Custom Template Design
-                    <span class="label label-danger pull-right">70%</span>
-                  </h4>
-                  <div class="progress progress-xxs">
-                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                  </div>
-                </a>
-              </li>
-            </ul>
-            -->
+            
             <p>
-              This is where the on-site guidence will go, similar to the RTB form help.
+              This is where the on-site guidence will go.
             </p>
           </div><!-- /.tab-pane -->
           <!-- Stats tab content -->
@@ -387,6 +325,8 @@
       <div class="control-sidebar-bg"></div>
     </div><!-- ./wrapper -->
 
+    
+    <!-- This is  an example of how to use the Handlebars scripting function to transfer data from the back end to the front end. -->
     {{#if user}}
       <script type="text/javascript">
         var userdata = {{{JSON user}}}

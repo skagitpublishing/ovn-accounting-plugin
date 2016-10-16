@@ -99,8 +99,37 @@ exports = module.exports = function(app) {
   app.all('/api/nrpproject/create', keystone.middleware.api, routes.api.nrpproject.create);
   app.get('/api/nrpproject/:id/remove', keystone.middleware.api, routes.api.nrpproject.remove);
   
+  //Private Pages
+  app.get('/api/privatepage/list', keystone.middleware.api, routes.api.privatepage.list);
+	app.all('/api/privatepage/create', keystone.middleware.api, routes.api.privatepage.create);
+	app.get('/api/privatepage/:id', keystone.middleware.api, routes.api.privatepage.get);
+	app.all('/api/privatepage/:id/update', keystone.middleware.api, routes.api.privatepage.update);
+	app.get('/api/privatepage/:id/remove', keystone.middleware.api, routes.api.privatepage.remove);
+  
+  //Log Work Route
+  app.get('/api/logwork/list', keystone.middleware.api, routes.api.logwork.list);
+  app.get('/api/logwork/:id', keystone.middleware.api, routes.api.logwork.get);
+  app.all('/api/logwork/:id/update', keystone.middleware.api, routes.api.logwork.update);
+  app.all('/api/logwork/create', keystone.middleware.api, routes.api.logwork.create);
+  app.get('/api/logwork/:id/remove', keystone.middleware.api, routes.api.logwork.remove);
+  
+  //Project Info API
+  app.get('/api/projects/list', keystone.middleware.api, routes.api.projects.list);
+  app.get('/api/projects/:id', keystone.middleware.api, routes.api.projects.get);
+  app.all('/api/projects/:id/update', keystone.middleware.api, routes.api.projects.update);
+  app.all('/api/projects/create', keystone.middleware.api, routes.api.projects.create);
+  app.get('/api/projects/:id/remove', keystone.middleware.api, routes.api.projects.remove);
+  
+  //Users API
+  app.get('/api/users/list', keystone.middleware.api, routes.api.users.list);
+  app.get('/api/users/:id', keystone.middleware.api, routes.api.users.get);
+  app.all('/api/users/:id/update', keystone.middleware.api, routes.api.users.update);
+  //app.all('/api/users/create', keystone.middleware.api, routes.api.users.create);
+  //app.get('/api/users/:id/remove', keystone.middleware.api, routes.api.users.remove);
+  
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
   app.get('/dashboard', middleware.requireUser, routes.views.dashboard);
+  app.get('/logwork', middleware.requireUser, routes.views.logwork);
 	
 };

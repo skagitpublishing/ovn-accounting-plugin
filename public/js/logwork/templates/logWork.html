@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-12">
+    
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-md-3">
+          <div class="input-group date" data-provide="datepicker">
+            <label for="logDate">Date</label>
+            <input type="text" class="form-control datepicker" id="logDate" placeholder="" data-date-auto-close="true">
+            <!-- required for datepicker -->
+            <div class="input-group-addon" style="opacity: 0;"></div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <label for="logProject">Project:</label>
+          <select class="form-control" id="logProject">
+            <option>Project 1</option>
+            <option>Project 2</option>
+            <option>Project 3</option>
+          </select>
+        </div>
+        
+        <div class="col-md-3">
+          <label for="logWorkType">Type of Work:</label>
+          <select class="form-control" id="logWorkType">
+            <option>Type 1</option>
+            <option>Type 2</option>
+            <option>Type 3</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label for="logHour">Hours Worked:</label>
+          <input type="number" class="form-control" id="logHour" placeholder="" step="0.25">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-md-12">
+          <label for="logDesc">Description of Work:</label><br />
+          <textarea class="form-control" rows="3" id="logDesc" placeholder="Describe the work you did."></textarea>
+        
+          <br />
+          <button type="button" class="btn btn-default" id="submitButton">Submit</button>
+        </div>
+      </div>
+    </form>
+    
+  </div>
+</div>
