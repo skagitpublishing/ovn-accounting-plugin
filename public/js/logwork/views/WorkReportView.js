@@ -189,7 +189,7 @@ define([
     getDateStr: function(dateIn) {
       //debugger;
       
-      var date = '00'+dateIn.getUTCDate();
+      var date = '00'+(dateIn.getUTCDate()+1);
       date = date.slice(-2);
       
       var month = '00'+dateIn.getUTCMonth();
