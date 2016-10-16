@@ -99,7 +99,7 @@ define([
       
       //Convert UserIDs to User Names
       var userNames = [];
-      for(var i=0; i<projectStats.users; i++) {
+      for(var i=0; i < projectStats.users.length; i++) {
         userNames[i] = this.getUserName(projectStats.users[i]);
       }
       
