@@ -331,7 +331,7 @@ define([
       this.testChart = new Chart(ctx3, {
         type: 'horizontalBar',
         data: {
-            labels: ["2014", "2013", "2012", "2011"],
+            labels: ["Tim", "Sally", "Bob", "Shelly"],
 
             datasets: [{
                 data: [727, 589, 537, 543],
