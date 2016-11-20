@@ -176,10 +176,11 @@ define([
       });
     },
     
-    drawHorzBarChart: function(projModel, projTitle) {
+    drawHorzBarChart: function(projModel, projTitle, typesOfWork) {
       debugger;
       
-      var projectStats = this.getProjectStats(projModel.get('projectWork'));
+      //var projectStats = this.getProjectStats(projModel.get('projectWork'));
+      var projectStats = this.getProjectStats2(projModel);
       
       //Convert UserIDs to User Names
       var userNames = [];
@@ -263,8 +264,8 @@ define([
                 {
                     data: projectStats.userHours,
                     label: projTitle,
-                    backgroundColor: colorPalet,
-                    hoverBackgroundColor: colorPalet
+                    backgroundColor: colorPalet[0],
+                    hoverBackgroundColor: colorPalet[0]
                 }]
           },
           options: {
@@ -396,6 +397,49 @@ define([
       stats.totalHours = 0;
       stats.users = [];
       stats.userHours = [];
+      stats.userWorkCategories = [];
+      
+      //Loop through the workArray and analyze each logWork model in it.
+      for(var i=0; i < workArray.length; i++) {
+        var logWorkModel = global.logWorkCollection.get(workArray[i]);
+        
+        //Add the hours in this model to the total hours;
+        stats.totalHours += logWorkModel.get('hours');
+        
+        //Add the user ID to the stats.users array if it's not already there.
+        var userIndex = stats.users.indexOf(logWorkModel.get('user'));
+        if(userIndex == -1) {
+          stats.users.push(logWorkModel.get('user'));
+          stats.userHours.push(logWorkModel.get('hours'));
+        
+        //If they are there, add the hours to that user.
+        } else {
+          stats.userHours[userIndex] += logWorkModel.get('hours');
+        }
+        
+        //debugger;
+      }
+      
+      return stats;
+    },
+    
+    //This function expects a project model.
+    //It returns a 'stats' object containing a two dimensional array that maps like this:
+    //
+    // Users WorkCategory1 Workategory2 WorkCategory3 Total
+    // ----- ------------- ------------ ------------- -----
+    // ID1   Hrs           Hrs          Hrs           Hrs
+    // ID2   Hrs           Hrs          Hrs           Hrs
+    // ...
+    //
+    getProjectStats2: function(projModel) {
+      debugger;
+      
+      var stats = new Object();
+      stats.totalHours = 0;
+      stats.users = [];
+      stats.userHours = [];
+      stats.userWorkCategories = [];
       
       //Loop through the workArray and analyze each logWork model in it.
       for(var i=0; i < workArray.length; i++) {
