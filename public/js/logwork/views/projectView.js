@@ -442,12 +442,12 @@ define([
       stats.totalHours = 0;
       stats.users = [];
       stats.userHours = [];
-      stats.userWorkCategories = [];
+      stats.userWorkCategories = projModel.get('typesOfWork');
       
       //Create a 2D breakdown array that breaks down the work by categories and user.
       stats.breakdown = [];
-      var header = 'UserID,'+projModel.get('typesOfWork').join()+',Total';
-      stats.breakdown.push(header.split(','));
+      //var header = 'UserID,'+projModel.get('typesOfWork').join()+',Total';
+      //stats.breakdown.push(header.split(','));
       
       //Loop through the workArray and analyze each logWork model in it.
       for(var i=0; i < workArray.length; i++) {
@@ -467,7 +467,44 @@ define([
           stats.userHours[userIndex] += logWorkModel.get('hours');
         }
         
+        //Fill out the breakdown array.
+        //Loop through the breakdown array and find the userID.
+        //for(var j=1; j < breakdown.length; j++) {
+        //  var thisUser = logWorkModel.get('user');
+        //  if(breakdown[j][0] )
+        //}
+        
         //debugger;
+      }
+      
+      //Initialize the stats.breakdown array
+      for(var i=0; i < stats.users.length; i++) {
+        //For each user that has contributed to the project, create an array of 0's corresponding to each available category of work.
+        stats.breakdown.push(Array(stats.userWorkCategories.length).fill(0));
+      }
+      
+      //Loop through the workArray and analyze each logWork model in it.
+      for(var i=0; i < workArray.length; i++) {
+        var logWorkModel = global.logWorkCollection.get(workArray[i]);
+        
+        //Loop through the stats.users array
+        for(var j=0; j < stats.users.length; j++) {
+          
+          //If the user matches this work entry
+          if(logWorkModel.get('user') == stats.users[j]) {
+          
+            //Loop through the work categories
+            for(var k=0; k < stats.userWorkCategories; k++) {
+            
+              if(logWorkModel.get('typeOfWork') == stats.userWorkCategories[k]) {
+                //Add the work hours to that category or work for that user.
+                stats.breakdown[j][k] += logWorkModel.get('hours');
+              }
+            }
+          }
+          
+        }
+        
       }
       
       return stats;
