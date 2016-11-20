@@ -325,9 +325,9 @@ define([
         },
         pointLabelFontFamily : "Quadon Extra Bold",
         scaleFontFamily : "Quadon Extra Bold",
-    };
+      };
       
-      this.testChart = new Chart(ctx, {
+      this.testChart = new Chart(ctx3, {
         type: 'horizontalBar',
         data: {
             labels: ["2014", "2013", "2012", "2011"],
