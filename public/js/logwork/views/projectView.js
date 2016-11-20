@@ -281,6 +281,14 @@ define([
                 }
             ]
           },
+          options: {
+            scales: {
+              xAxes: [{
+                display: false
+              }]
+            }
+          }
+          
       });
       
     },
