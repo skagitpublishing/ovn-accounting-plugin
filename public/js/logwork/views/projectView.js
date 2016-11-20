@@ -187,7 +187,7 @@ define([
         userNames[i] = this.getUserName(projectStats.users[i]);
       }
       
-      http://www.chartjs.org/docs/#bar-chart
+      //http://www.chartjs.org/docs/#bar-chart
       var ctx = this.$el.find('#barChart');
       
       //Remove any previously created chart.
