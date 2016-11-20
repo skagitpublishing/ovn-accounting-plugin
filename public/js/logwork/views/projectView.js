@@ -295,7 +295,8 @@ define([
                     fontFamily: "'Open Sans Bold', sans-serif",
                     fontSize:11
                 },
-                stacked: true
+                stacked: true,
+                barThickness: 10
             }]
         },
         legend:{
@@ -336,19 +337,16 @@ define([
             datasets: [{
                 data: [727, 589, 537, 543],
                 label: 'Hours Worked 1',
-                borderWidth: 10,
                 backgroundColor: "rgba(63,103,126,1)",
                 hoverBackgroundColor: "rgba(50,90,100,1)"
             },{
                 data: [238, 553, 746, 884],
                 label: 'Hours Worked 2',
-                borderWidth: 10,
                 backgroundColor: "rgba(163,103,126,1)",
                 hoverBackgroundColor: "rgba(140,85,100,1)"
             },{
                 data: [1238, 553, 746, 884],
                 label: 'Hours Worked 3',
-                borderWidth: 10,
                 backgroundColor: "rgba(63,203,226,1)",
                 hoverBackgroundColor: "rgba(46,185,235,1)"
             }]
