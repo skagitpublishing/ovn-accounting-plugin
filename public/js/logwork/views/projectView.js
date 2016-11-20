@@ -494,7 +494,7 @@ define([
           if(logWorkModel.get('user') == stats.users[j]) {
           
             //Loop through the work categories
-            for(var k=0; k < stats.userWorkCategories; k++) {
+            for(var k=0; k < stats.userWorkCategories.length; k++) {
             
               if(logWorkModel.get('typeOfWork') == stats.userWorkCategories[k]) {
                 //Add the work hours to that category or work for that user.
