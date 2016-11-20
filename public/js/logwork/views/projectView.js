@@ -245,6 +245,7 @@ define([
             scales: {
               xAxes: [{
                 display: true,
+                stacked: true,
                 ticks: {
                   beginAtZero: true
                 }
