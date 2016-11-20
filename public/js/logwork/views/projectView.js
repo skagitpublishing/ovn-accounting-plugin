@@ -69,6 +69,9 @@ define([
       //Create the pie chart
       this.drawPieChart(projModel);
       
+      //Create the horizontal bar chart
+      this.drawHorzBarChart(projModel);
+      
     },
     
     //This function returns an index to the global.projectCollection model that matches the string value passed as input.
@@ -120,11 +123,79 @@ define([
       //http://www.chartjs.org/docs/#doughnut-pie-chart
       var ctx = this.$el.find('#pieChart');
       
-      if(this.myChart != undefined)
-        this.myChart.destroy();
+      //Remove any previously created chart.
+      if(this.pieChart != undefined)
+        this.pieChart.destroy();
       
-      this.myChart = new Chart(ctx, {
+      this.pieChart = new Chart(ctx, {
           type: 'pie',
+          data: {
+            labels: userNames,
+            datasets: [
+                {
+                    data: projectStats.userHours,
+                    backgroundColor: [
+                      //http://www.elizabethcastro.com/html/colors/sixteencolors.html
+                      "#0000FF", //Blue
+                      "#800080", //Purple
+                      "#008000", //Green
+                      "#FF0000", //Red
+                      "#C0C0C0", //Silver
+                      "#00FFFF", //Aqua
+                      "#000000", //Black
+                      "#FF00FF", //Fuchsia
+                      "#808080", //Grey
+                      "#00FF00", //Lime
+                      "#800000", //Maroon
+                      "#000080", //Navy
+                      "#808000", //Olive
+                      "#008080", //Teal
+                      "#FFFFFF", //White
+                      "#FFFF00", //Yellow
+                    ],
+                    hoverBackgroundColor: [
+                      "#0000FF", //Blue
+                      "#800080", //Purple
+                      "#008000", //Green
+                      "#FF0000", //Red
+                      "#C0C0C0", //Silver
+                      "#00FFFF", //Aqua
+                      "#000000", //Black
+                      "#FF00FF", //Fuchsia
+                      "#808080", //Grey
+                      "#00FF00", //Lime
+                      "#800000", //Maroon
+                      "#000080", //Navy
+                      "#808000", //Olive
+                      "#008080", //Teal
+                      "#FFFFFF", //White
+                      "#FFFF00", //Yellow
+                    ]
+                }]
+          },
+      });
+    },
+    
+    drawHorzBarChart: function(projModel) {
+      debugger;
+      
+      var projectStats = this.getProjectStats(projModel.get('projectWork'));
+      
+      //Convert UserIDs to User Names
+      var userNames = [];
+      for(var i=0; i < projectStats.users.length; i++) {
+        userNames[i] = this.getUserName(projectStats.users[i]);
+      }
+      
+      http://www.chartjs.org/docs/#bar-chart
+      var ctx = this.$el.find('#barChart');
+      
+      //Remove any previously created chart.
+      if(this.barChart != undefined)
+        this.barChart.destroy();
+      
+      this.barChart = new Chart(ctx, {
+          type: 'horizontalBar',
           data: {
             labels: userNames,
             datasets: [
