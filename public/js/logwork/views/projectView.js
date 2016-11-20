@@ -188,20 +188,20 @@ define([
       }
       
       //http://www.chartjs.org/docs/#bar-chart
-      var ctx = this.$el.find('#barChart');
+      var ctx2 = this.$el.find('#barChart');
       
       //Remove any previously created chart.
       if(this.barChart != undefined)
         this.barChart.destroy();
       
-      this.barChart = new Chart(ctx, {
+      this.barChart = new Chart(ctx2, {
           type: 'horizontalBar',
           data: {
-            
+            labels: userNames,
             datasets: [
                 {
                     data: projectStats.userHours,
-                    label: userNames,
+                    label: "test",
                     backgroundColor: [
                       //http://www.elizabethcastro.com/html/colors/sixteencolors.html
                       "#0000FF", //Blue
