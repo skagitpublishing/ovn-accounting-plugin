@@ -282,7 +282,8 @@ define([
                 },
                 gridLines: {
                 }, 
-                stacked: true
+                stacked: true,
+                barThickness: 20
             }],
             yAxes: [{
                 gridLines: {
