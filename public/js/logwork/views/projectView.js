@@ -241,6 +241,16 @@ define([
                     ]
                 }]
           },
+          options: {
+            scales: {
+              xAxes: [{
+                display: true,
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
       });
       
       
