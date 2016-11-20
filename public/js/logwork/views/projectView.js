@@ -70,7 +70,7 @@ define([
       this.drawPieChart(projModel);
       
       //Create the horizontal bar chart
-      this.drawHorzBarChart(projModel);
+      this.drawHorzBarChart(projModel, projTitle);
       
     },
     
@@ -176,7 +176,7 @@ define([
       });
     },
     
-    drawHorzBarChart: function(projModel) {
+    drawHorzBarChart: function(projModel, projTitle) {
       debugger;
       
       var projectStats = this.getProjectStats(projModel.get('projectWork'));
@@ -201,7 +201,7 @@ define([
             datasets: [
                 {
                     data: projectStats.userHours,
-                    label: "test",
+                    label: projTitle,
                     backgroundColor: [
                       //http://www.elizabethcastro.com/html/colors/sixteencolors.html
                       "#0000FF", //Blue
