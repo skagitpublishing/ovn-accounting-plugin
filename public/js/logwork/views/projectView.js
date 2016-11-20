@@ -104,6 +104,7 @@ define([
       
       //Create the table
       var table = this.$el.find('#projectTable');
+      table.find('tr').remove(); //Clear the table of any previously created rows.
       for(var i=0; i < projectStats.users.length; i++) {
         var htmlStr = "<tr><td>";
         htmlStr += userNames[i];
