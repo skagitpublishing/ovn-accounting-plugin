@@ -119,6 +119,10 @@ define([
       
       //http://www.chartjs.org/docs/#doughnut-pie-chart
       var ctx = this.$el.find('#pieChart');
+      
+      if(this.myChart != undefined)
+        this.myChart.destroy();
+      
       this.myChart = new Chart(ctx, {
           type: 'pie',
           data: {
