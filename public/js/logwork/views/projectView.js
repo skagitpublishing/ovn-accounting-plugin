@@ -190,6 +190,48 @@ define([
       //http://www.chartjs.org/docs/#bar-chart
       var ctx2 = this.$el.find('#barChart');
       
+      //Chart options
+      //http://codepen.io/jamiecalder/pen/NrROeB
+      var barOptions_stacked = {
+        tooltips: {
+            enabled: true
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    fontFamily: "'Open Sans Bold', sans-serif",
+                    fontSize:11
+                },
+                scaleLabel:{
+                    display:false
+                },
+                gridLines: {
+                }, 
+                stacked: true
+            }],
+            yAxes: [{
+                gridLines: {
+                    display:false,
+                    color: "#fff",
+                    zeroLineColor: "#fff",
+                    zeroLineWidth: 0
+                },
+                ticks: {
+                    fontFamily: "'Open Sans Bold', sans-serif",
+                    fontSize:11
+                },
+                stacked: true,
+                barThickness: 10
+            }]
+        },
+        legend:{
+            display:true
+        },
+        pointLabelFontFamily : "Quadon Extra Bold",
+        scaleFontFamily : "Quadon Extra Bold",
+      };
+      
       //Remove any previously created chart.
       if(this.barChart != undefined)
         this.barChart.destroy();
@@ -202,43 +244,8 @@ define([
                 {
                     data: projectStats.userHours,
                     label: projTitle,
-                    backgroundColor: [
-                      //http://www.elizabethcastro.com/html/colors/sixteencolors.html
-                      "#0000FF", //Blue
-                      "#800080", //Purple
-                      "#008000", //Green
-                      "#FF0000", //Red
-                      "#C0C0C0", //Silver
-                      "#00FFFF", //Aqua
-                      "#000000", //Black
-                      "#FF00FF", //Fuchsia
-                      "#808080", //Grey
-                      "#00FF00", //Lime
-                      "#800000", //Maroon
-                      "#000080", //Navy
-                      "#808000", //Olive
-                      "#008080", //Teal
-                      "#FFFFFF", //White
-                      "#FFFF00", //Yellow
-                    ],
-                    hoverBackgroundColor: [
-                      "#0000FF", //Blue
-                      "#800080", //Purple
-                      "#008000", //Green
-                      "#FF0000", //Red
-                      "#C0C0C0", //Silver
-                      "#00FFFF", //Aqua
-                      "#000000", //Black
-                      "#FF00FF", //Fuchsia
-                      "#808080", //Grey
-                      "#00FF00", //Lime
-                      "#800000", //Maroon
-                      "#000080", //Navy
-                      "#808000", //Olive
-                      "#008080", //Teal
-                      "#FFFFFF", //White
-                      "#FFFF00", //Yellow
-                    ]
+                    backgroundColor: "rgba(63,103,126,1)",
+                    hoverBackgroundColor: "rgba(50,90,100,1)"
                 }]
           },
           options: {
@@ -253,6 +260,10 @@ define([
             }
           }
       });
+      
+      
+      
+      
       
       
       //http://www.chartjs.org/docs/#bar-chart
@@ -282,8 +293,7 @@ define([
                 },
                 gridLines: {
                 }, 
-                stacked: true,
-                barThickness: 20
+                stacked: true
             }],
             yAxes: [{
                 gridLines: {
