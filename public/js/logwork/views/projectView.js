@@ -301,7 +301,7 @@ define([
         legend:{
             display:false
         },
-
+        /*
         animation: {
             onComplete: function () {
                 var chartInstance = this.chart;
@@ -323,6 +323,7 @@ define([
                 }),this);
             }
         },
+        */
         pointLabelFontFamily : "Quadon Extra Bold",
         scaleFontFamily : "Quadon Extra Bold",
       };
