@@ -197,10 +197,11 @@ define([
       this.barChart = new Chart(ctx, {
           type: 'horizontalBar',
           data: {
-            labels: userNames,
+            
             datasets: [
                 {
                     data: projectStats.userHours,
+                    label: userNames,
                     backgroundColor: [
                       //http://www.elizabethcastro.com/html/colors/sixteencolors.html
                       "#0000FF", //Blue
