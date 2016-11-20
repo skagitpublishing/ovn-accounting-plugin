@@ -435,11 +435,19 @@ define([
     getProjectStats2: function(projModel) {
       debugger;
       
+      var workArray = projModel.get('projectWork');
+      
+      
       var stats = new Object();
       stats.totalHours = 0;
       stats.users = [];
       stats.userHours = [];
       stats.userWorkCategories = [];
+      
+      //Create a 2D breakdown array that breaks down the work by categories and user.
+      stats.breakdown = [];
+      var header = 'UserID,'+projModel.get('typesOfWork').join()+',Total';
+      stats.breakdown.push(header.split(','));
       
       //Loop through the workArray and analyze each logWork model in it.
       for(var i=0; i < workArray.length; i++) {
