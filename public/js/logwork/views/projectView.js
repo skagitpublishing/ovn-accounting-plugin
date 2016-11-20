@@ -265,11 +265,11 @@ define([
       //Chart options
       var barOptions_stacked = {
         tooltips: {
-            enabled: false
+            enabled: true
         },
-        hover :{
-            animationDuration:0
-        },
+        //hover :{
+        //    animationDuration:0
+        //},
         scales: {
             xAxes: [{
                 ticks: {
