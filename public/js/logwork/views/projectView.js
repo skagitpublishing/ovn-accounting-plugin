@@ -262,48 +262,92 @@ define([
       if(this.testChart != undefined)
         this.testChart.destroy();
       
-      this.testChart = new Chart(ctx3, {
-          type: 'horizontalBar',
-          data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)',
-                        'rgba(255, 99, 132, 0.2)'
-                    ],
-                    borderWidth: 1,
-                    data: [65, 59, 80, 81, 56, 55, [40,5,10]],
-                }
-            ]
-          },
-          options: {
-            scales: {
-              xAxes: [{
-                display: true,
-                stacked: true,
+      //Chart options
+      var barOptions_stacked = {
+        tooltips: {
+            enabled: false
+        },
+        hover :{
+            animationDuration:0
+        },
+        scales: {
+            xAxes: [{
                 ticks: {
-                  beginAtZero: true
-                }
-              }]
+                    beginAtZero:true,
+                    fontFamily: "'Open Sans Bold', sans-serif",
+                    fontSize:11
+                },
+                scaleLabel:{
+                    display:false
+                },
+                gridLines: {
+                }, 
+                stacked: true
+            }],
+            yAxes: [{
+                gridLines: {
+                    display:false,
+                    color: "#fff",
+                    zeroLineColor: "#fff",
+                    zeroLineWidth: 0
+                },
+                ticks: {
+                    fontFamily: "'Open Sans Bold', sans-serif",
+                    fontSize:11
+                },
+                stacked: true
+            }]
+        },
+        legend:{
+            display:false
+        },
+
+        animation: {
+            onComplete: function () {
+                var chartInstance = this.chart;
+                var ctx = chartInstance.ctx;
+                ctx.textAlign = "left";
+                ctx.font = "9px Open Sans";
+                ctx.fillStyle = "#fff";
+
+                Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
+                    var meta = chartInstance.controller.getDatasetMeta(i);
+                    Chart.helpers.each(meta.data.forEach(function (bar, index) {
+                        data = dataset.data[index];
+                        if(i==0){
+                            ctx.fillText(data, 50, bar._model.y+4);
+                        } else {
+                            ctx.fillText(data, bar._model.x-25, bar._model.y+4);
+                        }
+                    }),this)
+                }),this);
             }
-          }
-          
+        },
+        pointLabelFontFamily : "Quadon Extra Bold",
+        scaleFontFamily : "Quadon Extra Bold",
+    };
+      
+      this.testChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: {
+            labels: ["2014", "2013", "2012", "2011"],
+
+            datasets: [{
+                data: [727, 589, 537, 543, 574],
+                backgroundColor: "rgba(63,103,126,1)",
+                hoverBackgroundColor: "rgba(50,90,100,1)"
+            },{
+                data: [238, 553, 746, 884, 903],
+                backgroundColor: "rgba(163,103,126,1)",
+                hoverBackgroundColor: "rgba(140,85,100,1)"
+            },{
+                data: [1238, 553, 746, 884, 903],
+                backgroundColor: "rgba(63,203,226,1)",
+                hoverBackgroundColor: "rgba(46,185,235,1)"
+            }]
+        },
+
+        options: barOptions_stacked,
       });
       
     },
