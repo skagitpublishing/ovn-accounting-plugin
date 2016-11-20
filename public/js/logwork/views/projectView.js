@@ -284,7 +284,10 @@ define([
           options: {
             scales: {
               xAxes: [{
-                display: false
+                display: true,
+                ticks: {
+                  beginAtZero: true
+                }
               }]
             }
           }
