@@ -86,7 +86,7 @@ define([
       if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
         $('.sidebar-menu').find('.active').removeClass('active');
       //Switch the 'active' class to the selected menu item
-      $('#dashboardLink').parent().addClass('active');
+      $('#logWorkLink').parent().addClass('active');
       
       global.logWorkView.render();
     },
@@ -105,7 +105,7 @@ define([
       if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
         $('.sidebar-menu').find('.active').removeClass('active');
       //Switch the 'active' class to the selected menu item
-      $('#dashboardLink').parent().addClass('active');
+      $('#workReportLink').parent().addClass('active');
       
       global.workReportView.render();
     },
@@ -123,7 +123,7 @@ define([
       if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
         $('.sidebar-menu').find('.active').removeClass('active');
       //Switch the 'active' class to the selected menu item
-      $('#dashboardLink').parent().addClass('active');
+      $('#viewProjects').parent().addClass('active');
       
       global.projectView.render();
     },
