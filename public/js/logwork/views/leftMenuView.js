@@ -81,6 +81,13 @@ define([
       
       $('#app-location').text('Log Work');
       
+      //Remove the 'active' class from the menu item, unless it's a treeview menu item.
+      //(treeview) menu items will remove their active class in their click event.
+      if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
+        $('.sidebar-menu').find('.active').removeClass('active');
+      //Switch the 'active' class to the selected menu item
+      $('#dashboardLink').parent().addClass('active');
+      
       global.logWorkView.render();
     },
     
@@ -93,6 +100,13 @@ define([
       
       $('#app-location').text('Work Reports');
       
+      //Remove the 'active' class from the menu item, unless it's a treeview menu item.
+      //(treeview) menu items will remove their active class in their click event.
+      if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
+        $('.sidebar-menu').find('.active').removeClass('active');
+      //Switch the 'active' class to the selected menu item
+      $('#dashboardLink').parent().addClass('active');
+      
       global.workReportView.render();
     },
     
@@ -103,6 +117,13 @@ define([
       $('#projectView').show();
       
       $('#app-location').text('Project Summary');
+      
+      //Remove the 'active' class from the menu item, unless it's a treeview menu item.
+      //(treeview) menu items will remove their active class in their click event.
+      if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
+        $('.sidebar-menu').find('.active').removeClass('active');
+      //Switch the 'active' class to the selected menu item
+      $('#dashboardLink').parent().addClass('active');
       
       global.projectView.render();
     },
@@ -209,10 +230,10 @@ define([
       
       //Remove the 'active' class from the menu item, unless it's a treeview menu item.
       //(treeview) menu items will remove their active class in their click event.
-      //if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
-      //  $('.sidebar-menu').find('.active').removeClass('active');
+      if( !$('.sidebar-menu').find('.active').hasClass('treeview') )
+        $('.sidebar-menu').find('.active').removeClass('active');
       //Switch the 'active' class to the selected menu item
-      //$('#dashboardLink').parent().addClass('active');
+      $('#dashboardLink').parent().addClass('active');
       
       $('#app-location').text('Media Library - Files');
       
