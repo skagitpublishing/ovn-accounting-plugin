@@ -177,7 +177,7 @@ define([
     },
     
     drawHorzBarChart: function(projModel, projTitle, typesOfWork) {
-      debugger;
+      //debugger;
       
       //var projectStats = this.getProjectStats(projModel.get('projectWork'));
       var projectStats = this.getProjectStats2(projModel);
@@ -461,7 +461,7 @@ define([
     // ...
     //
     getProjectStats2: function(projModel) {
-      debugger;
+      //debugger;
       
       var workArray = projModel.get('projectWork');
       
