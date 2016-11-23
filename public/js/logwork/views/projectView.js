@@ -66,7 +66,9 @@ define([
       //Get the project model for this project.
       var projModel = global.projectCollection.models[this.projectSelectionToIndex(projTitle)];
       
+      //Show the charting and layout elements on the page
       this.$el.find('hr').show();
+      this.$el.find('.row').show();
       
       //Create the pie chart
       this.drawPieChart(projModel);
