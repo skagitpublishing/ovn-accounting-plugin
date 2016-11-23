@@ -274,6 +274,47 @@ define([
         projDatasets.push(tempObj);
       }
       
+      //Chart options
+      var barOptions_stacked = {
+        tooltips: {
+            enabled: true
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    fontFamily: "'Open Sans Bold', sans-serif",
+                    fontSize:11
+                },
+                scaleLabel:{
+                    display:false
+                },
+                gridLines: {
+                }, 
+                stacked: true
+            }],
+            yAxes: [{
+                gridLines: {
+                    display:false,
+                    color: "#fff",
+                    zeroLineColor: "#fff",
+                    zeroLineWidth: 0
+                },
+                ticks: {
+                    fontFamily: "'Open Sans Bold', sans-serif",
+                    fontSize:11
+                },
+                stacked: true,
+                barThickness: 10
+            }]
+        },
+        legend:{
+            display:true
+        },
+        pointLabelFontFamily : "Quadon Extra Bold",
+        scaleFontFamily : "Quadon Extra Bold",
+      };
+      
       this.barChart = new Chart(ctx2, {
           type: 'horizontalBar',
           data: {
@@ -287,17 +328,7 @@ define([
             //    }]
             datasets: projDatasets
           },
-          options: {
-            scales: {
-              xAxes: [{
-                display: true,
-                stacked: true,
-                ticks: {
-                  beginAtZero: true
-                }
-              }]
-            }
-          }
+          options: barOptions_stacked
       });
       
       
