@@ -261,10 +261,9 @@ define([
       for(var i=0; i < projectStats.userWorkCategories.length; i++) { //Loop through the work categories for this project
         var tempObj = new Object();
         
+        var tempData = [];
         //Loop through the users that have contributed to this project
         for(var j=0; j < projectStats.users.length; j++) {
-          var tempData = [];
-          
           tempData.push(projectStats.breakdown[j][i]);
         }
         tempObj.data = tempData;
