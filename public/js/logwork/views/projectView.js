@@ -269,7 +269,7 @@ define([
         tempObj.data = tempData;
         tempObj.label = projectStats.userWorkCategories[i];
         tempObj.backgroundColor = colorPalet[i];
-        tempObj.backgroundColor = colorPalet[i];
+        tempObj.hoverBackgroundColor = colorPalet[i];
         
         projDatasets.push(tempObj);
       }
