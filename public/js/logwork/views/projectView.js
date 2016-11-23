@@ -70,6 +70,9 @@ define([
       this.$el.find('hr').show();
       this.$el.find('.row').show();
       
+      //Remove the blank, default option from the drop-down box.
+      this.$el.find('#defaultOption').remove();
+      
       //Create the pie chart
       this.drawPieChart(projModel);
       
