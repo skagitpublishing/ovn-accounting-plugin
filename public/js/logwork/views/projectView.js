@@ -335,7 +335,7 @@ define([
       
       
       
-      
+  /*    
       //http://www.chartjs.org/docs/#bar-chart
       var ctx3 = this.$el.find('#testChart');
       
@@ -383,29 +383,7 @@ define([
         legend:{
             display:true
         },
-        /*
-        animation: {
-            onComplete: function () {
-                var chartInstance = this.chart;
-                var ctx = chartInstance.ctx;
-                ctx.textAlign = "left";
-                ctx.font = "9px Open Sans";
-                ctx.fillStyle = "#fff";
 
-                Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
-                    var meta = chartInstance.controller.getDatasetMeta(i);
-                    Chart.helpers.each(meta.data.forEach(function (bar, index) {
-                        data = dataset.data[index];
-                        if(i==0){
-                            ctx.fillText(data, 50, bar._model.y+4);
-                        } else {
-                            ctx.fillText(data, bar._model.x-25, bar._model.y+4);
-                        }
-                    }),this)
-                }),this);
-            }
-        },
-        */
         pointLabelFontFamily : "Quadon Extra Bold",
         scaleFontFamily : "Quadon Extra Bold",
       };
@@ -435,7 +413,7 @@ define([
         
         options: barOptions_stacked,
       });
-      
+*/      
     },
     
     //This function expects an array of LogWork model GUIDs.
