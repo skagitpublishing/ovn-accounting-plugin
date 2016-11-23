@@ -256,17 +256,37 @@ define([
       if(this.barChart != undefined)
         this.barChart.destroy();
       
+      //Create the datasets for the horizontal bar chart
+      var projDatasets = [];
+      for(var i=0; i < projectStats.userWorkCategories.length; i++) { //Loop through the work categories for this project
+        var tempObj = new Object();
+        
+        //Loop through the users that have contributed to this project
+        for(var j=0; j < projectStats.users.length; j++) {
+          var tempData = [];
+          
+          tempData.push(projectStats.breakdown[j][i]);
+        }
+        tempObj.data = tempData;
+        tempObj.label = projectStats.userWorkCategories[i];
+        tempObj.backgroundColor = colorPalet[i];
+        tempObj.backgroundColor = colorPalet[i];
+        
+        projDatasets.push(tempObj);
+      }
+      
       this.barChart = new Chart(ctx2, {
           type: 'horizontalBar',
           data: {
             labels: userNames,
-            datasets: [
-                {
-                    data: projectStats.userHours,
-                    label: projTitle,
-                    backgroundColor: colorPalet[0],
-                    hoverBackgroundColor: colorPalet[0]
-                }]
+            //datasets: [
+            //    {
+            //        data: projectStats.userHours,
+            //        label: projTitle,
+            //        backgroundColor: colorPalet[0],
+            //        hoverBackgroundColor: colorPalet[0]
+            //    }]
+            datasets: projDatasets
           },
           options: {
             scales: {
