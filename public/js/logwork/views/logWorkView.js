@@ -204,6 +204,15 @@ define([
       
       //Default return value. -1 = not found/invalid
       return -1;
+    },
+    
+    loadEntry: function(logWorkModel) {
+      debugger;
+      
+      //this.render();
+      global.leftMenuView.showLogWork();
+      
+      debugger;
     }
     
 	});
