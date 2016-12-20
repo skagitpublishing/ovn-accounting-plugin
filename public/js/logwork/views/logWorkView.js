@@ -181,6 +181,9 @@ define([
           
           console.log('Existing log work model '+logWorkId+' updated successfully!');
           
+          //Flag if the project model needs to be saved.
+          //Reduces server calls.
+          var projectNeedsSave = false; 
           
           //Update the project model with the GUID to this logWork model, it doesn't already have it.
           var projectModel = global.projectCollection.get(projectId);
@@ -189,17 +192,19 @@ define([
           if(projectWork.indexOf(logWorkId) == -1) { 
             projectWork.push(logWorkId);
             projectModel.set('projectWork', projectWork);  
+            projectNeedsSave = true;
           }
-          
           
           //Update the project model with the GUID to this contributor.
           var projectContributors = projectModel.get('contributors');
           if(projectContributors.indexOf(userId) == -1) {
             projectContributors.push(userId);
-            projectModel.set('contributors', projectContributors);            
+            projectModel.set('contributors', projectContributors);
+            projectNeedsSave = true;
           }
-          projectModel.save(); //Update the model.
           
+          if(projectNeedsSave)
+            projectModel.save(); //Update the model.
           
           //Update the User model with a GUID to this logWork model.
           var userModel = global.userCollection.get(userId);
@@ -207,9 +212,11 @@ define([
           if(projectsContributed.indexOf(projectId) == -1) {
             projectsContributed.push(projectId);
             userModel.set('projectsContributed', projectsContributed);
+            userModel.save();
           }
-          userModel.save();
           
+          //Dev Note: I could probably put the code below this in a function, so that it doesn't get
+          //duplicated in the other POST call above.
 
           //Refresh the logWork Collection.
           global.logWorkCollection.fetch();
