@@ -40,8 +40,9 @@
         //a separate file so after a build there are only 2 HTTP
         //requests instead of three.
         requirejs(['../js/cms_common'], function (common) {
-            
+          requirejs(['/js/dependencies-round1.js'], function (common) {
             requirejs(['/js/logwork/logwork_app.js']);
+          });
         });
     </script>
   </head>
