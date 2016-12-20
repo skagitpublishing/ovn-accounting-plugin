@@ -231,6 +231,9 @@ define([
       var projModel = global.projectCollection.get(projId);
       this.$el.find('#logProject').val(projModel.get('title'));
 
+      //Populate the type of work based on the selected project.
+      this.populateWorkType();
+      
       this.$el.find('#logWorkType').val(logWorkModel.get('typeOfWork')); //The type of work
       
       this.$el.find('#logHour').val(logWorkModel.get('hours')); //Hours worked
