@@ -24,7 +24,7 @@ define([
 		},
 
 		initialize: function () {
-
+      this.selectedRecord = undefined;
 		},
 
     render: function () {
@@ -104,58 +104,66 @@ define([
       this.model.attributes.user = userdata._id;
       
       
-      
-      $.post('/api/logwork/create', this.model.attributes, function(data) {
-        //debugger;
-        console.log('Data created successfully!');
-        
-        var logWorkId = data.loggedwork._id; //The ID of this newly created logWork model.
-        var userId = data.loggedwork.user; //The ID of the user associated with this logWork model.
-        var projectId = data.loggedwork.project;
-        
-        //Update the project model with the GUID to this logWork model.
-        var projectModel = global.projectCollection.get(projectId);
-        var projectWork = projectModel.get('projectWork');
-        projectWork.push(logWorkId);
-        projectModel.set('projectWork', projectWork);
-        
-        //Update the project model with the GUID to this contributor.
-        var projectContributors = projectModel.get('contributors');
-        if(projectContributors.indexOf(userId) == -1) {
-          projectContributors.push(userId);
-          projectModel.set('contributors', projectContributors);
-        }
-        
-        //Update the model.
-        projectModel.save();
-        
-        //Update the User model with a GUID to this logWork model.
-        var userModel = global.userCollection.get(userId);
-        var projectsContributed = userModel.get('projectsContributed');
-        if(projectsContributed.indexOf(projectId) == -1) {
-          projectsContributed.push(projectId);
-          userModel.set('projectsContributed', projectsContributed);
-        }
-        userModel.save();
-        
-        
-        //Refresh the logWork Collection.
-        global.logWorkCollection.fetch();
-        
-        //Clear the window
-        $('#logDate').val("");
-        $('#logWorkType').val("");
-        $('#logProject').val("");
-        $('#logHour').val("");
-        $('#logDesc').val("");
-        
-        //Launch the success modal to inform user the work was logged successfully.
-        global.modalView.successModal();
-        
-      }).fail(function(err) {
+      if(this.selectedRecord == undefined) {
+
+        $.post('/api/logwork/create', this.model.attributes, function(data) {
+          //debugger;
+          console.log('Data created successfully!');
+
+          var logWorkId = data.loggedwork._id; //The ID of this newly created logWork model.
+          var userId = data.loggedwork.user; //The ID of the user associated with this logWork model.
+          var projectId = data.loggedwork.project;
+
+          //Update the project model with the GUID to this logWork model.
+          var projectModel = global.projectCollection.get(projectId);
+          var projectWork = projectModel.get('projectWork');
+          projectWork.push(logWorkId);
+          projectModel.set('projectWork', projectWork);
+
+          //Update the project model with the GUID to this contributor.
+          var projectContributors = projectModel.get('contributors');
+          if(projectContributors.indexOf(userId) == -1) {
+            projectContributors.push(userId);
+            projectModel.set('contributors', projectContributors);
+          }
+
+          //Update the model.
+          projectModel.save();
+
+          //Update the User model with a GUID to this logWork model.
+          var userModel = global.userCollection.get(userId);
+          var projectsContributed = userModel.get('projectsContributed');
+          if(projectsContributed.indexOf(projectId) == -1) {
+            projectsContributed.push(projectId);
+            userModel.set('projectsContributed', projectsContributed);
+          }
+          userModel.save();
+
+
+          //Refresh the logWork Collection.
+          global.logWorkCollection.fetch();
+
+          //Clear the window
+          $('#logDate').val("");
+          $('#logWorkType').val("");
+          $('#logProject').val("");
+          $('#logHour').val("");
+          $('#logDesc').val("");
+
+          //Launch the success modal to inform user the work was logged successfully.
+          global.modalView.successModal();
+
+        }).fail(function(err) {
+          debugger;
+        });
+      } else {
         debugger;
-      });
-      
+        
+        //Post to an existing record.
+        
+        //Clear the global flag.
+        this.selectedRecord = undefined;
+      }
       
     },
     
@@ -191,6 +199,7 @@ define([
     projectSelectionToIndex: function(dropDownSelection) {
       //debugger;
       
+      //Error checking.
       if((dropDownSelection == undefined) || (dropDownSelection == "") || (typeof(dropDownSelection) != "string")) {
         console.log('Invalid value passed for dropDownSelection in projectSelectionToIndex().');
         return -1;
@@ -212,7 +221,22 @@ define([
       //this.render();
       global.leftMenuView.showLogWork();
       
-      debugger;
+      //Signal to the 'submit button' that this is an existing record.
+      this.selectedRecord = logWorkModel.id;
+      
+      this.$el.find('#logDate').val(logWorkModel.get('endTime')); //The date of the entry
+      
+      //Select the correct project from the drop-down menu
+      var projId = logWorkModel.get('project');
+      var projModel = global.projectCollection.get(projId);
+      this.$el.find('#logProject').val(projModel.get('title'));
+
+      this.$el.find('#logWorkType').val(logWorkModel.get('typeOfWork')); //The type of work
+      
+      this.$el.find('#logHour').val(logWorkModel.get('hours')); //Hours worked
+      
+      this.$el.find('#logDesc').val(logWorkModel.get('details')); //Work Description
+      
     }
     
 	});
