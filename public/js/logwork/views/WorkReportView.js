@@ -218,7 +218,7 @@ define([
     editEntry: function(i) {
       debugger;
       var thisModel = global.logWorkCollection.models[i];
-      global.logWorkView.loadEntry(i);
+      global.logWorkView.loadEntry(thisModel);
     }
     
     
