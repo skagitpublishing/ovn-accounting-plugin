@@ -159,13 +159,41 @@ define([
       
       //Update an existing log model
       } else {
-        debugger;
+        //debugger;
         
-        //Compare the changes
+        //Move the work entry from one project model to another if the project was changed.
         var originalModel = global.logWorkCollection.get(this.selectedRecord);
         if(originalModel.get('project') != this.model.get('project')) {
           //The project changed, so I need to remove the entry from the previous project.
           debugger;
+          
+          var originalProjectId = originalModel.get('project');
+          var newProjectId = this.model.get('project');
+          
+          var originalProjectModel = global.projectCollection.get(originalProjectId);
+          var newProjectModel = global.projectCollection.get(newProjectId);
+          
+          var originalProjectWork = originalProjectModel.get('projectWork');
+          var originalIndex = originalProjectWork.indexOf(this.selectedRecord);
+          
+          //Error Handling
+          if(originalIndex == -1) {
+            debugger;
+            alert('Something went wrong when trying to update log work entry. Original project could not be found!');
+            return;
+          }
+          
+          //Remove the entry from the original project
+          originalProjectWork.splice(originalIndex,1); //Remove the entry
+          originalProjectModel.set('projectWork', originalProjectWork); //Update the model.
+          originalProjectModel.save(); //Save the model
+          
+          //Add the entry to the new project
+          var newProjectWork = newProjectModel.get('projectWork');
+          newProjectWork.push(this.selectedRecord);
+          newProjectModel.set('projectWork', newProjectWork);
+          newProjectModel.save();
+          
         }
         
         this.model.id = this.selectedRecord;
@@ -185,6 +213,7 @@ define([
           //Reduces server calls.
           var projectNeedsSave = false; 
           
+          //12/20/16 CT: This paragraph my be redundent.
           //Update the project model with the GUID to this logWork model, it doesn't already have it.
           var projectModel = global.projectCollection.get(projectId);
           var projectWork = projectModel.get('projectWork');
@@ -291,7 +320,7 @@ define([
     },
     
     loadEntry: function(logWorkModel) {
-      debugger;
+      //debugger;
       
       //this.render();
       global.leftMenuView.showLogWork();

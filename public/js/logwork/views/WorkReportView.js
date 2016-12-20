@@ -216,7 +216,7 @@ define([
     //This function is called whenever the user clicks on the Edit button next to a work entry.
     //It passes the model for that entry on to the logWorkView, to be edited.
     editEntry: function(i) {
-      debugger;
+      //debugger;
       var thisModel = global.logWorkCollection.models[i];
       global.logWorkView.loadEntry(thisModel);
     }
