@@ -156,10 +156,65 @@ define([
         }).fail(function(err) {
           debugger;
         });
+      
+      //Update an existing log model
       } else {
         debugger;
         
+        this.model.id = this.selectedRecord;
+        this.model.set('_id', this.selectedRecord);
+        
         //Post to an existing record.
+        $.post('/api/logwork/'+this.model.id+'/update', this.model.attributes, function(data) {
+          debugger;
+          
+          var logWorkId = data.loggedwork._id; //The ID of this newly created logWork model.
+          var userId = data.loggedwork.user; //The ID of the user associated with this logWork model.
+          var projectId = data.loggedwork.project;
+          
+          console.log('Existing log work model '+logWorkId+' updated successfully!');
+          
+          //Update the project model with the GUID to this logWork model.
+          var projectModel = global.projectCollection.get(projectId);
+          var projectWork = projectModel.get('projectWork');
+          
+          //Update the project model with the GUID to this contributor.
+          var projectContributors = projectModel.get('contributors');
+          if(projectContributors.indexOf(userId) == -1) {
+            projectContributors.push(userId);
+            projectModel.set('contributors', projectContributors);
+          }
+          
+          //Update the model.
+          projectModel.save();
+
+          //Update the User model with a GUID to this logWork model.
+          var userModel = global.userCollection.get(userId);
+          var projectsContributed = userModel.get('projectsContributed');
+          if(projectsContributed.indexOf(projectId) == -1) {
+            projectsContributed.push(projectId);
+            userModel.set('projectsContributed', projectsContributed);
+          }
+          userModel.save();
+
+
+          //Refresh the logWork Collection.
+          global.logWorkCollection.fetch();
+
+          //Clear the window
+          $('#logDate').val("");
+          $('#logWorkType').val("");
+          $('#logProject').val("");
+          $('#logHour').val("");
+          $('#logDesc').val("");
+
+          //Launch the success modal to inform user the work was logged successfully.
+          global.modalView.successModal();
+          
+        }).fail(function(err) {
+          debugger;
+        });
+        
         
         //Clear the global flag.
         this.selectedRecord = undefined;
