@@ -161,6 +161,13 @@ define([
       } else {
         debugger;
         
+        //Compare the changes
+        var originalModel = global.logWorkCollection.get(this.selectedRecord);
+        if(originalModel.get('project') != this.model.get('project')) {
+          //The project changed, so I need to remove the entry from the previous project.
+          debugger;
+        }
+        
         this.model.id = this.selectedRecord;
         this.model.set('_id', this.selectedRecord);
         
@@ -174,20 +181,26 @@ define([
           
           console.log('Existing log work model '+logWorkId+' updated successfully!');
           
-          //Update the project model with the GUID to this logWork model.
+          
+          //Update the project model with the GUID to this logWork model, it doesn't already have it.
           var projectModel = global.projectCollection.get(projectId);
           var projectWork = projectModel.get('projectWork');
+          //Ensure the entry doesn't already exist. Protect against duplicate entries.
+          if(projectWork.indexOf(logWorkId) == -1) { 
+            projectWork.push(logWorkId);
+            projectModel.set('projectWork', projectWork);  
+          }
+          
           
           //Update the project model with the GUID to this contributor.
           var projectContributors = projectModel.get('contributors');
           if(projectContributors.indexOf(userId) == -1) {
             projectContributors.push(userId);
-            projectModel.set('contributors', projectContributors);
+            projectModel.set('contributors', projectContributors);            
           }
+          projectModel.save(); //Update the model.
           
-          //Update the model.
-          projectModel.save();
-
+          
           //Update the User model with a GUID to this logWork model.
           var userModel = global.userCollection.get(userId);
           var projectsContributed = userModel.get('projectsContributed');
@@ -196,7 +209,7 @@ define([
             userModel.set('projectsContributed', projectsContributed);
           }
           userModel.save();
-
+          
 
           //Refresh the logWork Collection.
           global.logWorkCollection.fetch();
