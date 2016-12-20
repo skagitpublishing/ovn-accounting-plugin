@@ -88,7 +88,12 @@ define([
             field: 'description',
             title: 'Description',
             sortable: true
-        }],
+        }, {
+            field: 'edit',
+            title: 'Edit',
+            sortable: false
+        }         
+         ],
 
       });
       
