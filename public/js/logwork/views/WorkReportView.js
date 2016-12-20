@@ -130,7 +130,13 @@ define([
         lineItem.typeOfWork = thisModel.get('typeOfWork');
         lineItem.hours = thisModel.get('hours');
         lineItem.description = thisModel.get('details');
-        lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'
+        
+        if(thisModel.get('user') == userdata._id) {
+          lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
+        } else {
+          lineItem.edit = '';
+        }
+        
         
         tableData.push(lineItem);
       }
