@@ -52,6 +52,12 @@ keystone.set('locals', {
 	editable: keystone.content.editable
 });
 
+//Add User GUIDs to the arrays below to make that user an Admin or Superuser.
+//Only superusers can change other users passwords. They can also access the Keystone Admin UI.
+//Admins can access the API and only the ConnextCMS Dashboard.
+keystone.set('superusers', ['570af17a35a07fd404a341ba']);
+keystone.set('admins', ['570af17a35a07fd404a341ba', '5803d19fc0725f03c7ee9fec']);
+
 // Load your project's Routes
 
 keystone.set('routes', require('./routes'));
