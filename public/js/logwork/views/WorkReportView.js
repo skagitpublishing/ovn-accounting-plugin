@@ -130,6 +130,7 @@ define([
         lineItem.typeOfWork = thisModel.get('typeOfWork');
         lineItem.hours = thisModel.get('hours');
         lineItem.description = thisModel.get('details');
+        lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'
         
         tableData.push(lineItem);
       }
@@ -204,6 +205,10 @@ define([
       year = year.slice(-2);
       
       return month+'-'+date+'-'+year;
+    },
+    
+    editEntry: function(i) {
+      debugger;
     }
     
     
