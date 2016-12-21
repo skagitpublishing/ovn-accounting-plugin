@@ -1,3 +1,9 @@
+/*
+Dev Note: 12/21/16
+Bootstrap table export is a very fragile, complicated piece of software that is not maintained. Chances are good
+it will break in the future with no support to fix it. 
+*/
+
 /*global define*/
 //Define libraries this file depends on.
 define([
@@ -7,21 +13,12 @@ define([
   
   //https://github.com/hhurz/tableExport.jquery.plugin
   '/js/lib/tableExport.js',
-  '/js/lib/jquery.base64.4.js',
-  //'/js/lib/FileSaver.min.js',
-  //'/js/lib/xlsx.core.min.js',
-  
-  //https://github.com/clarketm/TableExport
-  //'/js/lib/file-saver.js',
-  //'/js/lib/tableexport.min.js',
-  //'/js/lib/xlsx.js',
-  
+  '/js/lib/jquery.base64.js',
+
   'text!../../../js/logwork/templates/WorkReport.html',
-  
   '/js/lib/bootstrap-table-export.js',
 ], function ($, _, Backbone, 
-              TableExport, jQueryBase64, //FileSave, XLSXCore,
-              //FileSaver, TableExport, XLSX,
+              TableExport, jQueryBase64,
               WorkReportTemplate, BootstrapTableExport) {
 	'use strict';
 
@@ -65,33 +62,37 @@ define([
         //  type: 'csv'
         //},
         columns: [{
-            field: 'date',
-            title: 'Date',
-            sortable: true
+          field: 'entry',
+          title: 'Entry',
+          sortable: true
         }, {
-            field: 'user',
-            title: 'User',
-            sortable: true
+          field: 'date',
+          title: 'Date',
+          sortable: true
         }, {
-            field: 'project',
-            title: 'Project',
-            sortable: true
+          field: 'user',
+          title: 'User',
+          sortable: true
         }, {
-            field: 'typeOfWork',
-            title: 'Type of Work',
-            sortable: true
+          field: 'project',
+          title: 'Project',
+          sortable: true
         }, {
-            field: 'hours',
-            title: 'Hours',
-            sortable: true
+          field: 'typeOfWork',
+          title: 'Type of Work',
+          sortable: true
         }, {
-            field: 'description',
-            title: 'Description',
-            sortable: true
+          field: 'hours',
+          title: 'Hours',
+          sortable: true
         }, {
-            field: 'edit',
-            title: 'Edit',
-            sortable: false
+          field: 'description',
+          title: 'Description',
+          sortable: true
+        }, {
+          field: 'edit',
+          title: 'Edit',
+          sortable: false
         }         
          ],
 
@@ -124,6 +125,7 @@ define([
         var dateStr = this.getDateStr(new Date(thisModel.get('startTime')));
         
         var lineItem = new Object();
+        lineItem.entry = i;
         lineItem.date = dateStr;
         lineItem.user = userName;
         lineItem.project = projectName;
