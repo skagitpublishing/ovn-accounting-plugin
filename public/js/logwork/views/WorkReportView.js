@@ -12,16 +12,16 @@ define([
   //'/js/lib/xlsx.core.min.js',
   
   //https://github.com/clarketm/TableExport
-  '/js/lib/file-saver.js',
-  '/js/lib/tableexport.min.js',
-  '/js/lib/xlsx.js',
+  //'/js/lib/file-saver.js',
+  //'/js/lib/tableexport.min.js',
+  //'/js/lib/xlsx.js',
   
   'text!../../../js/logwork/templates/WorkReport.html',
   
   '/js/lib/bootstrap-table-export.js',
 ], function ($, _, Backbone, 
               //TableExport, jQueryBase64, FileSave, XLSXCore,
-              FileSaver, TableExport, XLSX,
+              //FileSaver, TableExport, XLSX,
               WorkReportTemplate, BootstrapTableExport) {
 	'use strict';
 
@@ -57,7 +57,7 @@ define([
       $('#resultsTable').bootstrapTable({
         sortName: 'date',
         sortOrder: 'desc',
-        //showExport: true,
+        showExport: true,
         //exportDataType: 'selected',
         //exportType: ['csv', 'excel', 'json', 'txt'],
         //exportOptions: {
@@ -98,7 +98,7 @@ define([
       });
       
       this.populateTable();
-      $('#resultsTable').tableExport();
+      //$('#resultsTable').tableExport();
       
 			return this;
 		},
