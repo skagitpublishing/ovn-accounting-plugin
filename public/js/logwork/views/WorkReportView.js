@@ -62,10 +62,6 @@ define([
         //  type: 'csv'
         //},
         columns: [{
-          field: 'entry',
-          title: 'Entry',
-          sortable: true
-        }, {
           field: 'date',
           title: 'Date',
           sortable: true
@@ -125,7 +121,7 @@ define([
         var dateStr = this.getDateStr(new Date(thisModel.get('startTime')));
         
         var lineItem = new Object();
-        lineItem.entry = i;
+        //lineItem.entry = i;
         lineItem.date = dateStr;
         lineItem.user = userName;
         lineItem.project = projectName;
