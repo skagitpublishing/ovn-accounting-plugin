@@ -17,12 +17,12 @@ define([
   '/js/lib/xlsx.js',
   
   'text!../../../js/logwork/templates/WorkReport.html',
-  '/js/lib/bootstrap-table.js',
+  
   '/js/lib/bootstrap-table-export.js',
 ], function ($, _, Backbone, 
               //TableExport, jQueryBase64, FileSave, XLSXCore,
               FileSaver, TableExport, XLSX,
-              WorkReportTemplate, BootstrapTable, BootstrapTableExport) {
+              WorkReportTemplate, BootstrapTableExport) {
 	'use strict';
 
 	var WorkReportView = Backbone.View.extend({
