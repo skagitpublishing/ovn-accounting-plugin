@@ -27,7 +27,8 @@ exports.listall = function(req, res) {
  * List LoggedWork
  */
 exports.listlast50 = function(req, res) {
-	LoggedWork.model.find(function(err, items) {
+	/*
+  LoggedWork.model.find(function(err, items) {
 		
 		if (err) return res.apiError('database error', err);
 		
@@ -36,6 +37,23 @@ exports.listlast50 = function(req, res) {
 		});
 		
 	});
+  */
+  
+  LoggedWork.paginate({
+    page: 1,
+    perPage: 50,
+    maxPages: 10
+  })
+  .sort('-endTime')
+  .exec(function(err, items) {
+    
+    if (err) return res.apiError('database error', err);
+    
+    res.apiResponse({
+			loggedwork: items
+		});
+    
+  });
 }
 
 /**

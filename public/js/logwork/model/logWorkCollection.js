@@ -33,8 +33,8 @@ define([
       //  debugger;
       //});
 
-      //this.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/postcategory/list',
-      this.url = '/api/logwork/list/all',
+      //this.url = '/api/logwork/list/all',
+      this.url = '/api/logwork/list/last50',
       
       this.on('add', function() {
         debugger;
