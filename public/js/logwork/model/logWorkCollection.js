@@ -17,6 +17,7 @@ define([
     parse: function(response) {
       //debugger;
       
+      /*
       //Parse results using the /list/last50 API
       if(response.loggedwork.results.length == 0) {
         log.push('Empty data returned by server when trying to retrieve PostCategory collection. Most likely due to a new DB.');
@@ -24,8 +25,9 @@ define([
       } else {
         return response.loggedwork.results;
       }
+      */
       
-      /*
+      
       //Parse results using the /list/all API
       if(response.loggedwork.length == 0) {
         log.push('Empty data returned by server when trying to retrieve PostCategory collection. Most likely due to a new DB.');
@@ -33,7 +35,7 @@ define([
       } else {
         return response.loggedwork;
       }
-      */
+      
     },
 
     refreshView: false,
@@ -44,8 +46,8 @@ define([
       //  debugger;
       //});
 
-      //this.url = '/api/logwork/list/all',
-      this.url = '/api/logwork/list/last50',
+      this.url = '/api/logwork/list/all',
+      //this.url = '/api/logwork/list/last50',
       
       this.on('add', function() {
         debugger;
