@@ -16,7 +16,7 @@ define([
   '../../js/logwork/model/userCollection.js',
   '../../js/logwork/views/projectView.js',
   '../../js/app/views/modalView.js',
-  '/js/lib/bootstrap-table.js',
+  //'/js/lib/bootstrap-table.js',
   'adminlte',
   'logs',
   '../../js/serversettings.js'
@@ -26,7 +26,7 @@ define([
               LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView, ProjectModel, ProjectCollection, UserModel, UserCollection,
               ProjectView,
               ModalView,
-              BootstrapTable, AdminLTE, Logs, serverData) {
+              AdminLTE, Logs, serverData) {
 
   
   //Global Variables
