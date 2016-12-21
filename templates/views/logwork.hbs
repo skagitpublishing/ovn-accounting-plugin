@@ -41,7 +41,9 @@
         //requests instead of three.
         requirejs(['../js/cms_common'], function (common) {
           requirejs(['/js/dependencies-round1.js'], function (common) {
-            requirejs(['/js/logwork/logwork_app.js']);
+            requirejs(['/js/dependencies-round2.js'], function (common) {
+              requirejs(['/js/logwork/logwork_app.js']);
+            });
           });
         });
     </script>
