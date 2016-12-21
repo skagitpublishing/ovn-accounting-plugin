@@ -17,12 +17,23 @@ define([
     parse: function(response) {
       //debugger;
       
+      //Parse results using the /list/last50 API
+      if(response.loggedwork.results.length == 0) {
+        log.push('Empty data returned by server when trying to retrieve PostCategory collection. Most likely due to a new DB.');
+        return [global.loggedWorkModel];
+      } else {
+        return response.loggedwork.results;
+      }
+      
+      /*
+      //Parse results using the /list/all API
       if(response.loggedwork.length == 0) {
         log.push('Empty data returned by server when trying to retrieve PostCategory collection. Most likely due to a new DB.');
         return [global.loggedWorkModel];
       } else {
         return response.loggedwork;
       }
+      */
     },
 
     refreshView: false,
