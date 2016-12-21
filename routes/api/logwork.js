@@ -85,8 +85,8 @@ exports.update = function(req, res) {
   //Ensure the user making the request is either the user being changed or a superuser. 
   //Reject normal admins or users maliciously trying to change other users settings.
   var userId = req.user.get('id');
-  var blah = req.params;
-  var blah = req.params.user;
+  var blah = req.body;
+  var blah = req.body.user;
   if(userId != req.params.user) {
     return res.apiError(403, 'Not allowed to change this user settings.');
   }
