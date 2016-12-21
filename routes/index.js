@@ -93,7 +93,8 @@ exports = module.exports = function(app) {
 	app.get('/api/privatepage/:id/remove', keystone.middleware.api, routes.api.privatepage.remove);
   
   //Log Work Route
-  app.get('/api/logwork/list', keystone.middleware.api, routes.api.logwork.list);
+  app.get('/api/logwork/list/all', keystone.middleware.api, routes.api.logwork.listall);
+  app.get('/api/logwork/list/last50', keystone.middleware.api, routes.api.logwork.listlast50);
   app.get('/api/logwork/:id', keystone.middleware.api, routes.api.logwork.get);
   app.all('/api/logwork/:id/update', keystone.middleware.api, routes.api.logwork.update);
   app.all('/api/logwork/create', keystone.middleware.api, routes.api.logwork.create);

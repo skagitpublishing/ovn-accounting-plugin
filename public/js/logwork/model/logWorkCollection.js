@@ -34,7 +34,7 @@ define([
       //});
 
       //this.url = 'http://'+global.serverIp+':'+global.serverPort+'/api/postcategory/list',
-      this.url = '/api/logwork/list',
+      this.url = '/api/logwork/list/all',
       
       this.on('add', function() {
         debugger;

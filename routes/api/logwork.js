@@ -11,7 +11,22 @@ var superusers = keystone.get('superusers');
 /**
  * List LoggedWork
  */
-exports.list = function(req, res) {
+exports.listall = function(req, res) {
+	LoggedWork.model.find(function(err, items) {
+		
+		if (err) return res.apiError('database error', err);
+		
+		res.apiResponse({
+			loggedwork: items
+		});
+		
+	});
+}
+
+/**
+ * List LoggedWork
+ */
+exports.listlast50 = function(req, res) {
 	LoggedWork.model.find(function(err, items) {
 		
 		if (err) return res.apiError('database error', err);
