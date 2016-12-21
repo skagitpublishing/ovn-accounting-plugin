@@ -2,7 +2,7 @@ define([
 	//'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',
-  'bootstrap.min',
+  'bootstrap.3.3.6',
   //'js.cookie',
 	'../../js/logwork/views/leftMenuView.js',
   '../../js/logwork/views/dashboardView.js',
