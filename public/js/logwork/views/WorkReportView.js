@@ -98,7 +98,7 @@ define([
       });
       
       this.populateTable();
-      $('#resultsTable').tableExport();
+      //$('#resultsTable').tableExport();
       
 			return this;
 		},
