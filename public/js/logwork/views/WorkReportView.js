@@ -6,7 +6,7 @@ define([
 	'backbone_0.9.2',  
   
   //https://github.com/hhurz/tableExport.jquery.plugin
-  //'/js/lib/tableExport.js',
+  '/js/lib/tableExport.js',
   //'/js/lib/jquery.base64.js',
   //'/js/lib/FileSaver.min.js',
   //'/js/lib/xlsx.core.min.js',
@@ -20,7 +20,7 @@ define([
   
   '/js/lib/bootstrap-table-export.js',
 ], function ($, _, Backbone, 
-              //TableExport, jQueryBase64, FileSave, XLSXCore,
+              TableExport, //jQueryBase64, FileSave, XLSXCore,
               //FileSaver, TableExport, XLSX,
               WorkReportTemplate, BootstrapTableExport) {
 	'use strict';
