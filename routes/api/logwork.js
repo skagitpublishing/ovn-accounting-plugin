@@ -54,9 +54,7 @@ exports.create = function(req, res) {
   //Reject normal admins or users maliciously trying to change other users settings.
   var userId = req.user.get('id');
   if(userId != req.params.user) {
-    if(superusers.indexOf(userId) == -1) {
-      return res.apiError(403, 'Not allowed to change this user settings.');
-    }
+    return res.apiError(403, 'Not allowed to change this user settings.');
   }
   
 	var item = new LoggedWork.model(),
@@ -87,9 +85,7 @@ exports.update = function(req, res) {
   //Reject normal admins or users maliciously trying to change other users settings.
   var userId = req.user.get('id');
   if(userId != req.params.user) {
-    if(superusers.indexOf(userId) == -1) {
-      return res.apiError(403, 'Not allowed to change this user settings.');
-    }
+    return res.apiError(403, 'Not allowed to change this user settings.');
   }
   
 	LoggedWork.model.findById(req.params.id).exec(function(err, item) {
@@ -127,9 +123,7 @@ exports.remove = function(req, res) {
   //Reject normal admins or users maliciously trying to change other users settings.
   var userId = req.user.get('id');
   if(userId != req.params.user) {
-    if(superusers.indexOf(userId) == -1) {
-      return res.apiError(403, 'Not allowed to change this user settings.');
-    }
+    return res.apiError(403, 'Not allowed to change this user settings.');
   }
   
 	LoggedWork.model.findById(req.params.id).exec(function (err, item) {
