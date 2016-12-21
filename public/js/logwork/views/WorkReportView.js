@@ -7,7 +7,7 @@ define([
   
   //https://github.com/hhurz/tableExport.jquery.plugin
   '/js/lib/tableExport.js',
-  '/js/lib/jquery.base64.js',
+  '/js/lib/jquery.base64.2.js',
   //'/js/lib/FileSaver.min.js',
   //'/js/lib/xlsx.core.min.js',
   
