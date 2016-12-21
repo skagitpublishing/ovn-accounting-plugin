@@ -84,20 +84,6 @@ exports = module.exports = function(app) {
   app.all('/api/fileupload/:id/update', keystone.middleware.api, routes.api.fileupload.update);
   app.all('/api/fileupload/create', keystone.middleware.api, routes.api.fileupload.create);
   app.get('/api/fileupload/:id/remove', keystone.middleware.api, routes.api.fileupload.remove);
-
-  //NRPUser Route
-  app.get('/api/nrpuser/list', keystone.middleware.api, routes.api.nrpuser.list);
-  app.get('/api/nrpuser/:id', keystone.middleware.api, routes.api.nrpuser.get);
-  app.all('/api/nrpuser/:id/update', keystone.middleware.api, routes.api.nrpuser.update);
-  app.all('/api/nrpuser/create', keystone.middleware.api, routes.api.nrpuser.create);
-  app.get('/api/nrpuser/:id/remove', keystone.middleware.api, routes.api.nrpuser.remove);
-  
-  //NRPProject Route
-  app.get('/api/nrpproject/list', keystone.middleware.api, routes.api.nrpproject.list);
-  app.get('/api/nrpproject/:id', keystone.middleware.api, routes.api.nrpproject.get);
-  app.all('/api/nrpproject/:id/update', keystone.middleware.api, routes.api.nrpproject.update);
-  app.all('/api/nrpproject/create', keystone.middleware.api, routes.api.nrpproject.create);
-  app.get('/api/nrpproject/:id/remove', keystone.middleware.api, routes.api.nrpproject.remove);
   
   //Private Pages
   app.get('/api/privatepage/list', keystone.middleware.api, routes.api.privatepage.list);

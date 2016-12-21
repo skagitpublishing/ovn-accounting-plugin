@@ -47,6 +47,15 @@ exports.create = function(req, res) {
 		return res.apiError(403, 'invalid csrf');
 	}
   
+  //Ensure the user making the request is either the user being changed or a superuser. 
+  //Reject normal admins or users maliciously trying to change other users settings.
+  var userId = req.user.get('id');
+  if(userId != req.params.user) {
+    if(superusers.indexOf(userId) == -1) {
+      return res.apiError(403, 'Not allowed to change this user settings.');
+    }
+  }
+  
 	var item = new LoggedWork.model(),
 		data = (req.method == 'POST') ? req.body : req.query;
 	
@@ -71,22 +80,20 @@ exports.update = function(req, res) {
 		return res.apiError(403, 'invalid csrf');
 	}
   
+  //Ensure the user making the request is either the user being changed or a superuser. 
+  //Reject normal admins or users maliciously trying to change other users settings.
+  var userId = req.user.get('id');
+  if(userId != req.params.user) {
+    if(superusers.indexOf(userId) == -1) {
+      return res.apiError(403, 'Not allowed to change this user settings.');
+    }
+  }
   
 	LoggedWork.model.findById(req.params.id).exec(function(err, item) {
 		
 		if (err) return res.apiError('database error', err);
 		if (!item) return res.apiError('not found');
 		debugger;
-    /*
-    //Ensure the user making the request is either the user being changed or a superuser. 
-    //Reject normal admins or users maliciously trying to change other users settings.
-    var userId = req.user.get('id');
-    if(userId != req.params.id) {
-      if(superusers.indexOf(userId) == -1) {
-        return res.apiError(403, 'Not allowed to change this user settings.');
-      }
-    }
-    */
     
 		var data = (req.method == 'POST') ? req.body : req.query;
 		
@@ -107,6 +114,21 @@ exports.update = function(req, res) {
  * Delete LoggedWork by ID
  */
 exports.remove = function(req, res) {
+  
+  //Ensure the user has a valid CSRF token
+	if (!security.csrf.validate(req)) {
+		return res.apiError(403, 'invalid csrf');
+	}
+  
+  //Ensure the user making the request is either the user being changed or a superuser. 
+  //Reject normal admins or users maliciously trying to change other users settings.
+  var userId = req.user.get('id');
+  if(userId != req.params.user) {
+    if(superusers.indexOf(userId) == -1) {
+      return res.apiError(403, 'Not allowed to change this user settings.');
+    }
+  }
+  
 	LoggedWork.model.findById(req.params.id).exec(function (err, item) {
 		
 		if (err) return res.apiError('database error', err);

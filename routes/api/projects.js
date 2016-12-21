@@ -40,6 +40,19 @@ exports.get = function(req, res) {
  */
 exports.create = function(req, res) {
 	
+  //Ensure the user has a valid CSRF token
+	if (!security.csrf.validate(req)) {
+		return res.apiError(403, 'invalid csrf');
+	}
+  
+  //Ensure the user making the request is a superuser. 
+  //Reject normal admins or users maliciously trying to change settings.
+  var userId = req.user.get('id');
+  if(superusers.indexOf(userId) == -1) {
+    return res.apiError(403, 'Not allowed to change this user settings.');
+  }
+
+  
 	var item = new Projects.model(),
 		data = (req.method == 'POST') ? req.body : req.query;
 	
@@ -58,6 +71,19 @@ exports.create = function(req, res) {
  * Get Projects by ID
  */
 exports.update = function(req, res) {
+  
+  //Ensure the user has a valid CSRF token
+	if (!security.csrf.validate(req)) {
+		return res.apiError(403, 'invalid csrf');
+	}
+  
+  //Ensure the user making the request is a superuser. 
+  //Reject normal admins or users maliciously trying to change settings.
+  var userId = req.user.get('id');
+  if(superusers.indexOf(userId) == -1) {
+    return res.apiError(403, 'Not allowed to change this user settings.');
+  }
+  
 	Projects.model.findById(req.params.id).exec(function(err, item) {
 		
 		if (err) return res.apiError('database error', err);
@@ -82,6 +108,19 @@ exports.update = function(req, res) {
  * Delete Projects by ID
  */
 exports.remove = function(req, res) {
+  
+  //Ensure the user has a valid CSRF token
+	if (!security.csrf.validate(req)) {
+		return res.apiError(403, 'invalid csrf');
+	}
+  
+  //Ensure the user making the request is a superuser. 
+  //Reject normal admins or users maliciously trying to change settings.
+  var userId = req.user.get('id');
+  if(superusers.indexOf(userId) == -1) {
+    return res.apiError(403, 'Not allowed to change this user settings.');
+  }
+  
 	Projects.model.findById(req.params.id).exec(function (err, item) {
 		
 		if (err) return res.apiError('database error', err);
