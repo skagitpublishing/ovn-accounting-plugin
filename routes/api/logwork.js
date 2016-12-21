@@ -5,6 +5,9 @@ var security = keystone.security;
 
 var LoggedWork = keystone.list('LoggedWork');
 
+//Retrieve the list of superusers saved in keystone.js
+var superusers = keystone.get('superusers');
+
 /**
  * List LoggedWork
  */

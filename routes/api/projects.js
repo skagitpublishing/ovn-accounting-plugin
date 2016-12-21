@@ -3,6 +3,9 @@ var async = require('async'),
 
 var Projects = keystone.list('Project');
 
+//Retrieve the list of superusers saved in keystone.js
+var superusers = keystone.get('superusers');
+
 /**
  * List Projects
  */
