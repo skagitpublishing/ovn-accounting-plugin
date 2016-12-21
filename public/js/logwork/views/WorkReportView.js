@@ -6,24 +6,23 @@ define([
 	'backbone_0.9.2',  
   
   //https://github.com/hhurz/tableExport.jquery.plugin
-  //'/js/lib/tableExport.js',
-  //'/js/lib/jquery.base64.js',
+  '/js/lib/tableExport.js',
+  '/js/lib/jquery.base64.js',
   //'/js/lib/FileSaver.min.js',
   //'/js/lib/xlsx.core.min.js',
   
   //https://github.com/clarketm/TableExport
-  '/js/lib/file-saver.js',
-  '/js/lib/tableexport.min.js',
-  '/js/lib/xlsx.js',
+  //'/js/lib/file-saver.js',
+  //'/js/lib/tableexport.min.js',
+  //'/js/lib/xlsx.js',
   
   'text!../../../js/logwork/templates/WorkReport.html',
   
-  //'/js/lib/bootstrap-table-export.js',
+  '/js/lib/bootstrap-table-export.js',
 ], function ($, _, Backbone, 
-              //TableExport, jQueryBase64, FileSave, XLSXCore,
-              FileSaver, TableExport, XLSX,
-              //WorkReportTemplate, BootstrapTableExport) {
-              WorkReportTemplate) {
+              TableExport, jQueryBase64, //FileSave, XLSXCore,
+              //FileSaver, TableExport, XLSX,
+              WorkReportTemplate, BootstrapTableExport) {
 	'use strict';
 
 	var WorkReportView = Backbone.View.extend({
