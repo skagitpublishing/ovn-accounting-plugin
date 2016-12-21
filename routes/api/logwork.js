@@ -81,13 +81,12 @@ exports.update = function(req, res) {
 		return res.apiError(403, 'invalid csrf');
 	}
   
-  debugger;
+  var data = (req.method == 'POST') ? req.body : req.query;
+  
   //Ensure the user making the request is either the user being changed or a superuser. 
   //Reject normal admins or users maliciously trying to change other users settings.
   var userId = req.user.get('id');
-  var blah = req.body;
-  var blah = req.body.user;
-  if(userId != req.params.user) {
+  if(userId != data.user) {
     return res.apiError(403, 'Not allowed to change this user settings.');
   }
   
@@ -96,7 +95,7 @@ exports.update = function(req, res) {
 		if (err) return res.apiError('database error', err);
 		if (!item) return res.apiError('not found');
     
-		var data = (req.method == 'POST') ? req.body : req.query;
+		//var data = (req.method == 'POST') ? req.body : req.query;
 		
 		item.getUpdateHandler(req).process(data, function(err) {
 			
