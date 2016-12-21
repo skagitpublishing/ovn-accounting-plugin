@@ -50,10 +50,12 @@ exports.create = function(req, res) {
 		return res.apiError(403, 'invalid csrf');
 	}
   
+  var data = (req.method == 'POST') ? req.body : req.query;
+  
   //Ensure the user making the request is either the user being changed or a superuser. 
   //Reject normal admins or users maliciously trying to change other users settings.
   var userId = req.user.get('id');
-  if(userId != req.params.user) {
+  if(userId != data.user) {
     return res.apiError(403, 'Not allowed to change this user settings.');
   }
   
@@ -120,10 +122,12 @@ exports.remove = function(req, res) {
 		return res.apiError(403, 'invalid csrf');
 	}
   
+  var data = (req.method == 'POST') ? req.body : req.query;
+  
   //Ensure the user making the request is either the user being changed or a superuser. 
   //Reject normal admins or users maliciously trying to change other users settings.
   var userId = req.user.get('id');
-  if(userId != req.params.user) {
+  if(userId != data.user) {
     return res.apiError(403, 'Not allowed to change this user settings.');
   }
   
