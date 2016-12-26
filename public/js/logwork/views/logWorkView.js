@@ -55,7 +55,7 @@ define([
       this.$el.find('#resultsMessage').hide();
       
       //this.$el.find('#resultsTable').bootstrapTable({
-      $('#resultsTable').bootstrapTable({
+      this.$el.find('#resultsTable').bootstrapTable({
         sortName: 'date',
         sortOrder: 'desc',
         showExport: false,
@@ -105,7 +105,7 @@ define([
     
     //This function is called when the 'Submit' button is clicked.
     logWork: function() {
-      //debugger;
+      debugger;
       
       //Get handles on the form elements
       var inputDate = $('#logDate');
@@ -415,23 +415,19 @@ define([
     
     //This function populates the table with all Work Log data.
     populateTable: function() {
-      debugger;
+      //debugger;
       
       var tableData = [];
       
-      //var entryCnt = 0; //Used to count the number of logs that match the current user.
       var thisUserData = [];
       
       //Loop through each item in the log work collection.
       for(var i=0; i < global.logWorkCollection.length; i++) {
         var thisModel = global.logWorkCollection.models[i];
-        
+
         if(thisModel.get('user') == userdata._id) {
-          //entryCnt++;
-          
-          //Break out of the loop once 5 entries have been reached.
-          //if(entryCnt == 5)
-          //  break;
+
+          //Store all logWork entries associated with this user.
           thisUserData.push(thisModel);
           
         //Skip any entries that aren't associated with the currently logged in user.
@@ -440,17 +436,11 @@ define([
         }
       }
       
-      debugger;
-      
+      //Sort the log work entries by startTime
       var sortedUserData = this.sortUserData(thisUserData);
       
-      debugger;
-      
-      
-      
-      //return;
-      
-      for(var i=0; i < 10; i++) {
+      //Display the top 5 results of the sorted work entries.
+      for(var i=0; i < 5; i++) {
         var thisModel = sortedUserData[i];
         
         var projectName = global.workReportView.getProjectName(thisModel.get('project'));
@@ -476,23 +466,22 @@ define([
         tableData.push(lineItem);
       }
       
-      $('#resultsTable').bootstrapTable('load', tableData);
+      this.$el.find('#resultsTable').bootstrapTable('load', tableData);
       log.push('Updated table with work log records.');
     },
     
     //This function sorts an array of log work models by the startTime entry.
-    //It returns the same array fed into the the function, only sorted.
+    //It returns the same array fed into the the function, only sorted by the startTime entry.
+    //Based on mapping example here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
     //Dev note: I'm not sure if I want to use this code or not, so I'm leaving it here.
     sortUserData: function(userDataArray) {
-      debugger;
+      //debugger;
       
       //Extract the start time from each model.
       var startTimeArray = [];
       for(var i=0; i < userDataArray.length; i++) {
         startTimeArray.push(new Date(userDataArray[i].get('startTime')));
       }
-      
-      debugger;
       
       // temporary array holds objects with position and sort-value
       var mapped = startTimeArray.map(function(el, i) {
@@ -512,7 +501,6 @@ define([
       
       return userDataArray;
       
-      debugger;
     }
     
 	});
