@@ -256,7 +256,7 @@ define([
         
         //Post to an existing record.
         $.post('/api/logwork/'+this.model.id+'/update', this.model.attributes, function(data) {
-          debugger;
+          //debugger;
           
           var logWorkId = data.loggedwork._id; //The ID of this newly created logWork model.
           var userId = data.loggedwork.user; //The ID of the user associated with this logWork model.

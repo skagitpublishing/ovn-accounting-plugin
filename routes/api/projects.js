@@ -1,6 +1,8 @@
 var async = require('async'),
 	keystone = require('keystone');
 
+var security = keystone.security;
+
 var Projects = keystone.list('Project');
 
 //Retrieve the list of superusers saved in keystone.js
@@ -80,12 +82,13 @@ exports.update = function(req, res) {
 		return res.apiError(403, 'invalid csrf');
 	}
   
+  //Dev Note: Can't use this as normal users adding work entries will need to update project info.
   //Ensure the user making the request is a superuser. 
   //Reject normal admins or users maliciously trying to change settings.
-  var userId = req.user.get('id');
-  if(superusers.indexOf(userId) == -1) {
-    return res.apiError(403, 'Not allowed to change this user settings.');
-  }
+  //var userId = req.user.get('id');
+  //if(superusers.indexOf(userId) == -1) {
+  //  return res.apiError(403, 'Not allowed to change this user settings.');
+  //}
   
 	Projects.model.findById(req.params.id).exec(function(err, item) {
 		
