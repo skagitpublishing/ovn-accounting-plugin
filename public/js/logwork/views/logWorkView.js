@@ -51,6 +51,48 @@ define([
         this.populateWorkType();
       }
       
+      //Hide the initial 'Loading...' message.
+      this.$el.find('#resultsMessage').hide();
+      
+      //this.$el.find('#resultsTable').bootstrapTable({
+      $('#resultsTable').bootstrapTable({
+        sortName: 'date',
+        sortOrder: 'desc',
+        showExport: false,
+        columns: [{
+          field: 'date',
+          title: 'Date',
+          sortable: true
+        }, {
+          field: 'user',
+          title: 'User',
+          sortable: true
+        }, {
+          field: 'project',
+          title: 'Project',
+          sortable: true
+        }, {
+          field: 'typeOfWork',
+          title: 'Type of Work',
+          sortable: true
+        }, {
+          field: 'hours',
+          title: 'Hours',
+          sortable: true
+        }, {
+          field: 'description',
+          title: 'Description',
+          sortable: true
+        }, {
+          field: 'edit',
+          title: 'Edit',
+          sortable: false
+        }         
+         ],
+
+      });
+      
+      this.populateTable();
       
 			return this;
 		},
@@ -369,7 +411,44 @@ define([
       
       this.$el.find('#logDesc').val(logWorkModel.get('details')); //Work Description
       
-    }
+    },
+    
+    //This function populates the table with all Work Log data.
+    populateTable: function() {
+      debugger;
+      
+      var tableData = [];
+      
+      //Loop through each item in the log work collection.
+      for(var i=0; i < global.logWorkCollection.length; i++) {
+        var thisModel = global.logWorkCollection.models[i];
+        
+        var projectName = this.getProjectName(thisModel.get('project'));
+        var userName = this.getUserName(thisModel.get('user'));
+        var dateStr = this.getDateStr(new Date(thisModel.get('startTime')));
+        
+        var lineItem = new Object();
+        //lineItem.entry = i;
+        lineItem.date = dateStr;
+        lineItem.user = userName;
+        lineItem.project = projectName;
+        lineItem.typeOfWork = thisModel.get('typeOfWork');
+        lineItem.hours = thisModel.get('hours');
+        lineItem.description = thisModel.get('details');
+        
+        if(thisModel.get('user') == userdata._id) {
+          lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
+        } else {
+          lineItem.edit = '';
+        }
+        
+        
+        tableData.push(lineItem);
+      }
+      
+      $('#resultsTable').bootstrapTable('load', tableData);
+      log.push('Updated table with work log records.');
+    },
     
 	});
 
