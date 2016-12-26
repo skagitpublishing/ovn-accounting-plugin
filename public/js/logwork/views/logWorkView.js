@@ -448,9 +448,11 @@ define([
       
       
       
-      return;
+      //return;
       
-      for(var i=0; i < thisUserData.length; i++) {
+      for(var i=0; i < 10; i++) {
+        var thisModel = sortedUserData[i];
+        
         var projectName = global.workReportView.getProjectName(thisModel.get('project'));
         var userName = global.workReportView.getUserName(thisModel.get('user'));
         var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
