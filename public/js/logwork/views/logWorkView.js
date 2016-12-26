@@ -419,9 +419,23 @@ define([
       
       var tableData = [];
       
+      var entryCnt = 0; //Used to count the number of logs that match the current user.
+      
       //Loop through each item in the log work collection.
       for(var i=0; i < global.logWorkCollection.length; i++) {
         var thisModel = global.logWorkCollection.models[i];
+        
+        if(thisMode.get('user') == userdata._id) {
+          entryCnt++;
+          
+          //Break out of the loop once 5 entries have been reached.
+          if(entryCnt == 5)
+            break;
+          
+        //Skip any entries that aren't associated with the currently logged in user.
+        } else {
+          continue;
+        }
         
         var projectName = global.workReportView.getProjectName(thisModel.get('project'));
         var userName = global.workReportView.getUserName(thisModel.get('user'));
