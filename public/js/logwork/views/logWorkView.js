@@ -419,24 +419,35 @@ define([
       
       var tableData = [];
       
-      var entryCnt = 0; //Used to count the number of logs that match the current user.
+      //var entryCnt = 0; //Used to count the number of logs that match the current user.
+      var thisUserData = [];
       
       //Loop through each item in the log work collection.
       for(var i=0; i < global.logWorkCollection.length; i++) {
         var thisModel = global.logWorkCollection.models[i];
         
         if(thisModel.get('user') == userdata._id) {
-          entryCnt++;
+          //entryCnt++;
           
           //Break out of the loop once 5 entries have been reached.
-          if(entryCnt == 5)
-            break;
+          //if(entryCnt == 5)
+          //  break;
+          thisUserData.push(thisModel);
           
         //Skip any entries that aren't associated with the currently logged in user.
         } else {
           continue;
         }
-        
+      }
+      
+      debugger;
+      
+      var sortedUserData = this.sortUserData(thisUserData);
+      
+      debugger;
+      return;
+      
+      for(var i=0; i < thisUserData.length; i++) {
         var projectName = global.workReportView.getProjectName(thisModel.get('project'));
         var userName = global.workReportView.getUserName(thisModel.get('user'));
         var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
@@ -463,6 +474,18 @@ define([
       $('#resultsTable').bootstrapTable('load', tableData);
       log.push('Updated table with work log records.');
     },
+    
+    sortUserData: function(userDataArray) {
+      debugger;
+      
+      //Extract the start time from each model.
+      var startTimeArray = [];
+      for(var i=0; i < userDataArray.length; i++) {
+        startTimeArray.push(new Date(userDataArray[i].get('startTime')));
+      }
+      
+      debugger;
+    }
     
 	});
 
