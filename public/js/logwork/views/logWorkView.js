@@ -105,14 +105,14 @@ define([
     
     //This function is called when the 'Submit' button is clicked.
     logWork: function() {
-      debugger;
+      //debugger;
       
       //Get handles on the form elements
-      var inputDate = $('#logDate');
-      var inputWorkType = $('#logWorkType');
-      var inputProject = $('#logProject');
-      var inputHours = $('#logHour');
-      var inputDesc = $('#logDesc');
+      var inputDate = this.$el.find('#logDate');
+      var inputWorkType = this.$el.find('#logWorkType');
+      var inputProject = this.$el.find('#logProject');
+      var inputHours = this.$el.find('#logHour');
+      var inputDesc = this.$el.find('#logDesc');
       
       //Error checking
       if( (inputDate.val() == "") || (inputHours.val() == "") || (inputDesc.val() == "") ) {
@@ -186,11 +186,11 @@ define([
           global.logWorkCollection.fetch();
 
           //Clear the window
-          $('#logDate').val("");
-          $('#logWorkType').val("");
-          $('#logProject').val("");
-          $('#logHour').val("");
-          $('#logDesc').val("");
+          this.$el.find('#logDate').val("");
+          this.$el.find('#logWorkType').val("");
+          this.$el.find('#logProject').val("");
+          this.$el.find('#logHour').val("");
+          this.$el.find('#logDesc').val("");
 
           //Launch the success modal to inform user the work was logged successfully.
           global.modalView.successModal();
