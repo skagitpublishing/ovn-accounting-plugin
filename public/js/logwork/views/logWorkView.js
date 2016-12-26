@@ -425,7 +425,7 @@ define([
       for(var i=0; i < global.logWorkCollection.length; i++) {
         var thisModel = global.logWorkCollection.models[i];
         
-        if(thisMode.get('user') == userdata._id) {
+        if(thisModel.get('user') == userdata._id) {
           entryCnt++;
           
           //Break out of the loop once 5 entries have been reached.
