@@ -51,7 +51,7 @@ define([
       this.$el.find('#resultsMessage').hide();
       
       //this.$el.find('#resultsTable').bootstrapTable({
-      $('#resultsTable').bootstrapTable({
+      this.$el.find('#resultsTable').bootstrapTable({
         sortName: 'date',
         sortOrder: 'desc',
         showExport: true,
@@ -139,7 +139,7 @@ define([
         tableData.push(lineItem);
       }
       
-      $('#resultsTable').bootstrapTable('load', tableData);
+      this.$el.find('#resultsTable').bootstrapTable('load', tableData);
       log.push('Updated table with work log records.');
     },
     
