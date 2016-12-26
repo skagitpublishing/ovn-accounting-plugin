@@ -475,6 +475,9 @@ define([
       log.push('Updated table with work log records.');
     },
     
+    //This function sorts an array of log work models by the startTime entry.
+    //It returns a map (index) of sorted entries.
+    //Dev note: I'm not sure if I want to use this code or not, so I'm leaving it here.
     sortUserData: function(userDataArray) {
       debugger;
       
@@ -493,15 +496,16 @@ define([
       
       // sorting the mapped array containing the reduced values
       mapped.sort(function(a, b) {
-        return +(a.value > b.value) || +(a.value === b.value) - 1;
+        return +(a.value < b.value) || +(a.value === b.value) - 1;
       });
       
       // container for the resulting order
       var result = mapped.map(function(el){
-        return startTimeArray[el.index];
+        //return startTimeArray[el.index];
+        return el.index;
       });
       
-      debuggger;
+      debugger;
     }
     
 	});
