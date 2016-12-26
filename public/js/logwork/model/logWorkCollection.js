@@ -58,7 +58,7 @@ define([
 
         if(this.refreshView) {
           this.refreshView = false;
-          //global.categoriesView.render();
+          global.logWorkView.render();
         }
         
         //Assumption: this funciton is only called when opening the image gallery. Therefore we need to call it again and

@@ -303,14 +303,15 @@ define([
           //duplicated in the other POST call above.
 
           //Refresh the logWork Collection.
+          global.logWorkCollection.refreshView = true;
           global.logWorkCollection.fetch();
 
           //Clear the window
-          $('#logDate').val("");
-          $('#logWorkType').val("");
-          $('#logProject').val("");
-          $('#logHour').val("");
-          $('#logDesc').val("");
+          this.$el.find('#logDate').val("");
+          this.$el.find('#logWorkType').val("");
+          this.$el.find('#logProject').val("");
+          this.$el.find('#logHour').val("");
+          this.$el.find('#logDesc').val("");
 
           //Launch the success modal to inform user the work was logged successfully.
           global.modalView.successModal();
