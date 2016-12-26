@@ -307,11 +307,11 @@ define([
           global.logWorkCollection.fetch();
 
           //Clear the window
-          this.$el.find('#logDate').val("");
-          this.$el.find('#logWorkType').val("");
-          this.$el.find('#logProject').val("");
-          this.$el.find('#logHour').val("");
-          this.$el.find('#logDesc').val("");
+          //this.$el.find('#logDate').val("");
+          //this.$el.find('#logWorkType').val("");
+          //this.$el.find('#logProject').val("");
+          //this.$el.find('#logHour').val("");
+          //this.$el.find('#logDesc').val("");
 
           //Launch the success modal to inform user the work was logged successfully.
           global.modalView.successModal();
