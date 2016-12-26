@@ -445,6 +445,9 @@ define([
       var sortedUserData = this.sortUserData(thisUserData);
       
       debugger;
+      
+      
+      
       return;
       
       for(var i=0; i < thisUserData.length; i++) {
@@ -476,7 +479,7 @@ define([
     },
     
     //This function sorts an array of log work models by the startTime entry.
-    //It returns a map (index) of sorted entries.
+    //It returns the same array fed into the the function, only sorted.
     //Dev note: I'm not sure if I want to use this code or not, so I'm leaving it here.
     sortUserData: function(userDataArray) {
       debugger;
@@ -502,8 +505,10 @@ define([
       // container for the resulting order
       var result = mapped.map(function(el){
         //return startTimeArray[el.index];
-        return el.index;
+        return userDataArray[el.index];
       });
+      
+      return userDataArray;
       
       debugger;
     }
