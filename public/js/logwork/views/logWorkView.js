@@ -423,9 +423,9 @@ define([
       for(var i=0; i < global.logWorkCollection.length; i++) {
         var thisModel = global.logWorkCollection.models[i];
         
-        var projectName = this.getProjectName(thisModel.get('project'));
-        var userName = this.getUserName(thisModel.get('user'));
-        var dateStr = this.getDateStr(new Date(thisModel.get('startTime')));
+        var projectName = global.workReportView.getProjectName(thisModel.get('project'));
+        var userName = global.workReportView.getUserName(thisModel.get('user'));
+        var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
         
         var lineItem = new Object();
         //lineItem.entry = i;
