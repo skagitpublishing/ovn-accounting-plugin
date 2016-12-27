@@ -5,8 +5,8 @@ echo Copying Keystone core files...
 cp plugin/rpiovn-plugin/keystone/keystone.js ../myCMS/
 
 echo Copying Keystone templates...
-cp templates/views/*.hbs ../myCMS/templates/views/
-cp templates/views/layouts/*.hbs ../myCMS/templates/views/layouts/
+cp plugin/rpiovn-plugin/keystone/templates/views/*.hbs ../myCMS/templates/views/
+cp plugin/rpiovn-plugin/keystone/templates/views/layouts/*.hbs ../myCMS/templates/views/layouts/
 
 echo Copying Keystone models...
 cp plugin/rpiovn-plugin/keystone/models/*.js ../myCMS/models/
