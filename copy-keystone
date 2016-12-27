@@ -1,13 +1,7 @@
 #!/bin/bash
 echo Backing up /public/uploads directory.
 mkdir ~/bkupMedia
-mkdir ~/bkupMedia/userdata
 cp -r ../myCMS/public/uploads/* ~/bkupMedia/
-
-echo Backing up user data
-mkdir ~/bkupMedia/userdata
-cp -r ../myCMS/private/userdata ~/bkupMedia/userdata/private
-cp -r ../myCMS/public/uploads/geologs ~/bkupMedia/userdata/public
 
 echo Removing old myCMS directory...
 rm -rf ../myCMS/
