@@ -107,6 +107,8 @@ define([
     logWork: function() {
       //debugger;
       
+      global.modalView.waitingModal();
+      
       var thisView = this;
       
       //Get handles on the form elements
