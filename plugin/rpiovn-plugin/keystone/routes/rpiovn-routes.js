@@ -10,6 +10,9 @@ var routes = {
 
 module.exports = function(app) {
 
+  //Views
+  app.get('/createaccount', routes.views.createaccount);
+  
   //Log Work Route
   app.get('/api/logwork/list/all', keystone.middleware.api, routes.api.logwork.listall);
   app.get('/api/logwork/list/last50', keystone.middleware.api, routes.api.logwork.listlast50);
@@ -29,8 +32,8 @@ module.exports = function(app) {
   app.get('/api/users/list', keystone.middleware.api, routes.api.users.list);
   app.get('/api/users/:id', keystone.middleware.api, routes.api.users.get);
   app.all('/api/users/:id/update', keystone.middleware.api, routes.api.users.update);
-  //app.all('/api/users/create', keystone.middleware.api, routes.api.users.create);
-  //app.get('/api/users/:id/remove', keystone.middleware.api, routes.api.users.remove);
+  app.all('/api/users/create', keystone.middleware.api, routes.api.users.create);
+  app.get('/api/users/:id/remove', keystone.middleware.api, routes.api.users.remove);
   
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

@@ -8,13 +8,15 @@ var Types = keystone.Field.Types;
 var User = new keystone.List('User');
 
 User.add({
-        name: { type: Types.Name, required: true, index: true },
-        email: { type: Types.Email, initial: true, required: true, index: true },
-        password: { type: Types.Password, initial: true, required: true },
-        loggedWork: { type: Types.TextArray }, //A text array of IDs to logged work.
-        projectsContributed: {type: Types.TextArray} //A text array of IDs to projects
+  name: { type: Types.Name, required: true, index: true },
+  firstName: { type: String },
+  lastName: { type: String },
+  email: { type: Types.Email, initial: true, required: true, index: true },
+  password: { type: Types.Password, initial: true, required: true },
+  loggedWork: { type: Types.TextArray }, //A text array of IDs to logged work.
+  projectsContributed: {type: Types.TextArray} //A text array of IDs to projects
 }, 'Permissions', {
-        isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
+  isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });
 
 // Provide access to Keystone
