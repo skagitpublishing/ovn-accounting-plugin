@@ -48,24 +48,6 @@ define([
   
   detectBrowser(); //Log the current browser and OS being used.
   
-  global.leftMenuView = new LeftMenuView();
-  global.leftMenuView.render();
-
-  
-  //Initialize the dashboard
-  global.dashboardView = new DashboardView();
-  //debugger;
-  global.dashboardView.render();
-  
-  global.logWorkView = new LogWorkView();
-  global.workReportView = new WorkReportView();
-  global.projectView = new ProjectView();
-  
-  //Create the modal and render the view.
-  global.modalView = new ModalView();
-  global.modalView.render();
-  
- 
   
   if(global.logWorkCollection == undefined) {
     global.logWorkModel = new LogWorkModel();
@@ -87,6 +69,28 @@ define([
     global.userCollection = new UserCollection();
     global.userCollection.fetch();
   }
+  
+  
+  global.leftMenuView = new LeftMenuView();
+  global.leftMenuView.render();
+
+  
+  //Initialize the dashboard
+  global.dashboardView = new DashboardView();
+  //debugger;
+  global.dashboardView.render();
+  
+  global.logWorkView = new LogWorkView();
+  global.workReportView = new WorkReportView();
+  global.projectView = new ProjectView();
+  
+  //Create the modal and render the view.
+  global.modalView = new ModalView();
+  global.modalView.render();
+  
+ 
+  
+  
   
   
   //Hide the preloader after everything finished loading and document is ready.

@@ -107,6 +107,8 @@ define([
     logWork: function() {
       //debugger;
       
+      var thisView = this;
+      
       //Get handles on the form elements
       var inputDate = this.$el.find('#logDate');
       var inputWorkType = this.$el.find('#logWorkType');
@@ -186,11 +188,11 @@ define([
           global.logWorkCollection.fetch();
 
           //Clear the window
-          this.$el.find('#logDate').val("");
-          this.$el.find('#logWorkType').val("");
-          this.$el.find('#logProject').val("");
-          this.$el.find('#logHour').val("");
-          this.$el.find('#logDesc').val("");
+          thisView.$el.find('#logDate').val("");
+          thisView.$el.find('#logWorkType').val("");
+          thisView.$el.find('#logProject').val("");
+          thisView.$el.find('#logHour').val("");
+          thisView.$el.find('#logDesc').val("");
 
           //Launch the success modal to inform user the work was logged successfully.
           global.modalView.successModal();
