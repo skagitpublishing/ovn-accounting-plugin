@@ -1,3 +1,6 @@
+//This is an old file created before the plugin template. It add the NRP project and user views
+//to the default ConnextCMS view. 
+
 define([
 	'jQuery-2.1.4.min',
 	'underscore_1.3.3',

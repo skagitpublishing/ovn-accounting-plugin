@@ -2,33 +2,28 @@
 echo Preparing to copy RPiOVN files...
 
 echo Copying Keystone core files...
-cp keystone.js ../myCMS/
+cp plugin/rpiovn-plugin/keystone/keystone.js ../myCMS/
 
 echo Copying Keystone templates...
 cp templates/views/*.hbs ../myCMS/templates/views/
 cp templates/views/layouts/*.hbs ../myCMS/templates/views/layouts/
 
 echo Copying Keystone models...
-cp models/*.js ../myCMS/models/
+cp plugin/rpiovn-plugin/keystone/models/*.js ../myCMS/models/
 
 echo Copying Keystone routes...
-cp routes/index.js ../myCMS/routes/
-cp routes/api/*.js ../myCMS/routes/api/
-cp routes/views/*.js ../myCMS/routes/views/
+cp plugin/rpiovn-plugin/keystone/routes/*.js ../myCMS/routes/
+cp plugin/rpiovn-plugin/keystone/routes/api/*.js ../myCMS/routes/api/
+cp plugin/rpiovn-plugin/keystone/routes/views/*.js ../myCMS/routes/views/
 
 echo Copying public files...
 cp public/favicon.ico ../myCMS/public
 cp public/images/* ../myCMS/public/images/
-cp public/js/app/main_dashboard_app.js ../myCMS/public/js/app/
 cp public/js/*.js ../myCMS/public/js/
-cp -r public/js/logwork ../myCMS/public/js/
 cp public/styles/*.css ../myCMS/public/styles/
 
-echo Copying Backbone models, views, and templates
-cp public/js/app/model/*.js ../myCMS/public/js/app/model/
-cp public/js/app/views/*.js ../myCMS/public/js/app/views/
-cp public/js/app/templates/*.html ../myCMS/public/js/app/templates/
-cp public/js/logwork/templates/*.html ../myCMS/public/js/logwork/templates/
+echo Copying logwork dashboard
+cp -r public/js/logwork ../myCMS/public/js/
 
 echo Copying library files...
 cp public/js/lib/*.js ../myCMS/public/js/lib/
