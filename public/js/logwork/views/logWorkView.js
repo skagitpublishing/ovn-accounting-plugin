@@ -448,10 +448,16 @@ define([
       for(var i=0; i < 5; i++) {
         var thisModel = sortedUserData[i];
         
-        var projectName = global.workReportView.getProjectName(thisModel.get('project'));
-        var userName = global.workReportView.getUserName(thisModel.get('user'));
-        var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
-        
+        try {
+          var projectName = global.workReportView.getProjectName(thisModel.get('project'));
+          var userName = global.workReportView.getUserName(thisModel.get('user'));
+          var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
+        } catch(err) {
+          console.log('Error caught in logWorkView.js/populateTable(). Error: 'err.message);
+          this.render();
+          return;
+        }
+          
         var lineItem = new Object();
         //lineItem.entry = i;
         lineItem.date = dateStr;
