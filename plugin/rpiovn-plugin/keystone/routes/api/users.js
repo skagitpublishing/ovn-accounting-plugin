@@ -169,7 +169,9 @@ function sendNewUserEmail(UserModel) {
   }
   
   var subject = "Your RPiOVN.com Account";
-  var body = "Thank you for signing up as a Beta Tester on RPiOVN.com. Your login is your email: "+email[0];
+  var body = "Thank you for signing up as a Beta Tester on RPiOVN.com\n\n"+
+      "Your login is your email: "+email[0]+"\n"+
+      "<a href='http://rpiovn.com/keystone/signin'>You can sign in here</a>";
   
   //Send the email log via MailGun email.
   var emailObj = new Object();
