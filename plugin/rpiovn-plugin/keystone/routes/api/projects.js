@@ -46,9 +46,9 @@ exports.get = function(req, res) {
 exports.create = function(req, res) {
 	
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   //Ensure the user making the request is a superuser. 
   //Reject normal admins or users maliciously trying to change settings.
@@ -78,9 +78,9 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
   
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   //Dev Note: Can't use this as normal users adding work entries will need to update project info.
   //Ensure the user making the request is a superuser. 
@@ -116,9 +116,9 @@ exports.update = function(req, res) {
 exports.remove = function(req, res) {
   
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   //Ensure the user making the request is a superuser. 
   //Reject normal admins or users maliciously trying to change settings.

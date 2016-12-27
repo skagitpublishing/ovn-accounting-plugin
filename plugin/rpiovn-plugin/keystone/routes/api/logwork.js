@@ -79,9 +79,9 @@ exports.get = function(req, res) {
 exports.create = function(req, res) {
 	
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   var data = (req.method == 'POST') ? req.body : req.query;
   
@@ -112,9 +112,9 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
   
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   var data = (req.method == 'POST') ? req.body : req.query;
   
@@ -151,9 +151,9 @@ exports.update = function(req, res) {
 exports.remove = function(req, res) {
   
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   var data = (req.method == 'POST') ? req.body : req.query;
   
