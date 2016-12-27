@@ -1,6 +1,9 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
+var security = keystone.security;
+var Mailgun = require('mailgun-js'); //Mailgun API library.
+
 /**
  * User Model
  * ==========
