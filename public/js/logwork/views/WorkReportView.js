@@ -158,7 +158,7 @@ define([
     //This function returns the name of a project based on the input string which should contain a project GUID.
     //This function returns "Not Found" if a projectId could not be found.
     getProjectName: function(projectId) {
-      debugger;
+      //debugger;
       
       var outStr = "Not Found";
       
