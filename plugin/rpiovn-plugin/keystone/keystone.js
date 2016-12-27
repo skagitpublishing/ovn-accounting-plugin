@@ -33,7 +33,9 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
-	'port': 80
+	'port': 80,
+  'signin redirect': '/logwork',
+  'signout redirect': '/'
 
 });
 
