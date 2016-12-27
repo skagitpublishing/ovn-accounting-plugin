@@ -453,7 +453,7 @@ define([
           var userName = global.workReportView.getUserName(thisModel.get('user'));
           var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
         } catch(err) {
-          console.log('Error caught in logWorkView.js/populateTable(). Error: 'err.message);
+          console.log('Error caught in logWorkView.js/populateTable(). Error: '+err.message);
           this.render();
           return;
         }
