@@ -4,6 +4,8 @@ var async = require('async'),
 var User = keystone.list('User');
 var security = keystone.security;
 
+var Mailgun = require('mailgun-js'); //Mailgun API library.
+
 //debugger;
 
 /**
