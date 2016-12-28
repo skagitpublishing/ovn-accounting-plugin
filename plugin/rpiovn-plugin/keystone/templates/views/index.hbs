@@ -43,10 +43,15 @@
     <div class='row well well-lg'>
       <div class='col-md-7'>
         <h1>Raspberry Pi Open Value Network</h1>
-        <p class='lead'>RPiOVN.com is an <a href="http://rpiovn.com/blog/post/what-is-an-open-value-network">Open Value Network</a> (<b>OVN</b>) for Raspberry Pi programmers. People contributing time to a project can log their time in the <a href="http://rpiovn.com:8000/" target="_blank">Network Resource Planning</a> (<b>NRP</b>) software. When products are sold, profit is distributed fairly based on time contributed to that project.</p>
+        <p class='lead'>
+          RPiOVN.com is an <a href="http://rpiovn.com/blog/post/what-is-an-open-value-network">Open Value Network</a> (<b>OVN</b>) 
+          for Raspberry Pi programmers. Members contributing time to a project can log their time in 
+          the <a href="/logwork">Project Dashboard</a>. When products are sold, profit is distributed 
+          fairly based on time contributed to that project.
+        </p>
         <center>
-        <a class='btn btn-lg btn-default' href="http://rpiovn.com/page/how-it-works">Learn More</a>
-        <a class='btn btn-lg btn-primary' href="http://rpiovn.com/page/create-nrp-account">Join Now!</a>
+        <a class='btn btn-lg btn-default' href="/page/how-it-works">Learn More</a>
+        <a class='btn btn-lg btn-primary' href="/createaccount">Join Now!</a>
         </center>
       </div>
       <div class='col-md-5 visible-md visible-lg'>
@@ -64,13 +69,13 @@
       <div class='col-sm-4 col-xs-6'>
         <i class='glyphicon glyphicon-wrench'></i>
         <h3>Join A Project</h3>
-        <p>What to participate? Read this guide on <a href="http://rpiovn.com/page/how-it-works">how it all works</a>, then <a href="http://rpiovn.com/page/browse-projects">browse our list of Raspberry Pi based open source projects</a>, or <a href="http://rpiovn.com/page/start-a-project">apply to start your own project</a>.</p>
+        <p>Want to participate? Read this guide on <a href="http://rpiovn.com/page/how-it-works">how it all works</a>, then <a href="http://rpiovn.com/page/browse-projects">browse our list of Raspberry Pi based open source projects</a>, or <a href="http://rpiovn.com/projectapplication">apply to start your own project</a>.</p>
       </div>
 
       <div class='col-sm-4 col-xs-6'>
         <i class='glyphicon glyphicon-time'></i>
         <h3>Log Time in the NRP</h3>
-        <p>Developers and technical writers can <a href="http://rpiovn.com:8000/" target="_blank">log time</a> and effort in the NRP accounting software. Logging work ensures you are fairly paid for your effort when a project is sold in the store or generates an affiliate sale. You'll need to <a href="http://rpiovn.com/page/create-nrp-account">apply for a NRP account</a> before you can begin contributing to projects.</p>
+        <p>Developers and technical writers can <a href="/logwork" target="_blank">log time</a> and effort in the <a href="/logwork" target="_blank">Project Dashboard</a>. Logging work ensures you are fairly paid for your effort when a project is sold in the store or generates an affiliate sale. You'll need to <a href="/createaccount">apply for an account</a> before you can begin contributing to projects.</p>
       </div>
     </div>
   </div>
@@ -121,7 +126,14 @@
         <h4>Links</h4>
         <ul class='list-unstyled'>
           <li><a href='http://rpiovn.com/'>Home</a></li>
-          <li><a href='http://rpiovn.com:8000/'>NRP</a></li>
+          
+          <!-- Sign-Out and Sign-In Menu link. -->
+          {{#if user}}
+          <li><a href="/keystone/signout">Sign Out</a></li>
+          {{else}}
+          <li><a href="/keystone/signin">Sign In</a></li>
+          {{/if}}
+
           <li><a href='http://rpiovn.com/page/browse-projects'>Projects</a></li>
         </ul>
       </div>
@@ -132,7 +144,7 @@
         <h4>Stay in Touch</h4>
         <ul class='list-unstyled'>
           <li><a href='http://rpiovn.com/page/how-it-works'>About</a></li>
-          <li><a href='http://rpiovn.com/page/contact-us-1'>Contact Us</a></li>
+          <li><a href='http://rpiovn.com/contactus'>Contact Us</a></li>
           <li><a href='http://rpiovn.com/blog'>Blog</a></li>
           <!--
           <li><a href='#/'>Twitter</a></li>
@@ -145,7 +157,7 @@
         <h4>Contact Us</h4>
         <ul class='list-unstyled'>
           <li><i class='glyphicon glyphicon-globe'></i> Friday Harbor, WA, USA<li>
-          <li><i class='glyphicon glyphicon-envelope'></i> <a href='http://rpiovn.com/page/contact-us-1'>Contact Us</a><li>
+          <li><i class='glyphicon glyphicon-envelope'></i> <a href='http://rpiovn.com/contactus'>Contact Us</a><li>
         </ul>
 
         <p>All website content is open for reuse under the <a href="http://choosealicense.com/licenses/mit/" target="_blank">MIT License</a> and available as a <a href="https://github.com/christroutner/rpiovn" target="_blank">GitHub repository</a>.</p>
