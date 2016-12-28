@@ -13,6 +13,7 @@ module.exports = function(app) {
   //Views
   app.get('/createaccount', routes.views.createaccount);
   app.get('/contactus', routes.views.contactus);
+  app.get('/projectapplication', routes.views.projectapplication);
   
   //Log Work Route
   app.get('/api/logwork/list/all', keystone.middleware.api, routes.api.logwork.listall);

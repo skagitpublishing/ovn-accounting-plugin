@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="col-sm-12">
+
+
+    <p>&nbsp;</p>
+    <p>Before you can start a project, you need to <a href="http://rpiovn.com/page/create-nrp-account">create an NRP account</a>. Be sure to do that first!</p>
+    <p>All projects must have a project manager. If you start a project, <u>you</u> are the project manager. If you don't want to be the project manager, then you need to find someone to take over the role. Project managers are the primary point of contact for people interested in contributing to a project, and they must have an up-to-date email address for people to use to contact them.&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Fill out the application form below to submit your project idea:</p>
+    <p>&nbsp;</p>
+    <form class="form-horizontal" id="newProjectForm">
+      <div class="form-group">
+        <label for="inputName" class="col-sm-2 control-label">Your Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Name">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmail" class="col-sm-2 control-label">Your Email:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="projectName" class="col-sm-2 control-label">Project Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="projectName" id="projectName" placeholder="Email">
+        </div>
+      </div>
+
+      <br>
+      <p>A good template to use as an example for filling out the sections below is the <a href="http://rpiovn.com/page/simple-tracking-device">GPS tracking device</a>. Adapt your project information to fit the format of information on that project, and fill it in below.</p>
+      <div class="form-group">
+        <label for="inputSummary" class="col-sm-2 control-label">Project Summary:</label>
+        <div class="col-sm-10">            
+          <textarea class="form-control" rows="3" name="inputSummary" id="inputSummary"></textarea>
+          <p>Include a URL your GitHub repository if applicable. What is the target audience for this project?</p>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+        <label for="inputHardware" class="col-sm-2 control-label">Hardware:</label>
+        <div class="col-sm-10">            
+          <textarea class="form-control" rows="3" name="inputHardware" id="inputHardware"></textarea>
+          <p>Give an explanation of what hardware will be required in this project.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="button" class="btn btn-default" id="submitButton">Submit</button>
+        </div>
+      </div>
+    </form>
+    <h1 id="successMsg" hidden></h1>
+    <p id="successMsg2" hidden></p>
+
+    <script src="http://rpiovn.com/js/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+
+      //Global Variables
+      global = new Object(); //This is where all global variables will be stored.
+      //global.serverIp = "104.131.137.38"; //Production Server
+      //global.serverIp = "192.241.198.211"; //Test Server
+      //global.serverPort = "80";
+      //global.nrpPort = "8000";
+      //global.nodemailerPort = "3000";
+
+      $("#submitButton").click(function(event) {
+        //debugger;
+        event.preventDefault();
+
+        /* BEGIN SEND EMAIL */
+
+        var destination_email = "chris.troutner@gmail.com";
+        var subject = "RPiOVN: New Project Application: ";
+        var message = "<!DOCTYPE html><html lang='en'><body>";
+
+        message = message+"<p><b>Name:</b> "+$('#inputName').val()+"</p><br>";
+        message = message+"<p><b>Email:</b> "+$('#inputEmail').val()+"</p><br>";
+        message = message+"<p><b>Project Summary:</b> <br>"+$('#inputSummary').val()+"</p><br>";
+        message = message+"<p><b>Hardware:</b> <br>"+$('#inputHardware').val()+"</p><br>";
+
+        message = message+"</body></html>";
+
+
+        var data = new Object();
+        data.email = destination_email;
+        data.subject = subject;
+        data.body = message;
+        data.html = true;
+        data.from = $('#inputEmail').val();
+        
+        $.get('/api/email/send', data, function(data) {
+          //debugger;
+
+          if(data.success) {
+            $('#newProjectForm').hide();
+            $('#successMsg').show();
+            $('#successMsg').text('Success!');
+            $('#successMsg2').show();
+            $('#successMsg2').text('Thank you for submitting your project idea. We will be in touch.');
+            $('#successMsg2').css('font-weight', 'bold');
+          } else {
+            debugger;
+            $('#newProjectForm').hide();
+            $('#successMsg').show();
+            $('#successMsg').text('Email Failure!');
+            $('#successMsg2').show();
+            $('#successMsg2').text('The email did not go through because of a server error. Try sending an email directly to chris.troutner@gmail.com');
+            $('#successMsg2').css('font-weight', 'bold');
+          }
+        })
+        .fail(function(jqxhr, textStatus, error) {
+          debugger;
+          
+          try {
+            //global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
+            console.log( "Request Failed: " + error );
+            console.error('Error message: '+jqxhr.responseText);
+          } catch(err) {
+            console.error('Error trying to retrieve JSON data from server response.');
+          } 
+        });
+
+        /* END SEND EMAIL */
+
+      });
+
+    </script>
+
+
+  </div>
+</div>
