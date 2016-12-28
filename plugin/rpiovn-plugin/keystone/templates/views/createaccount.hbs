@@ -130,7 +130,8 @@
             debugger;
 
             try {
-              //global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
+              alert('There was an error emailing you a confirmation email, but your account has been created and you can log in with you email and password.');
+              window.location.href = "/keystone/signin";
               console.log( "Request Failed: " + error );
               console.error('Error message: '+jqxhr.responseText);
             } catch(err) {
