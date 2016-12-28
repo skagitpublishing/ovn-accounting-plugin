@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+  <!-- Create and show the pre-loader animation before anything else -->
+  <link rel="stylesheet" href="../styles/preloader.css">
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+  </div>
+  
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -333,12 +339,14 @@
                     privatePageData = data.pages;
                     
                     generateNavMenu();
+                    $('#loader-wrapper').hide();
                   })
                   
                 //If the user is not logged in, then generate the publically available nav menu.
                 } else {
                   //debugger;
                   generateNavMenu();
+                  $('#loader-wrapper').hide();
                 }
                 
               });
