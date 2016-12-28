@@ -1,5 +1,7 @@
 var keystone = require('keystone');
 
+var Mailgun = require('mailgun-js'); //Mailgun API library.
+
 /**
  * Send an email
  */
