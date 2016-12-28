@@ -56,7 +56,7 @@ exports.create = function(req, res) {
 		if (err) return res.apiError('error', err);
 		
     //Email the user a confirmation email.
-    sendNewUserEmail(item);
+    //sendNewUserEmail(item);
     
 		res.apiResponse({
 			user: item

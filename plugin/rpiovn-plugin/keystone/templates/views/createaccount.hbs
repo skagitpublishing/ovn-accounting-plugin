@@ -98,12 +98,49 @@
       $.post('/api/users/create', userData, function(data) {
         debugger;
 
+        //New user account was successfully created
         if( data.user._id != "" ) {
-          console.log('Success!');
-          alert('Thank you for signing up for a new account! An email confirmation is being sent to you. You can now log in with your email and password.');
-          window.location.href = "/keystone/signin";
+          
+          //Send a confirmation email
+          
+          var emailData = new Object();
+          emailData.email = data.user.email;
+          emailData.from = 'chris.troutner@gmail.com';
+          emailData.subject = "Your RPiOVN.com Account";
+          emailData.html = true;
+          emailData.body = "<!DOCTYPE html><html lang='en'><body>"+
+            "Thank you for signing up as a Beta Tester on RPiOVN.com\n\n"+
+            "Your login is your email: "+emailData.email+"\n"+
+            "<a href='http://rpiovn.com/keystone/signin'>You can sign in here</a>"+
+            "</body></html>";
+          
+          $.get('/api/email/send', data, function(data) {
+            if(data.success) {
+              console.log('Success!');
+              alert('Thank you for signing up for a new account! An email confirmation is being sent to you. You can now log in with your email and password.');
+              window.location.href = "/keystone/signin";
+            } else {
+              alert('There was an error emailing you a confirmation email, but your account has been created and you can log in with you email and password.');
+              window.location.href = "/keystone/signin";
+            }
+          })
+          
+          //Failure occured trying to access the /api/email/send API.
+          .fail(function(jqxhr, textStatus, error) {
+            debugger;
+
+            try {
+              //global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
+              console.log( "Request Failed: " + error );
+              console.error('Error message: '+jqxhr.responseText);
+            } catch(err) {
+              console.error('Error trying to retrieve JSON data from server response.');
+            } 
+          });
         }
       })
+      
+      //Failure occured trying to access the /api/users/create API
       .fail(function(jqxhr, textStatus, error) {
           debugger;
           

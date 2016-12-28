@@ -59,7 +59,7 @@
         
 
         $.get('/api/email/send', data, function(data) {
-          debugger;
+          //debugger;
 
           if(data.success) {
             $('#newProjectForm').hide();
@@ -69,7 +69,13 @@
             $('#successMsg2').text('Thank you for submitting your message. We will be in touch.');
             $('#successMsg2').css('font-weight', 'bold');
           } else {
-            alert('Error while trying to send email!');
+            debugger;
+            $('#newProjectForm').hide();
+            $('#successMsg').show();
+            $('#successMsg').text('Email Failure!');
+            $('#successMsg2').show();
+            $('#successMsg2').text('The email did not go through because of a server error. Try sending an email directly to chris.troutner@gmail.com');
+            $('#successMsg2').css('font-weight', 'bold');
           }
         })
         .fail(function(jqxhr, textStatus, error) {
