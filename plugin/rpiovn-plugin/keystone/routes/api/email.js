@@ -10,6 +10,11 @@ exports.send = function(req, res) {
   
   var data = (req.method == 'POST') ? req.body : req.query;
 
+  if(data.html == "true")
+    data.html = true;
+  if(data.html == "false")
+    data.html = false;
+  
   var val = sendEmail(data);
   
   if(val) {
