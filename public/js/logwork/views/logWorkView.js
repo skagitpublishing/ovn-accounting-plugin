@@ -492,7 +492,9 @@ define([
       //Extract the start time from each model.
       var startTimeArray = [];
       for(var i=0; i < userDataArray.length; i++) {
-        startTimeArray.push(new Date(userDataArray[i].get('startTime')));
+        var startTimeStr = userDataArray[i].get('startTime');
+        var startTimeDate = new Date(startTimeStr);
+        startTimeArray.push(startTimeDate);
       }
       
       // temporary array holds objects with position and sort-value
