@@ -513,7 +513,8 @@ define([
         return userDataArray[el.index];
       });
       
-      return userDataArray;
+      //return userDataArray;
+      return result;
       
     }
     
