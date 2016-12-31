@@ -82,7 +82,8 @@ define([
         }, {
           field: 'description',
           title: 'Description',
-          sortable: true
+          sortable: true,
+          width: '25%'
         }, {
           field: 'edit',
           title: 'Edit',
