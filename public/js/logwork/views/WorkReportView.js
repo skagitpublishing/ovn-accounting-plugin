@@ -41,106 +41,127 @@ define([
 		},
 
     render: function () {
-      //debugger;
-      
-      this.$el.html(this.template);
-      
-      $('#WorkReportView').show();
-      
-      //Hide the initial 'Loading...' message.
-      this.$el.find('#resultsMessage').hide();
-      
-      //this.$el.find('#resultsTable').bootstrapTable({
-      this.$el.find('#resultsTable').bootstrapTable({
-        sortName: 'date',
-        sortOrder: 'desc',
-        showExport: true,
-        //exportDataType: 'selected',
-        //exportType: ['csv', 'excel', 'json', 'txt'],
-        //exportOptions: {
-        //  fileName: 'RPiOVN-Work-Log',
-        //  type: 'csv'
-        //},
-        columns: [{
-          field: 'date',
-          title: 'Date',
-          sortable: true
-        }, {
-          field: 'user',
-          title: 'User',
-          sortable: true
-        }, {
-          field: 'project',
-          title: 'Project',
-          sortable: true
-        }, {
-          field: 'typeOfWork',
-          title: 'Type of Work',
-          sortable: true
-        }, {
-          field: 'hours',
-          title: 'Hours',
-          sortable: true
-        }, {
-          field: 'description',
-          title: 'Description',
-          sortable: true
-        }, {
-          field: 'edit',
-          title: 'Edit',
-          sortable: false
-        }         
-         ],
+      try {
+        //debugger;
 
-      });
-      
-      this.populateTable();
-      //$('#resultsTable').tableExport();
-      
+        this.$el.html(this.template);
+
+        $('#WorkReportView').show();
+
+        //Hide the initial 'Loading...' message.
+        this.$el.find('#resultsMessage').hide();
+
+        //this.$el.find('#resultsTable').bootstrapTable({
+        this.$el.find('#resultsTable').bootstrapTable({
+          sortName: 'date',
+          sortOrder: 'desc',
+          showExport: true,
+          //exportDataType: 'selected',
+          //exportType: ['csv', 'excel', 'json', 'txt'],
+          //exportOptions: {
+          //  fileName: 'RPiOVN-Work-Log',
+          //  type: 'csv'
+          //},
+          columns: [{
+            field: 'date',
+            title: 'Date',
+            sortable: true
+          }, {
+            field: 'user',
+            title: 'User',
+            sortable: true
+          }, {
+            field: 'project',
+            title: 'Project',
+            sortable: true
+          }, {
+            field: 'typeOfWork',
+            title: 'Type of Work',
+            sortable: true
+          }, {
+            field: 'hours',
+            title: 'Hours',
+            sortable: true
+          }, {
+            field: 'description',
+            title: 'Description',
+            sortable: true
+          }, {
+            field: 'edit',
+            title: 'Edit',
+            sortable: false
+          }         
+           ],
+
+        });
+
+        this.populateTable();
+        //$('#resultsTable').tableExport();
+
+      } catch(err) {
+        debugger;
+        var msg = 'Error in WorkReportView.js/render() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
+      }
+        
 			return this;
 		},
     
-    openModal: function() {
+    //openModal: function() {
       //debugger;
       //global.modalView.render();
-      global.modalView.openModal();
-    },
+    //  global.modalView.openModal();
+    //},
     
     //This function populates the table with all Work Log data.
     populateTable: function() {
-      //debugger;
-      
-      var tableData = [];
-      
-      //Loop through each item in the log work collection.
-      for(var i=0; i < global.logWorkCollection.length; i++) {
-        var thisModel = global.logWorkCollection.models[i];
-        
-        var projectName = this.getProjectName(thisModel.get('project'));
-        var userName = this.getUserName(thisModel.get('user'));
-        var dateStr = this.getDateStr(new Date(thisModel.get('startTime')));
-        
-        var lineItem = new Object();
-        //lineItem.entry = i;
-        lineItem.date = dateStr;
-        lineItem.user = userName;
-        lineItem.project = projectName;
-        lineItem.typeOfWork = thisModel.get('typeOfWork');
-        lineItem.hours = thisModel.get('hours');
-        lineItem.description = thisModel.get('details');
-        
-        if(thisModel.get('user') == userdata._id) {
-          lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
-        } else {
-          lineItem.edit = '';
+      try {
+        //debugger;
+
+        var tableData = [];
+
+        //Loop through each item in the log work collection.
+        for(var i=0; i < global.logWorkCollection.length; i++) {
+          var thisModel = global.logWorkCollection.models[i];
+
+          var projectName = this.getProjectName(thisModel.get('project'));
+          var userName = this.getUserName(thisModel.get('user'));
+          var dateStr = this.getDateStr(new Date(thisModel.get('startTime')));
+
+          var lineItem = new Object();
+          //lineItem.entry = i;
+          lineItem.date = dateStr;
+          lineItem.user = userName;
+          lineItem.project = projectName;
+          lineItem.typeOfWork = thisModel.get('typeOfWork');
+          lineItem.hours = thisModel.get('hours');
+          lineItem.description = thisModel.get('details');
+
+          if(thisModel.get('user') == userdata._id) {
+            lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
+          } else {
+            lineItem.edit = '';
+          }
+
+
+          tableData.push(lineItem);
         }
+
+        this.$el.find('#resultsTable').bootstrapTable('load', tableData);
+        log.push('Updated table with work log records.');
+      } catch(err) {
+        debugger;
+        var msg = 'Error in WorkReportView.js/populateTable() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
         
-        
-        tableData.push(lineItem);
+        global.modalView.closeModal(); //Hide the modal window if it's open.
       }
-      
-      this.$el.find('#resultsTable').bootstrapTable('load', tableData);
-      log.push('Updated table with work log records.');
     },
     
     exportTable: function() {
@@ -158,7 +179,7 @@ define([
     //This function returns the name of a project based on the input string which should contain a project GUID.
     //This function returns "Not Found" if a projectId could not be found.
     getProjectName: function(projectId) {
-      //debugger;
+      
       
       var outStr = "Not Found";
       
@@ -168,7 +189,12 @@ define([
         outStr = model.get('title');
       } catch(err) {
         debugger;
-        console.log('Catestrophic error in WorkReportView.js/getProjectName()');
+        var msg = 'Error in WorkReportView.js/getProjectName() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
       }
       
       return outStr;
@@ -189,7 +215,12 @@ define([
         
       } catch(err) {
         debugger;
-        console.log('Catestrophic error in WorkReportView.js/getUserName()');
+        var msg = 'Error in WorkReportView.js/getUserName() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
       }
       
       return outStr;
@@ -197,26 +228,47 @@ define([
     
     //This function converts an inpute Date object into a string corresponding the MM-DD-YY
     getDateStr: function(dateIn) {
-      //debugger;
-      
-      var date = '00'+(dateIn.getUTCDate());
-      date = date.slice(-2);
-      
-      var month = '00'+(dateIn.getUTCMonth()+1);
-      month = month.slice(-2);
-      
-      var year = dateIn.getFullYear().toString();
-      year = year.slice(-2);
-      
-      return month+'-'+date+'-'+year;
+      try {
+        //debugger;
+
+        var date = '00'+(dateIn.getUTCDate());
+        date = date.slice(-2);
+
+        var month = '00'+(dateIn.getUTCMonth()+1);
+        month = month.slice(-2);
+
+        var year = dateIn.getFullYear().toString();
+        year = year.slice(-2);
+
+        return month+'-'+date+'-'+year;
+      } catch(err) {
+        debugger;
+        var msg = 'Error in WorkReportView.js/getDateStr() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
+      }
     },
     
     //This function is called whenever the user clicks on the Edit button next to a work entry.
     //It passes the model for that entry on to the logWorkView, to be edited.
     editEntry: function(i) {
-      //debugger;
-      var thisModel = global.logWorkCollection.models[i];
-      global.logWorkView.loadEntry(thisModel);
+      try {
+        //debugger;
+        var thisModel = global.logWorkCollection.models[i];
+        global.logWorkView.loadEntry(thisModel);
+        
+      } catch(err) {
+        debugger;
+        var msg = 'Error in WorkReportView.js/editEntry() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
+      }
     }
     
     
