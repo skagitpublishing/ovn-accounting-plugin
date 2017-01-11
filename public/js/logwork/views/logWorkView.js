@@ -436,93 +436,112 @@ define([
     },
     
     loadEntry: function(logWorkModel) {
-      //debugger;
-      
-      //this.render();
-      global.leftMenuView.showLogWork();
-      
-      //Signal to the 'submit button' that this is an existing record.
-      this.selectedRecord = logWorkModel.id;
-      
-      this.$el.find('#logDate').val(logWorkModel.get('endTime')); //The date of the entry
-      
-      //Select the correct project from the drop-down menu
-      var projId = logWorkModel.get('project');
-      var projModel = global.projectCollection.get(projId);
-      this.$el.find('#logProject').val(projModel.get('title'));
+      try {
+        //debugger;
 
-      //Populate the type of work based on the selected project.
-      this.populateWorkType();
-      
-      this.$el.find('#logWorkType').val(logWorkModel.get('typeOfWork')); //The type of work
-      
-      this.$el.find('#logHour').val(logWorkModel.get('hours')); //Hours worked
-      
-      this.$el.find('#logDesc').val(logWorkModel.get('details')); //Work Description
-      
+        //this.render();
+        global.leftMenuView.showLogWork();
+
+        //Signal to the 'submit button' that this is an existing record.
+        this.selectedRecord = logWorkModel.id;
+
+        this.$el.find('#logDate').val(logWorkModel.get('endTime')); //The date of the entry
+
+        //Select the correct project from the drop-down menu
+        var projId = logWorkModel.get('project');
+        var projModel = global.projectCollection.get(projId);
+        this.$el.find('#logProject').val(projModel.get('title'));
+
+        //Populate the type of work based on the selected project.
+        this.populateWorkType();
+
+        this.$el.find('#logWorkType').val(logWorkModel.get('typeOfWork')); //The type of work
+
+        this.$el.find('#logHour').val(logWorkModel.get('hours')); //Hours worked
+
+        this.$el.find('#logDesc').val(logWorkModel.get('details')); //Work Description
+      } catch(err) {
+        debugger;
+        var msg = 'Error in logWorkView.js/loadEntry() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
+      }
     },
     
     //This function populates the table with all Work Log data.
     populateTable: function() {
-      //debugger;
-      
-      var tableData = [];
-      
-      var thisUserData = [];
-      
-      //Loop through each item in the log work collection.
-      for(var i=0; i < global.logWorkCollection.length; i++) {
-        var thisModel = global.logWorkCollection.models[i];
+      try {
+        //debugger;
 
-        if(thisModel.get('user') == userdata._id) {
+        var tableData = [];
 
-          //Store all logWork entries associated with this user.
-          thisUserData.push(thisModel);
-          
-        //Skip any entries that aren't associated with the currently logged in user.
-        } else {
-          continue;
+        var thisUserData = [];
+
+        //Loop through each item in the log work collection.
+        for(var i=0; i < global.logWorkCollection.length; i++) {
+          var thisModel = global.logWorkCollection.models[i];
+
+          if(thisModel.get('user') == userdata._id) {
+
+            //Store all logWork entries associated with this user.
+            thisUserData.push(thisModel);
+
+          //Skip any entries that aren't associated with the currently logged in user.
+          } else {
+            continue;
+          }
         }
+
+        //Sort the log work entries by startTime
+        var sortedUserData = this.sortUserData(thisUserData);
+
+        //Display the top 5 results of the sorted work entries.
+        for(var i=0; i < 5; i++) {
+          var thisModel = sortedUserData[i];
+
+          try {
+            var projectName = global.workReportView.getProjectName(thisModel.get('project'));
+            var userName = global.workReportView.getUserName(thisModel.get('user'));
+            var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
+          } catch(err) {
+            console.log('Error caught in logWorkView.js/populateTable(). Error: '+err.message);
+            this.render();
+            return;
+          }
+
+          var lineItem = new Object();
+          //lineItem.entry = i;
+          lineItem.date = dateStr;
+          lineItem.user = userName;
+          lineItem.project = projectName;
+          lineItem.typeOfWork = thisModel.get('typeOfWork');
+          lineItem.hours = thisModel.get('hours');
+          lineItem.description = thisModel.get('details');
+
+          if(thisModel.get('user') == userdata._id) {
+            lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
+          } else {
+            lineItem.edit = '';
+          }
+
+
+          tableData.push(lineItem);
+        }
+
+        this.$el.find('#resultsTable').bootstrapTable('load', tableData);
+        log.push('Updated table with work log records.');
+      } catch(err) {
+        debugger;
+        var msg = 'Error in logWorkView.js/populateTable() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
       }
-      
-      //Sort the log work entries by startTime
-      var sortedUserData = this.sortUserData(thisUserData);
-      
-      //Display the top 5 results of the sorted work entries.
-      for(var i=0; i < 5; i++) {
-        var thisModel = sortedUserData[i];
-        
-        try {
-          var projectName = global.workReportView.getProjectName(thisModel.get('project'));
-          var userName = global.workReportView.getUserName(thisModel.get('user'));
-          var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
-        } catch(err) {
-          console.log('Error caught in logWorkView.js/populateTable(). Error: '+err.message);
-          this.render();
-          return;
-        }
-          
-        var lineItem = new Object();
-        //lineItem.entry = i;
-        lineItem.date = dateStr;
-        lineItem.user = userName;
-        lineItem.project = projectName;
-        lineItem.typeOfWork = thisModel.get('typeOfWork');
-        lineItem.hours = thisModel.get('hours');
-        lineItem.description = thisModel.get('details');
-        
-        if(thisModel.get('user') == userdata._id) {
-          lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
-        } else {
-          lineItem.edit = '';
-        }
-        
-        
-        tableData.push(lineItem);
-      }
-      
-      this.$el.find('#resultsTable').bootstrapTable('load', tableData);
-      log.push('Updated table with work log records.');
     },
     
     //This function sorts an array of log work models by the startTime entry.
@@ -530,35 +549,44 @@ define([
     //Based on mapping example here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
     //Dev note: I'm not sure if I want to use this code or not, so I'm leaving it here.
     sortUserData: function(userDataArray) {
-      //debugger;
-      
-      //Extract the start time from each model.
-      var startTimeArray = [];
-      for(var i=0; i < userDataArray.length; i++) {
-        var startTimeStr = userDataArray[i].get('startTime');
-        var startTimeDate = new Date(startTimeStr);
-        startTimeArray.push(startTimeDate);
+      try {
+        //debugger;
+
+        //Extract the start time from each model.
+        var startTimeArray = [];
+        for(var i=0; i < userDataArray.length; i++) {
+          var startTimeStr = userDataArray[i].get('startTime');
+          var startTimeDate = new Date(startTimeStr);
+          startTimeArray.push(startTimeDate);
+        }
+
+        // temporary array holds objects with position and sort-value
+        var mapped = startTimeArray.map(function(el, i) {
+          return { index: i, value: el };
+        })
+
+        // sorting the mapped array containing the reduced values
+        mapped.sort(function(a, b) {
+          return +(a.value < b.value) || +(a.value === b.value) - 1;
+        });
+
+        // container for the resulting order
+        var result = mapped.map(function(el){
+          //return startTimeArray[el.index];
+          return userDataArray[el.index];
+        });
+
+        //return userDataArray;
+        return result;
+      } catch(err) {
+        debugger;
+        var msg = 'Error in logWorkView.js/sortUserData() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
       }
-      
-      // temporary array holds objects with position and sort-value
-      var mapped = startTimeArray.map(function(el, i) {
-        return { index: i, value: el };
-      })
-      
-      // sorting the mapped array containing the reduced values
-      mapped.sort(function(a, b) {
-        return +(a.value < b.value) || +(a.value === b.value) - 1;
-      });
-      
-      // container for the resulting order
-      var result = mapped.map(function(el){
-        //return startTimeArray[el.index];
-        return userDataArray[el.index];
-      });
-      
-      //return userDataArray;
-      return result;
-      
     }
     
 	});
