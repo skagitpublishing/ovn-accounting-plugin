@@ -39,6 +39,7 @@ module.exports = function(app) {
   
   //Email API
   app.all('/api/email/send', keystone.middleware.api, routes.api.email.send);
+  app.get('/api/email/sendlog', keystone.middleware.api, routes.api.email.sendlog);
   
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

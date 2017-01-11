@@ -160,3 +160,28 @@ function sendMailGun(emailObj) {
       });
   }
 }
+
+//This function is responsible for sending an error log to the administrator.
+exports.sendlog = function(req, res) {
+  //Process email address in query string.
+  var email = ["chris.troutner@gmail.com"];
+  var subject = "[RPiOVN Error Log] "+new Date();
+  
+  var log = req.query.log;
+  var body = "";
+  for(var i=0; i < log.length; i++) {
+    body += i+'. '+log[i]+'\n';  
+  }
+  
+  //Send the email log via MailGun email.
+  var emailObj = new Object();
+  emailObj.email = email;
+  emailObj.subject = subject;
+  emailObj.message = body
+  sendMailGun(emailObj);
+  
+  //Return success.
+  return res.apiResponse({
+    success: true
+  });
+}
