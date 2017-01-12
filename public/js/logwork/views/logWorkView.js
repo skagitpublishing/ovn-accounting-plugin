@@ -529,7 +529,7 @@ define([
             lineItem.description = 'Text contains invalid HTML elements';
           
           if(thisModel.get('user') == userdata._id) {
-            lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
+            lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.logWorkView.editEntry(\''+thisModel.id+'\')" >Edit</button>'  
           } else {
             lineItem.edit = '';
           }
@@ -590,6 +590,25 @@ define([
       } catch(err) {
         debugger;
         var msg = 'Error in logWorkView.js/sortUserData() Error: '+err.message;
+        console.error(msg);
+        log.push(msg);
+        sendLog();
+        
+        global.modalView.closeModal(); //Hide the modal window if it's open.
+      }
+    },
+    
+    //This function is called whenever the user clicks on the Edit button next to a work entry.
+    //It passes the model for that entry on to the logWorkView, to be edited.
+    editEntry: function(id) {
+      try {
+        debugger;
+        var thisModel = global.logWorkCollection.get(id);
+        global.logWorkView.loadEntry(thisModel);
+        
+      } catch(err) {
+        debugger;
+        var msg = 'Error in logWorkView.js/editEntry() Error: '+err.message;
         console.error(msg);
         log.push(msg);
         sendLog();
