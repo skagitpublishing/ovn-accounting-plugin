@@ -602,7 +602,7 @@ define([
     //It passes the model for that entry on to the logWorkView, to be edited.
     editEntry: function(id) {
       try {
-        debugger;
+        //debugger;
         var thisModel = global.logWorkCollection.get(id);
         global.logWorkView.loadEntry(thisModel);
         
