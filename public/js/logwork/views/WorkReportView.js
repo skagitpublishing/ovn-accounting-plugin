@@ -141,6 +141,10 @@ define([
           lineItem.hours = thisModel.get('hours');
           lineItem.description = thisModel.get('details');
 
+          //Error Handling
+          if(lineItem.description.indexOf('<iframe>'))
+            lineItem.description = 'Text contains invalid HTML elements';
+          
           if(thisModel.get('user') == userdata._id) {
             lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
           } else {
@@ -159,6 +163,8 @@ define([
         console.error(msg);
         log.push(msg);
         sendLog();
+        
+        alert('There was an error with this page. An error log has been email to the administrator. Please refresh your browser and try again.');
         
         global.modalView.closeModal(); //Hide the modal window if it's open.
       }
