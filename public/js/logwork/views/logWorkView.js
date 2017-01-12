@@ -547,6 +547,8 @@ define([
         log.push(msg);
         sendLog();
         
+        alert('There was an error with this page. An error log has been email to the administrator. Please refresh your browser and try again.');
+        
         global.modalView.closeModal(); //Hide the modal window if it's open.
       }
     },
