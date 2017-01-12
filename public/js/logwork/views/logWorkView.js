@@ -164,7 +164,7 @@ define([
         this.model.attributes.details = inputDesc.val();
         this.model.attributes.user = userdata._id;
 
-
+        //New log work record.
         if(this.selectedRecord == undefined) {
 
           $.post('/api/logwork/create', this.model.attributes, function(data) {
@@ -202,6 +202,7 @@ define([
 
 
             //Refresh the logWork Collection.
+            global.logWorkCollection.refreshView = true;
             global.logWorkCollection.fetch();
 
             //Clear the window
