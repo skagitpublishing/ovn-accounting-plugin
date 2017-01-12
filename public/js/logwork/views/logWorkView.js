@@ -525,7 +525,7 @@ define([
           lineItem.description = thisModel.get('details');
 
           //Error Handling
-          if(lineItem.description.indexOf('<iframe>'))
+          if(lineItem.description.indexOf('<iframe>') != -1)
             lineItem.description = 'Text contains invalid HTML elements';
           
           if(thisModel.get('user') == userdata._id) {
