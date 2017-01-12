@@ -513,6 +513,8 @@ define([
             return;
           }
 
+          
+          
           var lineItem = new Object();
           //lineItem.entry = i;
           lineItem.date = dateStr;
@@ -522,6 +524,10 @@ define([
           lineItem.hours = thisModel.get('hours');
           lineItem.description = thisModel.get('details');
 
+          //Error Handling
+          if(lineItem.description.indexof('<iframe>'))
+            lineItem.description = 'Text contains invalid HTML elements';
+          
           if(thisModel.get('user') == userdata._id) {
             lineItem.edit = '<button class="btn btn-small btn-default" onclick="global.workReportView.editEntry(\''+i+'\')" >Edit</button>'  
           } else {
