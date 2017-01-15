@@ -22,6 +22,9 @@ cp public/images/* ../myCMS/public/images/
 cp public/js/*.js ../myCMS/public/js/
 cp public/styles/*.css ../myCMS/public/styles/
 
+#Copy sign-in logo
+cp public/images/logo.png ../myCMS/node_modules/keystone/admin/public/images/logo.png
+
 echo Copying logwork dashboard
 cp -r public/js/logwork ../myCMS/public/js/
 
