@@ -13,16 +13,17 @@ var Project = new keystone.List('Project', {
 
 Project.add({
 
-        title: { type: String, required: true },
-        projectLead: { type: Types.Relationship, ref: 'User'},
-        content: {
-                brief: { type: Types.Html, wysiwyg: true, height: 150 },
-                extended: { type: Types.Html, wysiwyg: true, height: 400 },
-        },
-        projectContact: { type: Types.Relationship, ref: 'User'},
-        contributors: { type: Types.TextArray }, //An array of IDs of users that have contributed to the project.
-        projectWork: { type: Types.TextArray }, //An array of IDs of LoggedWork models associated with this project.
-        typesOfWork: { type: Types.TextArray }
+  title: { type: String, required: true },
+  projectLead: { type: Types.Relationship, ref: 'User'},
+  content: {
+          brief: { type: Types.Html, wysiwyg: true, height: 150 },
+          extended: { type: Types.Html, wysiwyg: true, height: 400 },
+  },
+  projectContact: { type: Types.Relationship, ref: 'User'},
+  contributors: { type: Types.TextArray }, //An array of IDs of users that have contributed to the project.
+  projectWork: { type: Types.TextArray }, //An array of IDs of LoggedWork models associated with this project.
+  typesOfWork: { type: Types.TextArray },
+  imgUrls: { type: Types.TextArray }
 
 });
 
