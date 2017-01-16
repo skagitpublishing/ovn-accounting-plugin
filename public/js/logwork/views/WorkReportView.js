@@ -141,7 +141,7 @@ define([
           lineItem.hours = thisModel.get('hours');
           lineItem.description = thisModel.get('details');
 
-          
+          //Replace newline characters with html <br> to force new line.
           lineItem.description = lineItem.description.replace(/(\r\n|\n|\r)/gm,"<br>");
           
           //Error Handling
