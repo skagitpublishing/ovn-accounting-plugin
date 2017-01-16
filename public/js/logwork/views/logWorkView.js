@@ -219,7 +219,7 @@ define([
             debugger;
 
             try {
-              if(jqhxr.responseJSON == undefined) {
+              if(jqxhr.responseJSON == undefined) {
                 global.modalView.errorModal('Lost connection with the server! Please check your internet connection and try again.');
               } else {
                 if(jqxhr.responseJSON.detail == "invalid csrf") {
