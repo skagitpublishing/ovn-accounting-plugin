@@ -219,16 +219,28 @@ define([
             debugger;
 
             try {
-              if(jqxhr.responseJSON.detail == "invalid csrf") {
-                global.modalView.errorModal('Update failed due to a bad CSRF token. Please log out and back in to refresh your CSRF token.');
-                return;
+              if(jqhxr.responseJSON == undefined) {
+                global.modalView.errorModal('Lost connection with the server! Please check your internet connection and try again.');
               } else {
-                global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
-                console.log( "Request Failed: " + error );
-                console.error('Error message: '+jqxhr.responseText);
+                if(jqxhr.responseJSON.detail == "invalid csrf") {
+                  global.modalView.errorModal('Update failed due to a bad CSRF token. Please log out and back in to refresh your CSRF token.');
+                  return;
+                } else {
+                  var msg = "Request failed because of: "+error+'. Error Message: '+jqxhr.responseText;
+                  global.modalView.errorModal(msg);
+                  console.error(msg);
+                  log.push(msg);
+                  sendLog();
+                  
+                }
               }
+              
             } catch(err) {
-              console.error('Error trying to retrieve JSON data from server response.');
+              msg = 'Uncaught error in logWorkView.js/logWork(). Error: '+err.message;
+              console.error(msg);
+              global.modalView.errorModal(msg+'<br> Please reload your browser window and try again.');
+              log.push(msg);
+              sendLog();
             } 
           });
 
