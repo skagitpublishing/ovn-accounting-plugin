@@ -141,6 +141,9 @@ define([
           lineItem.hours = thisModel.get('hours');
           lineItem.description = thisModel.get('details');
 
+          
+          lineItem.description = lineItem.description.replace(/(\r\n|\n|\r)/gm,"<br>");
+          
           //Error Handling
           if(lineItem.description.indexOf('<iframe>') != -1)
             lineItem.description = 'Text contains invalid HTML elements';
