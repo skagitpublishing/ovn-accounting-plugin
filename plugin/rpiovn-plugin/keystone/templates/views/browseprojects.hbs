@@ -22,16 +22,16 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="home">
+          <div role="tabpanel" class="tab-pane fade active" id="home">
             <p>Project Info</p>
           </div>
-          <div role="tabpanel" class="tab-pane" id="profile">
+          <div role="tabpanel" class="tab-pane fade" id="profile">
             <p>Hardware</p>
           </div>
-          <div role="tabpanel" class="tab-pane" id="messages">
+          <div role="tabpanel" class="tab-pane fade" id="messages">
             <p>Software</p>
           </div>
-          <div role="tabpanel" class="tab-pane" id="settings">
+          <div role="tabpanel" class="tab-pane fade" id="settings">
             <p>Frequently Asked Questions</p>
           </div>
         </div>
@@ -39,4 +39,12 @@
       </div>
     </div>
   </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.get('/api/projectinfo/list', '', function(data) {
+        debugger;
+      });
+    });
+  </script>
 </section>
