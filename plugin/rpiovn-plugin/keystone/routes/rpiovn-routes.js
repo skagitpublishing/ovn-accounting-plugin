@@ -31,11 +31,11 @@ module.exports = function(app) {
   app.get('/api/projects/:id/remove', keystone.middleware.api, routes.api.projects.remove);
   
   //Project Info API
-  app.get('/api/projectinfo/list', keystone.middleware.api, routes.api.info.list);
-  app.get('/api/projectinfo/:id', keystone.middleware.api, routes.api.info.get);
-  app.all('/api/projectinfo/:id/update', keystone.middleware.api, routes.api.info.update);
-  app.all('/api/projectinfo/create', keystone.middleware.api, routes.api.info.create);
-  app.get('/api/projectinfo/:id/remove', keystone.middleware.api, routes.api.info.remove);
+  app.get('/api/projectinfo/list', keystone.middleware.api, routes.api.projectinfo.list);
+  app.get('/api/projectinfo/:id', keystone.middleware.api, routes.api.projectinfo.get);
+  app.all('/api/projectinfo/:id/update', keystone.middleware.api, routes.api.projectinfo.update);
+  app.all('/api/projectinfo/create', keystone.middleware.api, routes.api.projectinfo.create);
+  app.get('/api/projectinfo/:id/remove', keystone.middleware.api, routes.api.projectinfo.remove);
   
   //Users API
   app.get('/api/users/list', keystone.middleware.api, routes.api.users.list);
