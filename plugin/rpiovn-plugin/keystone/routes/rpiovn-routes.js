@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.get('/createaccount', routes.views.createaccount);
   app.get('/contactus', routes.views.contactus);
   app.get('/projectapplication', routes.views.projectapplication);
+  app.get('/browseprojects', routes.views.browseprojects);
   
   //Log Work Route
   app.get('/api/logwork/list/all', keystone.middleware.api, routes.api.logwork.listall);
