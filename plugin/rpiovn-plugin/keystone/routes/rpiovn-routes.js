@@ -23,12 +23,19 @@ module.exports = function(app) {
   app.all('/api/logwork/create', keystone.middleware.api, routes.api.logwork.create);
   app.get('/api/logwork/:id/remove', keystone.middleware.api, routes.api.logwork.remove);
   
-  //Project Info API
+  //Project API
   app.get('/api/projects/list', keystone.middleware.api, routes.api.projects.list);
   app.get('/api/projects/:id', keystone.middleware.api, routes.api.projects.get);
   app.all('/api/projects/:id/update', keystone.middleware.api, routes.api.projects.update);
   app.all('/api/projects/create', keystone.middleware.api, routes.api.projects.create);
   app.get('/api/projects/:id/remove', keystone.middleware.api, routes.api.projects.remove);
+  
+  //Project Info API
+  app.get('/api/projectinfo/list', keystone.middleware.api, routes.api.info.list);
+  app.get('/api/projectinfo/:id', keystone.middleware.api, routes.api.info.get);
+  app.all('/api/projectinfo/:id/update', keystone.middleware.api, routes.api.info.update);
+  app.all('/api/projectinfo/create', keystone.middleware.api, routes.api.info.create);
+  app.get('/api/projectinfo/:id/remove', keystone.middleware.api, routes.api.info.remove);
   
   //Users API
   app.get('/api/users/list', keystone.middleware.api, routes.api.users.list);
