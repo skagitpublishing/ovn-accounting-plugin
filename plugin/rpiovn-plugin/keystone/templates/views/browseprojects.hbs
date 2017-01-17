@@ -45,7 +45,7 @@
       $.get('/api/projectinfo/list', '', function(data) {
         debugger;
         
-        var projectInfo = data.projectInfo;
+        var projectInfo = data.projectinfo;
         
         $('.projSummary').append(projectInfo[0].basicInfo);
         $('#projectInfo').append(projectInfo[0].summary);
