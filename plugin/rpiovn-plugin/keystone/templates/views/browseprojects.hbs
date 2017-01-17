@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <img src="http://rpiovn.org/images/rpi-tracker.jpg" class="img-responsive center-block" />
+        <img src="http://rpiovn.org/images/rpi-tracker.jpg" class="img-responsive center-block projImg" />
       </div>
       <div class="col-md-8 projSummary">
 
@@ -22,16 +22,16 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane fade active" id="home">
+          <div role="tabpanel" class="tab-pane fade active" id="projectInfo">
             <p>Project Info</p>
           </div>
-          <div role="tabpanel" class="tab-pane fade" id="profile">
+          <div role="tabpanel" class="tab-pane fade" id="hardware">
             <p>Hardware</p>
           </div>
-          <div role="tabpanel" class="tab-pane fade" id="messages">
+          <div role="tabpanel" class="tab-pane fade" id="software">
             <p>Software</p>
           </div>
-          <div role="tabpanel" class="tab-pane fade" id="settings">
+          <div role="tabpanel" class="tab-pane fade" id="faq">
             <p>Frequently Asked Questions</p>
           </div>
         </div>
@@ -44,6 +44,14 @@
     $(document).ready(function() {
       $.get('/api/projectinfo/list', '', function(data) {
         debugger;
+        
+        var projectInfo = data.projectInfo;
+        
+        $('.projSummary').append(projectInfo[0].basicInfo);
+        $('#projectInfo').append(projectInfo[0].summary);
+        $('#hardware').append(projectInfo[0].hardware);
+        $('#software').append(projectInfo[0].software);
+        
       });
     });
   </script>
