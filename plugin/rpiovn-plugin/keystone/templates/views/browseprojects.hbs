@@ -23,16 +23,16 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade active" id="projectInfo">
-            <p>Project Info</p>
+            
           </div>
           <div role="tabpanel" class="tab-pane fade" id="hardware">
-            <p>Hardware</p>
+            
           </div>
           <div role="tabpanel" class="tab-pane fade" id="software">
-            <p>Software</p>
+            
           </div>
           <div role="tabpanel" class="tab-pane fade" id="faq">
-            <p>Frequently Asked Questions</p>
+            
           </div>
         </div>
 
@@ -44,7 +44,7 @@
     $(document).ready(function() {
       
       $.get('/api/projectinfo/list', '', function(data) {
-        debugger;
+        //debugger;
         
         var projectInfo = data.projectinfo;
         
