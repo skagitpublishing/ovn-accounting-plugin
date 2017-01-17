@@ -9,10 +9,10 @@
   
   <div class="container">
     <div class="row" style="border: 2px solid #c7053d;">
-      <div class="col-sm-4" style="border: 2px solid #c7053d;">
+      <div class="col-sm-4">
         <img src="http://rpiovn.org/images/rpi-tracker.jpg" class="img-responsive center-block projImg" />
       </div>
-      <div class="col-sm-8 projSummary">
+      <div class="col-sm-8 projSummary" style="border-left: 2px solid #c7053d;">
 
       </div>
     </div>
@@ -63,7 +63,9 @@
         var projectInfo = data.projectinfo;
         
         //Fill in the content from the data retrieved from the server.
+        $('.projSummary').append('<h1>'+projectInfo[0].title+'</h1>');
         $('.projSummary').append(projectInfo[0].basicInfo);
+        
         $('#projectInfo').append(projectInfo[0].summary);
         $('#hardware').append(projectInfo[0].hardware);
         $('#software').append(projectInfo[0].software);
@@ -72,7 +74,7 @@
         
         //Fill out the FAQ section.
         for(var i=0; i < projectInfo[0].faqTitle.length; i++) {
-          $('#faq').append('<h2>'+projectInfo[0].faqTitle[i]+'</h2>');
+          $('#faq').append('<h3>'+projectInfo[0].faqTitle[i]+'</h3>');
           $('#faq').append(projectInfo[0].faqBody[i]);
           $('#faq').append('<br>');
         }
