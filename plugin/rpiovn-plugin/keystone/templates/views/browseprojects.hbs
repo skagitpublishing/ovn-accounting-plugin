@@ -69,7 +69,11 @@
         $('#software').append(projectInfo[0].software);
         
         //Fill out the FAQ section.
-        
+        for(var i=0; i < projectInfo[0].faqTitle.length; i++) {
+          $('#faq').append('<h2>'+projectInfo[0].faqTitle[i]+'</h2>');
+          $('#faq').append(projectInfo[0].faqBody[i]);
+          $('#faq').append('<br>');
+        }
         
         //Activate the tabs to get content to show
         $('.nav-tabs').find('a').last().tab('show');
