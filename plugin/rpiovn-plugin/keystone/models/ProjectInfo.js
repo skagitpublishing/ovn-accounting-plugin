@@ -22,7 +22,8 @@ ProjectInfo.add({
   description: { type: Types.Html, wysiwyg: true, height: 400 },
   hardware: { type: Types.Html, wysiwyg: true, height: 400 },
   software: { type: Types.Html, wysiwyg: true, height: 400 },
-  faq: { type: Types.Html, wysiwyg: true, height: 400 },
+  faqTitle: { type: Types.TextArray },
+  faqBody: { type: Types.TextArray },
   imgUrls: { type: Types.TextArray }
 
 });
