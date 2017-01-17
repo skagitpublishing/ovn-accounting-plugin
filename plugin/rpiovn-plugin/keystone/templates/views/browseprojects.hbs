@@ -22,14 +22,14 @@
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active"><a href="#projectInfo" role="tab" data-toggle="tab">Project Info</a></li>
+          <li role="presentation" class="active"><a href="#projectInfo" role="tab" data-toggle="tab">Project Summary</a></li>
           <li role="presentation"><a href="#hardware" role="tab" data-toggle="tab">Hardware</a></li>
           <li role="presentation"><a href="#software" role="tab" data-toggle="tab">Software</a></li>
           <li role="presentation"><a href="#faq" role="tab" data-toggle="tab">FAQ</a></li>
         </ul>
 
         <!-- Tab panes -->
-        <div class="tab-content">
+        <div class="tab-content" style="min-height: 150px;">
           <div role="tabpanel" class="tab-pane fade active" id="projectInfo">
             
           </div>
@@ -58,14 +58,18 @@
     $(document).ready(function() {
       
       $.get('/api/projectinfo/list', '', function(data) {
-        //debugger;
+        debugger;
         
         var projectInfo = data.projectinfo;
         
+        //Fill in the content from the data retrieved from the server.
         $('.projSummary').append(projectInfo[0].basicInfo);
         $('#projectInfo').append(projectInfo[0].summary);
         $('#hardware').append(projectInfo[0].hardware);
         $('#software').append(projectInfo[0].software);
+        
+        //Fill out the FAQ section.
+        
         
         //Activate the tabs to get content to show
         $('.nav-tabs').find('a').last().tab('show');
