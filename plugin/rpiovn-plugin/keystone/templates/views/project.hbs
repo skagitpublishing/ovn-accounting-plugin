@@ -51,14 +51,19 @@
     var faqTitle = "{{{data.project.faqTitle}}}";
     var faqBody = '{{{data.project.faqBody}}}';
     
-    /*
+    faqTitle = faqTitle.split(',');
+    faqBody = faqBody.split(',');
+    
+    
     if(faqTitle.length > 0) {
       $('#faqSection').show();
       
       for(var i=0; i < faqTitle.length; i++) {
-        
+        $('faqContent').append('<h3>'+faqTitle[i]+'</h3>');
+        $('faqContent').append(faqBody[i]);
+        $('faqContent').append('<br>');
       }
     }
-    */
+    
   </script>
 </div>
