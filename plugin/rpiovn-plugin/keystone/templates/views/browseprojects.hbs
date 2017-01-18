@@ -62,8 +62,8 @@
         var projectInfo = data.projectinfo;
         
         //Fill in the content from the data retrieved from the server.
-        var projBtn = '<span class="pull-right"><a class="btn btn-primary center-text" href="/project/'
-        +projectInfo[0].slug+'">View Project Page</a></span>';
+        var projBtn = '<a class="btn btn-primary center-text" href="/project/'
+        +projectInfo[0].slug+'">View Project Page</a>';
         $('.projSummary').append('<h1>'+projectInfo[0].title+'</h1>'+projBtn);
         $('.projSummary').append(projectInfo[0].basicInfo);
         
