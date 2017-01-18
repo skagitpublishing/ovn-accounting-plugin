@@ -61,10 +61,14 @@
           //Ignore all projects except the one we're interested in.
           if(projectInfo[i].slug == slug) {
 
-            for(var j=0; j < projectInfo[i].faqTitle.length; j++) {
-              $('#faqContent').append('<h3>'+projectInfo[i].faqTitle[j]+'</h3>');
-              $('#faqContent').append(projectInfo[i].faqBody[j]);
-              $('#faqContent').append('<br>');
+            if(projectInfo[i].faqTitle.length > 0) {
+              $('#faqSection').prop('hidden', false)
+      
+              for(var j=0; j < projectInfo[i].faqTitle.length; j++) {
+                $('#faqContent').append('<h3>'+projectInfo[i].faqTitle[j]+'</h3>');
+                $('#faqContent').append(projectInfo[i].faqBody[j]);
+                $('#faqContent').append('<br>');
+              }
             }
           }
         }
