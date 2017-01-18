@@ -58,8 +58,14 @@
         for(var i=0; i < projectInfo.length; i++) {
           var slug = "{{{data.project.slug}}}";
           
-          if(projectInfo[0].slug == slug) {
-            console.log('blah');
+          //Ignore all projects except the one we're interested in.
+          if(projectInfo[i].slug == slug) {
+
+            for(var j=0; j < projectInfo[i].faqTitle.length; j++) {
+              $('#faqContent').append('<h3>'+projectInfo[i].faqTitle[j]+'</h3>');
+              $('#faqContent').append(projectInfo[i].faqBody[j]);
+              $('#faqContent').append('<br>');
+            }
           }
         }
         
