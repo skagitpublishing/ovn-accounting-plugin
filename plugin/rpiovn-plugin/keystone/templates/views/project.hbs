@@ -56,7 +56,11 @@
         var projectInfo = data.projectinfo;
         
         for(var i=0; i < projectInfo.length; i++) {
-          debugger;
+          var slug = {{{data.project.slug}}};
+          
+          if(projectInfo[0].slug == slug) {
+            console.log('blah');
+          }
         }
         
       });
