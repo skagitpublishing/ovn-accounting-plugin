@@ -15,6 +15,7 @@ module.exports = function(app) {
   app.get('/contactus', routes.views.contactus);
   app.get('/projectapplication', routes.views.projectapplication);
   app.get('/browseprojects', routes.views.browseprojects);
+  app.get('/project/:project', routes.views.project);
   
   //Log Work Route
   app.get('/api/logwork/list/all', keystone.middleware.api, routes.api.logwork.listall);
@@ -24,7 +25,7 @@ module.exports = function(app) {
   app.all('/api/logwork/create', keystone.middleware.api, routes.api.logwork.create);
   app.get('/api/logwork/:id/remove', keystone.middleware.api, routes.api.logwork.remove);
   
-  //Project API
+  //Project API - For logging work.
   app.get('/api/projects/list', keystone.middleware.api, routes.api.projects.list);
   app.get('/api/projects/:id', keystone.middleware.api, routes.api.projects.get);
   app.all('/api/projects/:id/update', keystone.middleware.api, routes.api.projects.update);
