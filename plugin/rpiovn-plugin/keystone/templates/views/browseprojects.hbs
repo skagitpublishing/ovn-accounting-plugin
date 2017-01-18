@@ -13,9 +13,7 @@
       <div class="col-sm-4" style="border-right: 2px solid #c7053d;">
         <img src="/images/rpi-tracker.jpg" class="img-responsive center-block projImg" />
       </div>
-      <div class="col-sm-8 projSummary">
-
-      </div>
+      <div class="col-sm-8 projSummary"></div>
     </div>
     
     <div class="row">
@@ -66,6 +64,7 @@
         //Fill in the content from the data retrieved from the server.
         $('.projSummary').append('<h1>'+projectInfo[0].title+'</h1>');
         $('.projSummary').append(projectInfo[0].basicInfo);
+        $('.projSummary').append('<a class="btn btn-primary" href="/project/'+projectInfo[0].slug+'">View Project Page</a>');
         
         $('#projectInfo').append(projectInfo[0].summary);
         $('#hardware').append(projectInfo[0].hardware);
