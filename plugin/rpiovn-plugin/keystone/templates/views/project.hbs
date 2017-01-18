@@ -56,12 +56,12 @@
     
     
     if(faqTitle.length > 0) {
-      $('#faqSection').show();
+      $('#faqSection').prop('hidden', false)
       
       for(var i=0; i < faqTitle.length; i++) {
-        $('faqContent').append('<h3>'+faqTitle[i]+'</h3>');
-        $('faqContent').append(faqBody[i]);
-        $('faqContent').append('<br>');
+        $('#faqContent').append('<h3>'+faqTitle[i]+'</h3>');
+        $('#faqContent').append(faqBody[i]);
+        $('#faqContent').append('<br>');
       }
     }
     
