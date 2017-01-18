@@ -39,9 +39,26 @@
     </div>
 	</div>
   
+  <div class="row">
+   	<div class="col-md-12" id="faqSection" hidden>
+      <h2>Frequently Asked Questions</h2>
+      <div id="faqContent"></div>
+    </div>
+	</div>
+  
   <script type="text/javascript">
-    var imgUrls = '{{data.project.imgUrls}}';
-    var faqTitle = '{{{data.project.faqTitle}}}';
-    var faqBody = '{{{data.project.faqBody}}}';
+    var imgUrls = '{{{data.project.imgUrls}}';
+    var faqTitle = "{{{data.project.faqTitle}}}";
+    var faqBody = "{{{data.project.faqBody}}}";
+    
+    /*
+    if(faqTitle.length > 0) {
+      $('#faqSection').show();
+      
+      for(var i=0; i < faqTitle.length; i++) {
+        
+      }
+    }
+    */
   </script>
 </div>
