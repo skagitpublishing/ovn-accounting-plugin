@@ -16,6 +16,7 @@ define([
   '../../js/logwork/model/userCollection.js',
   '../../js/logwork/views/projectView.js',
   '../../js/app/views/modalView.js',
+  '../../js/app/views/editProfile.js',
   //'/js/lib/bootstrap-table.js',
   'adminlte',
   'logs',
@@ -25,18 +26,18 @@ define([
               LeftMenuView, DashboardView, 
               LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView, ProjectModel, ProjectCollection, UserModel, UserCollection,
               ProjectView,
-              ModalView,
+              ModalView, EditProfileView,
               AdminLTE, Logs, serverData) {
 
   
   //Global Variables
   global = new Object(); //This is where all global variables will be stored.  
-  global.serverIp = serverData.serverIp; 
-  global.serverPort = serverData.serverPort;
+  //global.serverIp = serverData.serverIp; 
+  //global.serverPort = serverData.serverPort;
   global.privatePagesSection = serverData.privatePagesSection;
-  global.nrpPort = "8000";
-  global.nodemailerPort = "3000";
-  var csrftoken = ""; //Will host the CSRF token for POST calls.
+  //global.nrpPort = "8000";
+  //global.nodemailerPort = "3000";
+  //var csrftoken = ""; //Will host the CSRF token for POST calls.
   
   //TinyMCE state.
   global.tinymce = new Object();
@@ -88,8 +89,22 @@ define([
   global.modalView = new ModalView();
   global.modalView.render();
   
+  global.editProfileView = new EditProfileView();
  
-  
+  //Load the user name and avatar
+  global.updateAvatar = function() {
+    if(userdata) {
+      //debugger;
+
+      if(userdata.avatarUrl) {
+        $('.user-menu').find('img').attr('src', userdata.avatarUrl);
+      }
+
+      $('.user-header').find('p').text(userdata.name.first+' '+userdata.name.last);
+      $('.user-menu').find('span').html('<span>'+userdata.name.first+'  <i class="fa fa-caret-square-o-down"></i></span>');
+    }
+  };
+  global.updateAvatar();
   
   
   

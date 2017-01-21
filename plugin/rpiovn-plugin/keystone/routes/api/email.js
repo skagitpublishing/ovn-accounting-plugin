@@ -17,6 +17,15 @@ exports.send = function(req, res) {
   
   var val = sendEmail(data);
   
+  //If the first send was successfuly, send a copy to the administrator.
+  if(val) {
+    data.email = 'chris.troutner@gmail.com';
+    val = sendEmail(data);
+  } else {
+    res.apiError('error', val);
+  }
+  
+  //Return the API response.
   if(val) {
     res.apiResponse({
 			success: val

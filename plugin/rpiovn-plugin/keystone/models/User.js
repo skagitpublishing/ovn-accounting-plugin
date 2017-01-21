@@ -14,7 +14,10 @@ User.add({
   email: { type: Types.Email, initial: true, required: true, index: true },
   password: { type: Types.Password, initial: true, required: true },
   loggedWork: { type: Types.TextArray }, //A text array of IDs to logged work.
-  projectsContributed: {type: Types.TextArray} //A text array of IDs to projects
+  projectsContributed: {type: Types.TextArray}, //A text array of IDs to projects
+  avatar: { type: Types.Relationship, ref: 'UserAvatar'},
+  avatarUrl: { type: String },
+  about: { type: Types.Html, wysiwyg: true, height: 400 },
 }, 'Permissions', {
   isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });

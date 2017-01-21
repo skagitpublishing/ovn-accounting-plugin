@@ -30,3 +30,5 @@ cp -r public/js/logwork ../myCMS/public/js/
 
 echo Copying library files...
 cp public/js/lib/*.js ../myCMS/public/js/lib/
+
+mkdir ../myCMS/public/uploads/avatars
