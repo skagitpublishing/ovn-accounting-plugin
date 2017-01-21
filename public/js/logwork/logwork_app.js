@@ -16,7 +16,7 @@ define([
   '../../js/logwork/model/userCollection.js',
   '../../js/logwork/views/projectView.js',
   '../../js/app/views/modalView.js',
-  '../../js/app/views/editProfile.js',
+  '../../js/logwork/views/editProfile.js',
   //'/js/lib/bootstrap-table.js',
   'adminlte',
   'logs',
