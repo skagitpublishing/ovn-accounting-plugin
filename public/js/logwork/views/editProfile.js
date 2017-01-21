@@ -4,7 +4,7 @@ define([
 	'jQuery-2.1.4.min',
 	'underscore_1.3.3',
 	'backbone_0.9.2',  
-  'text!../../../js/usersettings/templates/editProfile.html'
+  'text!../../../js/logwork/templates/editProfile.html'
   //'/js/lib/bootstrap-table.js'
 ], function ($, _, Backbone, EditProfileTemplate) {
             //  BootstrapTable
