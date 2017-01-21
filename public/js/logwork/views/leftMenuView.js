@@ -58,6 +58,7 @@ define([
       $('#logWorkView').hide();
       $('#workReportView').hide();
       $('#projectView').hide();
+      $('#editProfileView').hide();
       
       
       //Remove the 'active' class from the menu item, unless it's a treeview menu item.
@@ -79,6 +80,7 @@ define([
       $('#logWorkView').show();
       $('#workReportView').hide();
       $('#projectView').hide();
+      $('#editProfileView').hide();
       
       $('#app-location').text('Log Work');
       
@@ -98,6 +100,7 @@ define([
       $('#logWorkView').hide();
       $('#workReportView').show();
       $('#projectView').hide();
+      $('#editProfileView').hide();
       
       $('#app-location').text('Work Reports');
       
@@ -116,6 +119,7 @@ define([
       $('#logWorkView').hide();
       $('#workReportView').hide();
       $('#projectView').show();
+      $('#editProfileView').hide();
       
       $('#app-location').text('Project Summary');
       
@@ -134,6 +138,7 @@ define([
       $('#logWorkView').hide();
       $('#workReportView').hide();
       $('#projectView').hide();
+      $('#editProfileView').show();
       
       $('#app-location').text('Edit Profile');
       
