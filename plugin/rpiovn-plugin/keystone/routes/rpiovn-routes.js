@@ -50,6 +50,13 @@ module.exports = function(app) {
   app.all('/api/email/send', keystone.middleware.api, routes.api.email.send);
   app.get('/api/email/sendlog', keystone.middleware.api, routes.api.email.sendlog);
   
+  //User Avatar Upload Route
+  app.get('/api/useravatar/list', keystone.middleware.api, routes.api.useravatar.list);
+  app.get('/api/useravatar/:id', keystone.middleware.api, routes.api.useravatar.get);
+  app.all('/api/useravatar/:id/update', keystone.middleware.api, routes.api.useravatar.update);
+  app.all('/api/useravatar/create', keystone.middleware.api, routes.api.useravatar.create);
+  app.get('/api/useravatar/:id/remove', keystone.middleware.api, routes.api.useravatar.remove);
+  
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
   app.get('/logwork', middleware.requireUser, routes.views.logwork);
