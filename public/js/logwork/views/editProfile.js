@@ -23,7 +23,7 @@ define([
 		events: {
       //'click #submitButton': 'logWork',
       'click #updateUserData': 'updateUserData',
-      'change #showProfile': 'toggleAbout'
+      //'change #showProfile': 'toggleAbout'
 		},
 
 		initialize: function () {
