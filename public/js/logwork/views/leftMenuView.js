@@ -26,7 +26,8 @@ define([
       'click #dashboardLink': 'showDashboard',
       'click #logWorkLink': 'showLogWork',
       'click #workReportLink': 'showWorkReport',
-      'click #viewProjects': 'showProjectView'
+      'click #viewProjects': 'showProjectView',
+      'click #editProfileLink': 'showEditProfile'
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since there's
