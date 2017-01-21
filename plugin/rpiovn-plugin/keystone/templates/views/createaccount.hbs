@@ -105,12 +105,12 @@
           var emailData = new Object();
           emailData.email = data.user.email;
           emailData.from = 'chris.troutner@gmail.com';
-          emailData.subject = "Your RPiOVN.com Account";
+          emailData.subject = "Your RPiOVN.org Account";
           emailData.html = true;
           emailData.body = "<!DOCTYPE html><html lang='en'><body>"+
-            "Thank you for signing up as a Beta Tester on RPiOVN.com\n\n"+
+            "Thank you for signing up as a Beta Tester on RPiOVN.org\n\n"+
             "Your login is your email: "+emailData.email+"\n"+
-            "<a href='http://rpiovn.com/keystone/signin'>You can sign in here</a>"+
+            "<a href='http://rpiovn.org/keystone/signin'>You can sign in here</a>"+
             "</body></html>";
           
           $.get('/api/email/send', emailData, function(data) {

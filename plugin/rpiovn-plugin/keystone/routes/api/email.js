@@ -123,7 +123,7 @@ function sendMailGun(emailObj) {
   
   //Send an email for each email address in the array via Mailgun API
   var api_key = 'key-3a4e4494ffe9b328783413ed0da9b332';
-  var domain = 'mg.rpiovn.com';
+  var domain = 'mg.rpiovn.org';
   var from_who = emailObj.from;
   var mailgun = new Mailgun({apiKey: api_key, domain: domain});
   
