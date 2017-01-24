@@ -247,9 +247,9 @@ define([
         month = month.slice(-2);
 
         var year = dateIn.getFullYear().toString();
-        year = year.slice(-2);
+        //year = year.slice(-2);
 
-        return month+'-'+date+'-'+year;
+        return year+'-'+month+'-'+date;
       } catch(err) {
         debugger;
         var msg = 'Error in WorkReportView.js/getDateStr() Error: '+err.message;
