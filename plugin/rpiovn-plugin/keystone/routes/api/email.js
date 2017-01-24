@@ -185,6 +185,7 @@ exports.sendlog = function(req, res) {
   //Send the email log via MailGun email.
   var emailObj = new Object();
   emailObj.email = email;
+  emailObj.from = "chris.troutner@gmail.com";
   emailObj.subject = subject;
   emailObj.message = body
   sendMailGun(emailObj);
