@@ -521,11 +521,12 @@ define([
             var dateStr = global.workReportView.getDateStr(new Date(thisModel.get('startTime')));
           } catch(err) {
             var msg = 'Error caught in logWorkView.js/populateTable(). Error: '+err.message;
+            msg += 'Most likely user has less than 5 work entries. Exiting for loop.';
             console.log(msg);
-            log.push(msg);
-            sendLog();
+            //log.push(msg);
+            //sendLog();
             //this.render();
-            return;
+            break;
           }
 
           
