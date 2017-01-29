@@ -19,22 +19,21 @@ define([
   '../../js/logwork/views/editProfile.js',
   //'/js/lib/bootstrap-table.js',
   'adminlte',
-  'logs',
-  '../../js/serversettings.js'
+  'logs'
 //], function ($, _, Backbone, Bootstrap, Cookie,
 ], function (_, Backbone, //Bootstrap,
               LeftMenuView, DashboardView, 
               LogWorkView, LogWorkModel, LogWorkCollection, WorkReportView, ProjectModel, ProjectCollection, UserModel, UserCollection,
               ProjectView,
               ModalView, EditProfileView,
-              AdminLTE, Logs, serverData) {
+              AdminLTE, Logs) {
 
   
   //Global Variables
   global = new Object(); //This is where all global variables will be stored.  
   //global.serverIp = serverData.serverIp; 
   //global.serverPort = serverData.serverPort;
-  global.privatePagesSection = serverData.privatePagesSection;
+  //global.privatePagesSection = serverData.privatePagesSection;
   //global.nrpPort = "8000";
   //global.nodemailerPort = "3000";
   //var csrftoken = ""; //Will host the CSRF token for POST calls.
@@ -106,7 +105,17 @@ define([
   };
   global.updateAvatar();
   
-  
+  //Get the public settings JSON file..
+  $.getJSON('/js/publicsettings.json', '', function(data) {
+    //debugger;
+    global.privatePagesSection = data.privatePagesSection;
+  })
+  //If sending the data to the server fails:
+  .fail(function( jqxhr, textStatus, error ) {
+    debugger;
+
+    console.error('Error trying to retrieve JSON data from /js/publicsettings.js');
+  });
   
   //Hide the preloader after everything finished loading and document is ready.
   $(document).ready(function() {
