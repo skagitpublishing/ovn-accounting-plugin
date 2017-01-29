@@ -31,4 +31,8 @@ cp -r public/js/logwork ../myCMS/public/js/
 echo Copying library files...
 cp public/js/lib/*.js ../myCMS/public/js/lib/
 
+#Create a directory for avatar images if it doesn't exist yet.
 mkdir ../myCMS/public/uploads/avatars
+
+#Copy any saved settings data.
+cp ~/publicsettings.json ../myCMS/public/js/
