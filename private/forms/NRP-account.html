@@ -102,11 +102,11 @@
     <script type="text/javascript">
       //Global Variables
       global = new Object(); //This is where all global variables will be stored.
-      global.serverIp = "104.131.137.38"; //Production Server
+      //global.serverIp = "104.131.137.38"; //Production Server
       //global.serverIp = "192.241.198.211"; //Test Server
-      global.serverPort = "80";
-      global.nrpPort = "8000";
-      global.nodemailerPort = "3000";
+      //global.serverPort = "80";
+      //global.nrpPort = "8000";
+      //global.nodemailerPort = "3000";
 
       $("#submitButton").click(function(event) {
         //debugger;
@@ -136,7 +136,7 @@
         //Put some code here to check against existing user names.
         
         //Submit the data to the server.
-        $.post('http://'+global.serverIp+':'+global.serverPort+'/api/nrpuser/create', userData, function(data) {
+        $.post('/api/users/create', userData, function(data) {
           debugger;
           
           if( data.nrpuser._id != "" ) {

@@ -148,6 +148,7 @@
             //global.modalView.errorModal("Request failed because of: "+error+'. Error Message: '+jqxhr.responseText);
             console.log( "Request Failed: " + error );
             console.error('Error message: '+jqxhr.responseText);
+            alert('There was a problem with the submission! Please refresh this page and try again.');
           } catch(err) {
             console.error('Error trying to retrieve JSON data from server response.');
           } 
