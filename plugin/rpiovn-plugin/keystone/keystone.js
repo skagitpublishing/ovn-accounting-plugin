@@ -54,11 +54,6 @@ keystone.set('locals', {
 	editable: keystone.content.editable
 });
 
-//Add User GUIDs to the arrays below to make that user an Admin or Superuser.
-//Only superusers can change other users passwords. They can also access the Keystone Admin UI.
-//Admins can access the API and only the ConnextCMS Dashboard.
-keystone.set('superusers', ['570af17a35a07fd404a341ba']);
-keystone.set('admins', ['570af17a35a07fd404a341ba', '5803d19fc0725f03c7ee9fec']);
 
 // Load your project's Routes
 
@@ -73,6 +68,42 @@ keystone.set('nav', {
 	'users': 'users'
 });
 
-// Start Keystone to connect to your database and initialise the web server
+//Add User GUIDs to the arrays below to make that user an Admin or Superuser.
+//Only superusers can change other users passwords. They can also access the Keystone Admin UI.
+//Admins can access the API and only the ConnextCMS Dashboard.
+//keystone.set('superusers', ['570af17a35a07fd404a341ba']);
+//keystone.set('admins', ['570af17a35a07fd404a341ba', '5803d19fc0725f03c7ee9fec']);
+ 
+//Add User GUIDs to the arrays below to make that user an Admin or Superuser.
+//Only superusers can change other users passwords. They can also access the Keystone Admin UI.
+//Admins can access the API and only the ConnextCMS Dashboard.
+//keystone.set('superusers', ['57c88289144da4ea0dc979db']);
+//keystone.set('admins', ['57c88289144da4ea0dc979db']);
+//This function reads in the publicsettings.json file and sets the list of admins and superusers.
+fs.readFile('public/js/publicsettings.json', 'utf8', function(err, data) {
+  //debugger;
+  
+  if(err) {
+    console.log('Error in keystone.js while trying to read publicsettings.json file.');
+    console.log(err);
+  } else {
 
-keystone.start();
+    var publicSettings = JSON.parse(data);
+    
+    if(typeof(publicSettings.superUsers) == "string") {
+      keystone.set('superusers', [publicSettings.superUsers]);
+    } else {
+      keystone.set('superusers', publicSettings.superUsers);
+    }
+    
+    if(typeof(publicSettings.adminUsers) == "string") {
+      keystone.set('admins', [publicSettings.adminUsers]);
+    } else {
+      keystone.set('admins', publicSettings.adminUsers);
+    }
+    
+    // Start Keystone to connect to your database and initialise the web server
+    // Need to be inside the readFile function handler.
+    keystone.start();
+  }
+});
