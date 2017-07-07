@@ -23,24 +23,24 @@
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#projectInfo" role="tab" data-toggle="tab">Project Summary</a></li>
+            <li role="presentation" class="active"><a href="" role="tab" data-toggle="tab" class="projectInfo">Project Summary</a></li>
             <li role="presentation"><a href="" role="tab" data-toggle="tab" class="hardware">Hardware</a></li>
-            <li role="presentation"><a href="#software" role="tab" data-toggle="tab">Software</a></li>
-            <li role="presentation"><a href="#faq" role="tab" data-toggle="tab">FAQ</a></li>
+            <li role="presentation"><a href="" role="tab" data-toggle="tab" class="software">Software</a></li>
+            <li role="presentation"><a href="" role="tab" data-toggle="tab" class="faq">FAQ</a></li>
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content" style="min-height: 150px; background-color: #f7f7f9;">
-            <div role="tabpanel" class="tab-pane active projectInfo" class="projectInfo">
+            <div role="tabpanel" class="tab-pane active projectInfo" class="">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade hardware" id="hardware">
+            <div role="tabpanel" class="tab-pane fade hardware" id="">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade software" id="software">
+            <div role="tabpanel" class="tab-pane fade software" id="">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade faq" id="faq">
+            <div role="tabpanel" class="tab-pane fade faq" id="">
 
             </div>
           </div>
@@ -88,24 +88,33 @@
           //Clone the scaffolding element.
           var thisProj = scaffold.clone();
           
-          //Fill in the content from the data retrieved from the server.
+          //Create a navigation button
           var projBtn = '<a class="btn btn-primary center-text" href="/project/'
           +projectInfo[i].slug+'">View Project Page</a><br><br>';
           thisProj.find('.projSummary').append('<h1>'+projectInfo[i].title+'</h1>'+projBtn);
           thisProj.find('.projSummary').append(projectInfo[i].basicInfo);
 
+          //Append unique IDs to make the Bootstrap Tab Panels work
+          thisProj.find('a.projectInfo').attr('href', '#'+projectInfo[i].slug+'-projectInfo');
+          thisProj.find('div.projectInfo').attr('id', projectInfo[i].slug+'-projectInfo');
+          thisProj.find('a.hardware').attr('href', '#'+projectInfo[i].slug+'-hardware');
+          thisProj.find('div.hardware').attr('id', projectInfo[i].slug+'-hardware');
+          thisProj.find('a.software').attr('href', '#'+projectInfo[i].slug+'-software');
+          thisProj.find('div.software').attr('id', projectInfo[i].slug+'-software');
+          thisProj.find('a.faq').attr('href', '#'+projectInfo[i].slug+'-faq');
+          thisProj.find('div.faq').attr('id', projectInfo[i].slug+'-faq')
 
-          thisProj.find('#projectInfo').append(projectInfo[i].summary);
-          thisProj.find('#hardware').append(projectInfo[i].hardware);
-          thisProj.find('#software').append(projectInfo[i].software);
+          thisProj.find('div.projectInfo').append(projectInfo[i].summary);
+          thisProj.find('div.hardware').append(projectInfo[i].hardware);
+          thisProj.find('div.software').append(projectInfo[i].software);
 
-          thisProj.find('#faq').append('<br>');
+          thisProj.find('div.faq').append('<br>');
 
           //Fill out the FAQ section.
           for(var j=0; j < projectInfo[i].faqTitle.length; j++) {
-            thisProj.find('#faq').append('<h3>'+projectInfo[i].faqTitle[j]+'</h3>');
-            thisProj.find('#faq').append(projectInfo[i].faqBody[j]);
-            thisProj.find('#faq').append('<br>');
+            thisProj.find('div.faq').append('<h3>'+projectInfo[i].faqTitle[j]+'</h3>');
+            thisProj.find('div.faq').append(projectInfo[i].faqBody[j]);
+            thisProj.find('div.faq').append('<br>');
           }
           
           //Add the project to the DOM
