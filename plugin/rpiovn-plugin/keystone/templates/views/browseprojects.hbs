@@ -22,24 +22,24 @@
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href=".projectInfo" role="tab" data-toggle="tab">Project Summary</a></li>
+            <li role="presentation" class="active"><a href="#projectInfo" role="tab" data-toggle="tab">Project Summary</a></li>
             <li role="presentation"><a href=".hardware" role="tab" data-toggle="tab">Hardware</a></li>
-            <li role="presentation"><a href=".software" role="tab" data-toggle="tab">Software</a></li>
-            <li role="presentation"><a href=".faq" role="tab" data-toggle="tab">FAQ</a></li>
+            <li role="presentation"><a href="#software" role="tab" data-toggle="tab">Software</a></li>
+            <li role="presentation"><a href="#faq" role="tab" data-toggle="tab">FAQ</a></li>
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content" style="min-height: 150px; background-color: #f7f7f9;">
-            <div role="tabpanel" class="tab-pane active projectInfo">
+            <div role="tabpanel" class="tab-pane active" class="projectInfo">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade hardware">
+            <div role="tabpanel" class="tab-pane fade hardware" id="">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade software">
+            <div role="tabpanel" class="tab-pane fade" id="software">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade faq">
+            <div role="tabpanel" class="tab-pane fade" id="faq">
 
             </div>
           </div>
@@ -141,9 +141,9 @@
           container.find('.projSummary').append(projectInfo[i].basicInfo);
 
 
-          container.find('.projectInfo').append(projectInfo[i].summary);
-          container.find('.hardware').append(projectInfo[i].hardware);
-          container.find('.software').append(projectInfo[i].software);
+          container.find('#projectInfo').append(projectInfo[i].summary);
+          container.find('#hardware').append(projectInfo[i].hardware);
+          container.find('#software').append(projectInfo[i].software);
 
           $('#faq').append('<br>');
 
