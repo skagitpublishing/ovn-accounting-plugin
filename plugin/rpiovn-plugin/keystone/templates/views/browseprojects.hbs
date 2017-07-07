@@ -8,7 +8,7 @@
     
   </style>
   
-  <div class="container">
+  <div class="container" id="tracker">
     <div style="border: 2px solid #c7053d;  border-radius: 25px; padding: 10px;">
       <div class="row" style="">
         <div class="col-sm-4" style="border-right: 1px solid #c7053d;">
@@ -22,24 +22,24 @@
 
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#projectInfo" role="tab" data-toggle="tab">Project Summary</a></li>
-            <li role="presentation"><a href="#hardware" role="tab" data-toggle="tab">Hardware</a></li>
-            <li role="presentation"><a href="#software" role="tab" data-toggle="tab">Software</a></li>
-            <li role="presentation"><a href="#faq" role="tab" data-toggle="tab">FAQ</a></li>
+            <li role="presentation" class="active"><a href=".projectInfo" role="tab" data-toggle="tab">Project Summary</a></li>
+            <li role="presentation"><a href=".hardware" role="tab" data-toggle="tab">Hardware</a></li>
+            <li role="presentation"><a href=".software" role="tab" data-toggle="tab">Software</a></li>
+            <li role="presentation"><a href=".faq" role="tab" data-toggle="tab">FAQ</a></li>
           </ul>
 
           <!-- Tab panes -->
           <div class="tab-content" style="min-height: 150px; background-color: #f7f7f9;">
-            <div role="tabpanel" class="tab-pane active" id="projectInfo">
+            <div role="tabpanel" class="tab-pane active projectInfo">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="hardware">
+            <div role="tabpanel" class="tab-pane fade hardware">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="software">
+            <div role="tabpanel" class="tab-pane fade software">
 
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="faq">
+            <div role="tabpanel" class="tab-pane fade faq">
 
             </div>
           </div>
@@ -61,7 +61,7 @@
   
   <br>
   
-  <div class="container">
+  <div class="container" id="broker">
     <div style="border: 2px solid #c7053d;  border-radius: 25px; padding: 10px;">
       <div class="row" style="">
         <div class="col-sm-4" style="border-right: 1px solid #c7053d;">
@@ -121,24 +121,38 @@
         
         var projectInfo = data.projectinfo;
         
-        //Fill in the content from the data retrieved from the server.
-        var projBtn = '<a class="btn btn-primary center-text" href="/project/'
-        +projectInfo[0].slug+'">View Project Page</a><br><br>';
-        $('.projSummary').append('<h1>'+projectInfo[0].title+'</h1>'+projBtn);
-        $('.projSummary').append(projectInfo[0].basicInfo);
+        //Error handling
+        if(projectInfo.length == 0)
+          return;
         
-        
-        $('#projectInfo').append(projectInfo[0].summary);
-        $('#hardware').append(projectInfo[0].hardware);
-        $('#software').append(projectInfo[0].software);
-        
-        $('#faq').append('<br>');
-        
-        //Fill out the FAQ section.
-        for(var i=0; i < projectInfo[0].faqTitle.length; i++) {
-          $('#faq').append('<h3>'+projectInfo[0].faqTitle[i]+'</h3>');
-          $('#faq').append(projectInfo[0].faqBody[i]);
+        for(var i=0; i < projectInfo.length; i++) {
+          
+          //Get a handle on the container.
+          var container;
+          if(projectInfo[i].slug == 'rpi-tracker')
+            container = $('#tracker');
+          else if(projectInfo[i].slug == 'rpi-broker')
+            container = $('#broker');
+          
+          //Fill in the content from the data retrieved from the server.
+          var projBtn = '<a class="btn btn-primary center-text" href="/project/'
+          +projectInfo[i].slug+'">View Project Page</a><br><br>';
+          container.find('.projSummary').append('<h1>'+projectInfo[i].title+'</h1>'+projBtn);
+          container.find('.projSummary').append(projectInfo[i].basicInfo);
+
+
+          container.find('.projectInfo').append(projectInfo[i].summary);
+          container.find('.hardware').append(projectInfo[i].hardware);
+          container.find('.software').append(projectInfo[i].software);
+
           $('#faq').append('<br>');
+
+          //Fill out the FAQ section.
+          for(var i=0; i < projectInfo[0].faqTitle.length; i++) {
+            $('#faq').append('<h3>'+projectInfo[0].faqTitle[i]+'</h3>');
+            $('#faq').append(projectInfo[0].faqBody[i]);
+            $('#faq').append('<br>');
+          }
         }
         
         //Activate the tabs to get content to show
