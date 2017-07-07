@@ -10,7 +10,7 @@
   
   <div class="container" id="projectContainer">
     
-    <div style="border: 2px solid #c7053d;  border-radius: 25px; padding: 10px;" id="scaffolding">
+    <div style="border: 2px solid #c7053d;  border-radius: 25px; padding: 10px; margin: 20px 0px;" id="scaffolding">
       <div class="row" style="">
         <div class="col-sm-4" style="border-right: 1px solid #c7053d;">
           <img src="/images/rpi-tracker.jpg" class="img-responsive center-block projImg" />
@@ -94,6 +94,9 @@
           thisProj.find('.projSummary').append('<h1>'+projectInfo[i].title+'</h1>'+projBtn);
           thisProj.find('.projSummary').append(projectInfo[i].basicInfo);
 
+          //Swap out the project image
+          thisProj.find('.projImg').attr('src', projectInfo[i].imgUrls[0]);
+          
           //Append unique IDs to make the Bootstrap Tab Panels work
           thisProj.find('a.projectInfo').attr('href', '#'+projectInfo[i].slug+'-projectInfo');
           thisProj.find('div.projectInfo').attr('id', projectInfo[i].slug+'-projectInfo');
