@@ -45,11 +45,20 @@
       <h2>Frequently Asked Questions</h2>
       <div id="faqContent"></div>
     </div>
+	</div> 
+  
+  <div class="row">
+   	<div class="col-md-12" id="faqSection" hidden>
+      <br>
+      <h2>Latest Work Entries</h2>
+      <div id="workLogs"></div>
+    </div>
 	</div>
   
   <script type="text/javascript">
     $(document).ready(function() {
       
+      //Get project FAQ info
       $.get('/api/projectinfo/list', '', function(data) {
         //debugger;
         
@@ -72,6 +81,12 @@
             }
           }
         }
+        
+      });
+      
+      //Get work log info
+      $.get('/api/logwork/list/last50', '', function(data) {
+        debugger;
         
       });
       

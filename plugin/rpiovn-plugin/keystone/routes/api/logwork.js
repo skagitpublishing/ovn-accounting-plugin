@@ -24,7 +24,7 @@ exports.listall = function(req, res) {
 }
 
 /**
- * List LoggedWork
+ * Paginate entries with 50 per page.
  */
 exports.listlast50 = function(req, res) {
 	/*
@@ -55,6 +55,7 @@ exports.listlast50 = function(req, res) {
     
   });
 }
+
 
 /**
  * Get LoggedWork by ID
