@@ -40,7 +40,7 @@ exports.listlast50 = function(req, res) {
   */
   
   LoggedWork.paginate({
-    page: 1,
+    page: req.query.page || 1,
     perPage: 50,
     maxPages: 10
   })
