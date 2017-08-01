@@ -74,6 +74,8 @@
   
   <script type="text/javascript">
     
+    // BEGIN GLOBAL VARIABLES
+    
     //Global data about this project
     var projectData = {{{JSON data.project}}};
     
@@ -100,6 +102,8 @@
     
     //Used to keep data on users of the system.
     var userData = [];
+    
+    // END GLOBAL VARIABLES
     
     $(document).ready(function() {
       
@@ -132,15 +136,13 @@
       //Get user data first
       var userPromise = getUsers();
       userPromise.then(function(users) {
-        debugger;
+        //debugger;
         
+        //Copy to a global variable.
         userData = users;
         
-        //Get work log info
-        var page = 1;
-
         //Display the work entries on the DOM.
-        displayWork(page);
+        displayWork(1);
         
       }, function(err) {
         debugger;
@@ -148,8 +150,9 @@
       
     });
     
+    //This function returns a promise that is resolved after it downloads info on the systems users.
     function getUsers() {
-      debugger;
+      //debugger;
       
       var promise = new Promise(function(resolve, reject) {
         
@@ -165,11 +168,12 @@
       
     }
     
+    //This function returns a promise that is resolved after it retrieves a page of data of logged work entries.
     function getWork(obj) {
       var promise = new Promise(function(resolve, reject) {
         
         $.get('/api/logwork/list/last50', obj, function(data) {
-          debugger;
+          //debugger;
         
           if(data.loggedwork.results.length == 0)
             reject('Empty');
@@ -182,8 +186,10 @@
       return promise;
     }
     
+    //This function retrieves work log entries and writes each line to the DOM that matches the current project.
+    //It stops after finding 10 entries.
     function displayWork(page) {
-      debugger;
+      //debugger;
       
       //Retrieve the first page of results from the server.
       var obj = {};
@@ -191,7 +197,7 @@
       var workPromise = getWork(obj);
       //var logCnt = 0; //Counts the number of work entries that match this project.
       workPromise.then(function(work) {
-        debugger;
+        //debugger;
         
         var scaffold = $('#workLogs').find('.scaffold');
         
