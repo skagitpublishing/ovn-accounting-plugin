@@ -48,10 +48,22 @@
 	</div> 
   
   <div class="row">
-   	<div class="col-md-12" id="faqSection">
+   	<div class="col-md-12" id="workSection">
       <br>
       <h2>Latest Work Entries</h2>
-      <div id="workLogs"></div>
+      <div id="workLogs">
+        <table id="workTable">
+          <tr>
+            <th>Date</th>
+            <th>User</th>
+            <th>Hours</th>
+            <th>Description</th>
+          </tr>
+          <tr class="scaffold">
+            
+          </tr>
+        </table>
+      </div>
     </div>
 	</div>
   
@@ -141,10 +153,23 @@
       workPromise.then(function(work) {
         debugger;
         
+        var scaffold = $('#workLogs').find('.scaffold');
+        
         for(var j=0; j < targetProj.length; j++) {
           for(var i=0; i < work.results.length; i++) {
             if(work.results[i].project == targetProj[j]) {
-              $('#workLogs').append('<p>User: '+work.results[i].user+', Hours: '+work.results[i].hours+', Details: '+work.results[i].details+'</p>');
+              
+              var thisEntry = scaffold.clone();
+              
+              var entryDate = new Date(work.results[i].startTime);
+              
+              thisEntry.append('<td>'+entryDate.toLocaleDateString()+'</td>');
+              thisEntry.append('<td>'+work.results[i].user+'</td>');
+              thisEntry.append('<td>'+work.results[i].hours+'</td>');
+              thisEntry.append('<td>'+work.results[i].details+'</td>');
+              
+              $('#workTable').append(thisEntry);
+              //$('#workLogs').append('<p>User: '+work.results[i].user+', Hours: '+work.results[i].hours+', Details: '+work.results[i].details+'</p>');
 
               logCnt++;
               if(logCnt >= 10) {
