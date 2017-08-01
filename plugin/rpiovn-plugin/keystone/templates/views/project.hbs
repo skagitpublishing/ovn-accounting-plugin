@@ -171,6 +171,9 @@
         $.get('/api/logwork/list/last50', obj, function(data) {
           debugger;
         
+          if(data.loggedwork.results.length == 0)
+            reject('Empty');
+          
           resolve(data.loggedwork);
         });
         
