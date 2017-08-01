@@ -124,14 +124,39 @@
         
       });
       
-      //Get work log info
-      var page = 1;
-      
-      displayWork(page);
-      
-      
+      //Get user data first
+      var userPromise = getUsers();
+      userPromise.then(function(users) {
+        debugger;
+        
+        //Get work log info
+        var page = 1;
+
+        //Display the work entries on the DOM.
+        displayWork(page);
+        
+      }, function(err) {
+        debugger;
+      });
       
     });
+    
+    function getUsers() {
+      debugger;
+      
+      var promise = new Promise(function(resolve, reject) {
+        
+        $.get('/api/users/list', '', function(data) {
+          debugger;
+        
+          resolve(data);
+        });
+        
+      });
+      
+      return promise;
+      
+    }
     
     function getWork(obj) {
       var promise = new Promise(function(resolve, reject) {
