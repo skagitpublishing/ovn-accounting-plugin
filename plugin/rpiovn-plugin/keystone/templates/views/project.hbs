@@ -56,7 +56,28 @@
 	</div>
   
   <script type="text/javascript">
+    
+    //Global data about this project
     var projectData = {{{JSON data.project}}};
+    var targetProj = [];
+    switch(projectData._id) {
+      //RPi-Tracker
+      case "587d82ff1f064f586308b8bd":
+        targetProj.push('597fafa0a27cfc03d2f7327f'); //RPi-Tracker
+        targetProj.push('5803d685c0725f03c7ee9fef'); //CrumbShare
+        break;
+        
+      //RPi-Broker
+      case "59601280a27cfc03d2f7327a":
+        targetProj.push("597fafa0a27cfc03d2f7327f");
+        
+      default:
+        break;
+    }
+    
+    
+    //Global counter for tracking the number of entries.
+    var logCnt = 0;
     
     $(document).ready(function() {
       
@@ -116,23 +137,32 @@
       var obj = {};
       obj.page = page;
       var workPromise = getWork(obj);
-      var logCnt = 0; //Counts the number of work entries that match this project.
+      //var logCnt = 0; //Counts the number of work entries that match this project.
       workPromise.then(function(work) {
         debugger;
         
-        for(var i=0; i < work.results.length; i++) {
-          if(work.results[i].project == projectData._id) {
-            $('#workLogs').append('<p>User: '+work.results[i].user+', Hours: '+work.results[i].hours+', Details: '+work.results[i].details+'</p>');
-            
-            logCnt++;
-            if(logCnt == 10)
-              break;
+        for(var j=0; j < targetProj.length; j++) {
+          for(var i=0; i < work.results.length; i++) {
+            if(work.results[i].project == targetProj[j]) {
+              $('#workLogs').append('<p>User: '+work.results[i].user+', Hours: '+work.results[i].hours+', Details: '+work.results[i].details+'</p>');
+
+              logCnt++;
+              if(logCnt >= 10) {
+                break;
+              }
+            }
+          }
+          
+          if(logCnt >= 10) {
+            break;
           }
         }
         
         if(logCnt < 10) {
           page++
           displayWork(page);
+        } else {
+          logCnt = 0;
         }
         
       }, function(err) {
