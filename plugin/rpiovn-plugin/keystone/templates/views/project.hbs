@@ -168,10 +168,13 @@
               
               var entryDate = new Date(work.results[i].startTime);
               
+              //Replace newline characters with html <br> to force new line.
+              var description = work.results[i].details.replace(/(\r\n|\n|\r)/gm,"<br>");
+              
               thisEntry.append('<td>'+entryDate.toLocaleDateString()+'</td>');
               thisEntry.append('<td>'+work.results[i].user+'</td>');
               thisEntry.append('<td>'+work.results[i].hours+'</td>');
-              thisEntry.append('<td>'+work.results[i].details+'</td>');
+              thisEntry.append('<td>'+description+'</td>');
               
               $('#workTable').append(thisEntry);
               //$('#workLogs').append('<p>User: '+work.results[i].user+', Hours: '+work.results[i].hours+', Details: '+work.results[i].details+'</p>');
