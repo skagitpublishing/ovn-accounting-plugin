@@ -19,7 +19,7 @@
       {{{data.project.basicInfo}}}
     </div>  
     <div class="col-md-4">
-      <img src="/images/rpi-tracker.jpg" class="img-responsive center-block" />
+      <img id="projImg" src="/images/rpi-tracker.jpg" class="img-responsive center-block" />
     </div>
   </div>
   
@@ -151,6 +151,10 @@
       }, function(err) {
         debugger;
       });
+      
+      //Update the image with the primary project image
+      if(projectData.imgUrls[0] != undefined)
+        $('#projImg').attr('src', projectData.imgUrls[0]);
       
     });
     
