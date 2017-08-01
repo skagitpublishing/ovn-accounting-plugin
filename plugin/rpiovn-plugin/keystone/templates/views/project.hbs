@@ -89,20 +89,7 @@
       //Get work log info
       var page = 1;
       
-      //Retrieve the first page of results from the server.
-      var obj = {};
-      obj.page = page;
-      var workPromise = getWork(obj);
-      workPromise.then(function(work) {
-        debugger;
-        
-        for(var i=0; i < work.results.length; i++) {
-          
-        }
-        
-      }, function(err) {
-        debugger;
-      });
+      displayWork(page);
       
       
       
@@ -122,6 +109,36 @@
       return promise;
     }
     
+    function displayWork(page) {
+      debugger;
+      
+      //Retrieve the first page of results from the server.
+      var obj = {};
+      obj.page = page;
+      var workPromise = getWork(obj);
+      var logCnt = 0; //Counts the number of work entries that match this project.
+      workPromise.then(function(work) {
+        debugger;
+        
+        for(var i=0; i < work.results.length; i++) {
+          if(work.results[i].project == projectData._id) {
+            $('#workLogs').append('<p>User: '+work.results[i].user+', Hours: '+work.results[i].hours+', Details: '+work.results[i].details+'</p>');
+            
+            logCnt++;
+            if(logCnt == 10)
+              break;
+          }
+        }
+        
+        if(logCnt < 10) {
+          page++
+          displayWork(page);
+        }
+        
+      }, function(err) {
+        debugger;
+      });
+    }
     
     
   </script>
