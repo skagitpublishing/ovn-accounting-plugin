@@ -76,6 +76,8 @@
     
     //Global data about this project
     var projectData = {{{JSON data.project}}};
+    
+    //Lookup the target projects for this page.
     var targetProj = [];
     switch(projectData._id) {
       //RPi-Tracker
@@ -95,6 +97,9 @@
     
     //Global counter for tracking the number of entries.
     var logCnt = 0;
+    
+    //Used to keep data on users of the system.
+    var userData = [];
     
     $(document).ready(function() {
       
@@ -129,6 +134,8 @@
       userPromise.then(function(users) {
         debugger;
         
+        userData = users;
+        
         //Get work log info
         var page = 1;
 
@@ -149,7 +156,7 @@
         $.get('/api/users/list', '', function(data) {
           debugger;
         
-          resolve(data);
+          resolve(data.user);
         });
         
       });
