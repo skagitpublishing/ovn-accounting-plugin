@@ -86,8 +86,9 @@
       
       //Get work log info
       var page = 1;
+      
       var obj = {};
-      var obj.page = page;
+      obj.page = page;
       
       var workPromise = getWork(obj);
       workPromise.then(function(results) {
