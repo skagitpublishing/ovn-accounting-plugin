@@ -1,0 +1,41 @@
+#!/bin/bash
+#This file used to merge project into the ConnextCMS Docker-Compose installation.
+
+echo Preparing to copy RPiOVN files...
+
+echo Copying Keystone core files...
+cp plugin/rpiovn-plugin/keystone/keystone.js ../../myCMS/
+
+echo Copying Keystone templates...
+cp plugin/rpiovn-plugin/keystone/templates/views/*.hbs ../../myCMS/templates/views/
+cp plugin/rpiovn-plugin/keystone/templates/views/layouts/*.hbs ../../myCMS/templates/views/layouts/
+
+echo Copying Keystone models...
+cp plugin/rpiovn-plugin/keystone/models/*.js ../../myCMS/models/
+
+echo Copying Keystone routes...
+cp plugin/rpiovn-plugin/keystone/routes/*.js ../../myCMS/routes/
+cp plugin/rpiovn-plugin/keystone/routes/api/*.js ../../myCMS/routes/api/
+cp plugin/rpiovn-plugin/keystone/routes/views/*.js ../../myCMS/routes/views/
+
+echo Copying public files...
+cp public/favicon.ico ../../myCMS/public
+cp public/images/* ../../myCMS/public/images/
+cp public/js/*.js ../../myCMS/public/js/
+cp public/styles/*.css ../../myCMS/public/styles/
+
+#Copy sign-in logo
+cp public/images/logo.png ../../myCMS/node_modules/keystone/admin/public/images/logo.png
+
+echo Copying logwork dashboard
+cp -r public/js/logwork ../../myCMS/public/js/
+
+echo Copying library files...
+cp public/js/lib/*.js ../../myCMS/public/js/lib/
+
+#Create a directory for avatar images if it doesn't exist yet.
+mkdir ../../myCMS/public/uploads/avatars
+
+#Copy any saved settings data.
+cp ~/publicsettings.json ../../myCMS/public/js/
+cp ~/privatesettings.json ../../myCMS/private/
