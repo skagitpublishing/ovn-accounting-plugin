@@ -38,7 +38,7 @@ keystone.init({
   'signin redirect': '/logwork',
   'signout redirect': '/',
   'file limit': '50MB',
-  'mongo': 'mongodb://172.17.0.1:3500/connextcms'
+  'mongo': 'mongodb://172.17.0.1:3500/rpiovn'
 });
 
 // Load your project's Models
