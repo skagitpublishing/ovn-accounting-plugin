@@ -207,7 +207,7 @@
               var userName = work.results[i].user;
               for(var k=0; k < userData.length; k++) {
                 if(work.results[i].user == userData[k]._id) {
-                  userName = userData[k].firstName+' '+userData[k].lastName;
+                  userName = userData[k].name.first+' '+userData[k].name.last;
                   break;
                 }
               }
