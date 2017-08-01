@@ -203,8 +203,17 @@
               //Replace newline characters with html <br> to force new line.
               var description = work.results[i].details.replace(/(\r\n|\n|\r)/gm,"<br>");
               
+              //Find the user name that matches the user ID
+              var userName = work.results[i].user;
+              for(var k=0; k < userData.length; k++) {
+                if(work.results[i].user == userData[k]._id) {
+                  userName = userData[k].firstName+' '+userData[k].lastName;
+                  break;
+                }
+              }
+              
               thisEntry.append('<td>'+entryDate.toLocaleDateString()+'</td>');
-              thisEntry.append('<td>'+work.results[i].user+'</td>');
+              thisEntry.append('<td>'+userName+'</td>');
               thisEntry.append('<td>'+work.results[i].hours+'</td>');
               thisEntry.append('<td>'+description+'</td>');
               
