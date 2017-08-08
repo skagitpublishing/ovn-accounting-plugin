@@ -122,7 +122,7 @@ define([
 
         //debugger;
 
-        global.modalView.waitingModal();
+        
 
         var thisView = this;
 
@@ -139,6 +139,9 @@ define([
           return;
         }
 
+        //Throw up the waiting modal.
+        global.modalView.waitingModal();
+        
         //Used for debugging.
         //$.get('/api/logwork/list', '', function(data) {
         //  debugger;
